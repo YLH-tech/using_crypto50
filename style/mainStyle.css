@@ -1,0 +1,355 @@
+@import url(./loopStyle.css); /* Left to Right Looping Animation */
+
+
+:root{
+    --font-color-- : #000000;
+    --iconic-color-- : #4faa99;
+    --secondary-font-color--: #B7B7B7;
+    --body-color--: rgb(248, 253, 251);
+    --download-bg-color-- : rgb(247, 248, 250);
+    --download-icons-color--: rgb(113, 117, 137);
+}
+
+/* Common Properties */
+nav a{
+    text-decoration: none;
+    color: var(--font-color--);
+}
+
+/* Main Properties */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================= */
+/* Navigation Bar Style */
+/* ========================= */
+
+nav{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    position: fixed;
+    background-color: #ffffff;
+    line-height: 60px;
+    z-index: 1;
+}
+.nav-subdiv{
+    align-items: center; /* Align profile vartically */
+}
+.nav-subdiv a{
+    margin: 20px;
+}
+.profile-img{
+    width: 40px;
+    display: inline-block;
+    margin: 0 20px;
+}
+.signup-btn{
+    background-color: var(--iconic-color--);
+    padding: 10px 30px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+/* ========================= */
+/* Main Section Style */
+/* ========================= */
+
+.entry-section{
+    width: 98%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--body-color--);
+    padding: 30px 7%;
+    box-sizing: border-box;
+    border-radius: 30px;
+}
+.content-container h1{
+    font-size: 60px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+.content-container p{
+    font-size: 20px;
+    color: var(--secondary-font-color--);
+}
+
+.align-margin{
+    width: 85%;
+    margin: auto;
+}
+
+/* ========================= */
+/* Ranking & Breaking */
+/* ========================= */
+
+.ranking-breaking{
+    height: 570px;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+/* Rankings */
+.crypto-ranking{
+    width: 70%;
+    /* height: 570px; */
+}
+.container {
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow-x: auto; /* Allow horizontal scrolling on smaller screens */
+}
+.header {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the left and right */
+    align-items: center; /* Vertically centers the items */
+    margin-bottom: 20px; /* Adds space below the header */
+}
+h1 {
+    text-align: left; /* Align title to the left */
+    font-size: 24px;
+    margin-bottom: 0; /* Remove bottom margin */
+    color: #222;
+}
+.more-button {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--secondary-font-color--);
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for equal height */
+    cursor: pointer;
+    font-size: 16px; /* Font size */
+}
+.more-button:hover {
+    background-color: #65686b; /* Darker shade on hover */
+}
+.arrow-icon {
+    width: 16px; /* Adjust the size of the arrow */
+    height: 16px;
+    margin-left: 5px; /* Space between text and icon */
+}
+table {
+    width: 100%;
+    border-spacing: 0 15px; /* Add spacing between rows */
+    margin-top: 20px;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    font-size: 16px; /* Base font size */
+    color: #555;
+}
+th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+}
+td {
+    background-color: #f9f9f9;
+    font-weight: 500;
+}
+tr td {
+    border: none;
+}
+tr:hover td {
+    background-color: #f1f1f1;
+}
+.coin-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+td:first-child {
+    font-weight: 600;
+    color: #333;
+}
+#crypto-table thead th {
+    border-bottom: none;
+}
+#crypto-table tbody tr {
+    background-color: transparent;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        width: 70%; /* Set container to 70% for mid-sized screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        width: 85%; /* Set container to 85% for smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100%; /* Full width for mobile screens */
+        padding: 10px; /* Reduced padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 20px; /* Adjust font size for mobile */
+    }
+    
+    th, td {
+        font-size: 12px; /* Reduce font size for smaller screens */
+        padding: 6px; /* Reduce padding height */
+    }
+
+    .coin-logo {
+        width: 18px; /* Reduce coin logo size for smaller screens */
+        height: 18px;
+    }
+}
+
+/* Breakings */
+.crypto-news{
+    width: 30%;
+    /* max-height: 570px; */
+}
+#news-container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin: 0 auto; /* Center the container */
+}
+#news-title {
+    background-color: #f8f9fa; /* Match the background color of the container */
+    padding: 10px; /* Space around title */
+    border-bottom: 1px solid #e9ecef; /* Add a bottom border for separation */
+}
+h2 {
+    font-size: 24px; /* Adjust font size for the title */
+    margin: 0; /* Remove margin to keep it tight */
+    color: #333; /* Darker color for better readability */
+}
+#news-scroll-area {
+    max-height: 450px; /* Fit size for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling only for this area */
+}
+#news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Newest news from the top */
+}
+#news-list li {
+    margin-bottom: 20px;
+    padding: 10px; /* Add padding for better spacing */
+    border: none; /* No borders */
+    animation: riseUp 1s ease-out forwards;
+    opacity: 0;
+}
+#news-list li a {
+    color: #007bff;
+    text-decoration: none;
+}
+#news-list li a:hover {
+    text-decoration: underline;
+}
+
+/* Animation for rising news */
+@keyframes riseUp {
+    from {
+        transform: translateY(-20px); /* Start slightly above */
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* ========================= */
+/* Download Section */
+/* ========================= */
+
+.download-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    padding: 5% 8% 0; 
+    margin: 5% 0;
+    background-color: var(--download-bg-color--);
+}
+.info-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.qr-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.app-shops{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--download-icons-color--);
+    gap: 10px;
+}
+.app-shops i{
+    font-size: 40px;
+}
+.app-shops h5{
+    font-size: 12px;
+}
+
+/* ========================= */
+/* Footer */
+/* ========================= */
+footer{
+    background-color: #f2f2f2;
+    padding-top: 50px;
+}
+footer p{
+    color: var(--secondary-font-color--);
+}
+.footer-sec{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 300px;
+    margin: 40px auto;
+}
+.contact-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.icon-container a{
+    display: inline-block;
+    margin-right: 10px;
+}
+footer .contact-icons{
+    width: 30px;
+}
+.footer-sec ul{
+    line-height: 30px;
+}
+.footer-baseline{
+    height: 50px;
+    background-color: var(--iconic-color--);
+}

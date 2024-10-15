@@ -1,0 +1,225 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        .slider-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+        }
+
+        .slider {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll 15s linear infinite;
+        }
+
+        .slider:hover {
+            animation-play-state: paused;
+        }
+
+        .slider-item {
+            display: inline-block;
+            margin-right: 50px;
+            text-align: center;
+            width: 200px; /* You can adjust this */
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <div class="slider-container">
+        <div class="stock-ticker slider">
+            <ul>
+                <li class="minus">
+                    <a href="https://example.com/btc" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.svg" alt="BTC Logo" class="logo">
+                        <div class="pair">BTC/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/eth" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="ETH Logo" class="logo">
+                        <div class="pair">ETH/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/ltc" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/litecoin-ltc-logo.svg" alt="LTC Logo" class="logo">
+                        <div class="pair">LTC/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="minus">
+                    <a href="https://example.com/xrp" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/xrp-xrp-logo.svg" alt="XRP Logo" class="logo">
+                        <div class="pair">XRP/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/ada" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/cardano-ada-logo.svg" alt="ADA Logo" class="logo">
+                        <div class="pair">ADA/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="minus">
+                    <a href="https://example.com/dot" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.svg" alt="DOT Logo" class="logo">
+                        <div class="pair">DOT/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/bnb" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="BNB Logo" class="logo">
+                        <div class="pair">BNB/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="minus">
+                    <a href="https://example.com/sol" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="SOL Logo" class="logo">
+                        <div class="pair">SOL/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/doge" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.svg" alt="DOGE Logo" class="logo">
+                        <div class="pair">DOGE/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="minus">
+                    <a href="https://example.com/uni" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/uniswap-uni-logo.svg" alt="UNI Logo" class="logo">
+                        <div class="pair">UNI/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                         
+                <li class="plus">
+                    <a href="https://example.com/avax" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/avalanche-avax-logo.svg" alt="AVAX Logo" class="logo">
+                        <div class="pair">AVAX/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <!-- <li class="minus">
+                  <a href="https://example.com/bsv" class="crypto-box">
+                      <img src="https://cryptologos.cc/logos/bitcoin-sv-bsv-logo.svg" alt="BSV Logo" class="logo">
+                      <div class="pair">BSV/USDT<span class="percentage">Loading...</span></div>
+                      <div class="price">Loading...</div>
+                  </a>
+              </li>   -->
+            </ul>
+      
+            <ul aria-hidden="true">
+                <li class="minus">
+                    <a href="https://example.com/btc" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.svg" alt="BTC Logo" class="logo">
+                        <div class="pair">BTC/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/eth" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="ETH Logo" class="logo">
+                        <div class="pair">ETH/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/ltc" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/litecoin-ltc-logo.svg" alt="LTC Logo" class="logo">
+                        <div class="pair">LTC/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="minus">
+                    <a href="https://example.com/xrp" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/xrp-xrp-logo.svg" alt="XRP Logo" class="logo">
+                        <div class="pair">XRP/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/ada" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/cardano-ada-logo.svg" alt="ADA Logo" class="logo">
+                        <div class="pair">ADA/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="minus">
+                    <a href="https://example.com/dot" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.svg" alt="DOT Logo" class="logo">
+                        <div class="pair">DOT/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/bnb" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="BNB Logo" class="logo">
+                        <div class="pair">BNB/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="minus">
+                    <a href="https://example.com/sol" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="SOL Logo" class="logo">
+                        <div class="pair">SOL/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                    <a href="https://example.com/doge" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.svg" alt="DOGE Logo" class="logo">
+                        <div class="pair">DOGE/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="minus">
+                    <a href="https://example.com/uni" class="crypto-box">
+                        <img src="https://cryptologos.cc/logos/uniswap-uni-logo.svg" alt="UNI Logo" class="logo">
+                        <div class="pair">UNI/USDT<span class="percentage">Loading...</span></div>
+                        <div class="price">Loading...</div>
+                    </a>
+                </li>
+                <li class="plus">
+                  <a href="https://example.com/avax" class="crypto-box">
+                      <img src="https://cryptologos.cc/logos/avalanche-avax-logo.svg" alt="AVAX Logo" class="logo">
+                      <div class="pair">AVAX/USDT<span class="percentage">Loading...</span></div>
+                      <div class="price">Loading...</div>
+                  </a>
+              </li>
+                <!-- <li class="minus">
+                  <a href="https://example.com/bsv" class="crypto-box">
+                      <img src="https://cryptologos.cc/logos/bitcoin-sv-bsv-logo.svg" alt="BSV Logo" class="logo">
+                      <div class="pair">BSV/USDT<span class="percentage">Loading...</span></div>
+                      <div class="price">Loading...</div>
+                  </a>
+              </li>            -->
+                
+            </ul>
+        </div>
+        <script src="l-r-loop.js"></script>  <!-- Link to the external JS file -->
+
+    </div>
+</body>
+</html>

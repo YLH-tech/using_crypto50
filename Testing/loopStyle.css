@@ -1,0 +1,128 @@
+
+.crypto-box {
+    text-align: center;
+    background: white;
+    padding: 20px; /* Increased padding */
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    width: 300px; /* Width of each box */
+    margin: 0 30px; /* Increased margin between boxes */
+}
+.crypto-box {
+  transition: background 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.crypto-box:hover {
+  transform: scale(1.05); /* Slightly enlarges the box on hover */
+  background: #808593;
+}
+
+.percentage {
+  font-size: 0.8em; /* Smaller font size */
+  margin-left: 5px; /* Spacing between price and percentage */
+}
+
+.negative {
+  color: red; /* Color for negative percentages */
+}
+
+.positive {
+  color: green; /* Color for positive percentages */
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+}
+.pair {
+  font-size: 18px;
+  font-weight:bold;
+  margin: 10px 0;
+}
+.price {
+  font-size: 24px;
+  color: green;
+}
+  
+  img {
+    max-width: 100%;
+  }
+  
+  body {
+    font-family: system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #131722;
+    background-color: #f7f8fd;
+    padding: 100px 50px;
+  }
+  .stock-ticker {
+    font-size: 15px;
+    padding-block: 8px;
+    overflow: hidden;
+    user-select: none;
+  
+    --gap: 20px;
+    display: flex;
+    gap: var(--gap);
+  }
+  
+  .stock-ticker ul {
+    list-style: none;
+    flex-shrink: 0;
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap);
+  
+    animation: scroll 40s linear infinite;
+  }
+  
+  .stock-ticker:hover ul {
+    animation-play-state: paused;
+  }
+  
+  @keyframes scroll {
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  
+  .stock-ticker ul:first-child {
+    /* background-color: yellow; */
+  }
+  
+  .stock-ticker ul:last-child {
+    /* background-color: pink; */
+  }
+  
+  .stock-ticker .company,
+  .stock-ticker .price {
+    font-weight: bold;
+  }
+  
+  .stock-ticker .price {
+    margin-inline: 4px;
+  }
+  
+  
+  
+  .stock-ticker .plus .change,
+  .stock-ticker .plus::before {
+    color: #089981;
+  }
+  
+  .stock-ticker .minus .change,
+  .stock-ticker .minus::before {
+    color: #f23645;
+  }
+  .crypto-box {
+    display: block; /* Makes the link fill the entire box */
+    padding: 10px; /* Adds some padding */
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Inherits color from parent */
+}
