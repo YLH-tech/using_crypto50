@@ -117,3 +117,11 @@ img {
 .stock-ticker .minus::before {
   color: #f23645;
 }
+
+/* For max 1200px width laptops/ tablets */
+@media screen and (max-width: 1300px) {
+  .crypto-box{
+    width: 250px;
+    padding: 10px 30px;
+  }
+}

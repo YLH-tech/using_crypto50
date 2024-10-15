@@ -18,7 +18,7 @@ function createRow(coin) {
 
     // Create the row HTML
     row.innerHTML = `
-        <td class="w-[400px]"><img src="./assets/images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})</td>
+        <td class="w-[400px] md:w-[500px]"><img src="./assets/images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})</td>
         <td id="price-${coin.id}">--</td>
         <td id="change-${coin.id}">--</td>
         <td id="marketcap-${coin.id}">--</td>

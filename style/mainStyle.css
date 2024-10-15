@@ -3,7 +3,7 @@
 
 :root{
     --font-color-- : #000000;
-    --iconic-color-- : #4faa99;
+    --iconic-color-- : #78B7D0;
     --secondary-font-color--: #B7B7B7;
     --body-color--: rgb(248, 253, 251);
     --download-bg-color-- : rgb(247, 248, 250);
@@ -55,6 +55,16 @@ nav{
     color: #ffffff;
 }
 
+/* For max 1000px laptops/ tablets */
+@media screen and (max-width: 1000px) {
+    nav{
+        font-size: 15px;
+    }
+    .profile-img{
+        width: 30px;
+    }
+}
+
 /* ========================= */
 /* Main Section Style */
 /* ========================= */
@@ -69,6 +79,9 @@ nav{
     padding: 30px 7%;
     box-sizing: border-box;
     border-radius: 30px;
+}
+.entry-section img{
+    width: 500px;
 }
 .content-container h1{
     font-size: 60px;
@@ -85,6 +98,31 @@ nav{
     margin: auto;
 }
 
+/* For max 1200px width laptops/ tablets */
+@media screen and (max-width: 1300px) {
+    .content-container h1{
+        font-size: 40px;
+    }
+    .entry-section img{
+        width: 300px;
+    }
+    .more-button{
+        font-size: 14px;
+    }
+}
+
+/* For max 1000px laptops/ tablets */
+@media screen and (max-width: 1000px) {
+    .content-container h1{
+        font-size: 30px;
+    }
+    .content-container p{
+        font-size: 15px;
+    }
+    .entry-section img{
+        width: 200px;
+    }
+}
 /* ========================= */
 /* Ranking & Breaking */
 /* ========================= */
@@ -189,11 +227,17 @@ td:first-child {
     .container {
         width: 70%; /* Set container to 70% for mid-sized screens */
     }
+    th, td{
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 900px) {
     .container {
         width: 85%; /* Set container to 85% for smaller screens */
+    }
+    th, td{
+        font-size: 10px;
     }
 }
 
@@ -217,6 +261,8 @@ td:first-child {
         height: 18px;
     }
 }
+
+
 
 /* Breakings */
 .crypto-news{
@@ -273,6 +319,41 @@ h2 {
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+/* For max 1200px width laptops/ tablets */
+@media screen and (max-width: 1300px) {
+    h2{
+        font-size: 14px;
+    }
+    #news-list li{
+        font-size: 14px;
+    }
+    #news-scroll-area{
+        max-height: 455px;
+    }
+}
+
+/* For max 1000px laptops/ tablets */
+@media screen and (max-width: 1000px) {
+    .more-button{
+        padding: 5px 10px;
+    }
+    .ranking-breaking{
+        height: 600px;
+    }
+    #crypto-table thead th{
+        font-size: 8x;
+    }
+    .crypto-ranking{
+        height: 100%;
+    }
+    .crypto-news{
+        height: 100%;
+    }
+    #news-scroll-area{
+        max-height: 425px;
     }
 }
 
