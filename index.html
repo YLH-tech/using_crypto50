@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoinEX</title>
 
+    <!-- Tag icon link -->
+    <link rel="icon" href="#">
+
     <!-- Style link -->
-    <link rel="stylesheet" href="./style/mainStyle.css">
-    <link rel="stylesheet" href="./style/tableStyle.css">
-    <link rel="stylesheet" href="./style/newsStyle.css">
+    <link id="themeStylesheet" rel="stylesheet" href="./style/mainStyle.css">
+    <link rel="stylesheet" href="./style/dropDownBtn.css">
+    <!-- <link rel="stylesheet" href="./style/marketsStyle.css"> -->
 
     <!-- Fontawesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -21,23 +24,162 @@
 </head>
 
 <body>
+    <!-- night mode script -->
+    <script src="./js/darkMode.js"></script>
+
     <!-- Navigation Bar -->
     <nav>
         <!-- Left-side menus -->
         <div class="nav-subdiv">
+
+            <!-- Web Logo -->
             <img src="#" alt="LOGO" class="inline-block">
-            <a href="#">
-                Buy Crypto <i class="fa-solid fa-caret-down"></i>
-            </a>
-            <a href="#">
-                Markets <i class="fa-solid fa-caret-down"></i>
-            </a>
-            <a href="#">
-                Exchange <i class="fa-solid fa-caret-down"></i>
-            </a>
-            <a href="#">
-                More <i class="fa-solid fa-caret-down"></i>
-            </a>
+
+            <!-- Buy Crypto -->
+            <div class="dropdown">
+                <button class="dropbtn">Buy Crypto <i class="fa-solid fa-caret-down"></i></button>
+                <div class="dropdown-content">
+
+                    <!-- P2P Trading -->
+                    <a href="#"><img src="./assets/images/peer-to-peer.png" alt="p2p">
+                        <span>
+                            <h5>P2P Trading</h5>
+                            <p>Buy and sell crypto peer to peer</p>
+                        </span>
+                    </a>
+
+                    <!-- Third-party Trading -->
+                    <a href="#"><img src="./assets/images/network.png" alt="third party">
+                        <span>
+                            <h5>Third-party Trading</h5>
+                            <p>Buy and sell crypto through institutions</p>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Markets -->
+            <div class="dropdown">
+                <button class="dropbtn">Markets <i class="fa-solid fa-caret-down"></i></button>
+                <div class="dropdown-content">
+
+                    <!-- Market Overview -->
+                    <a href="#"><img src="./assets/images/market.png" alt="Market Overview">
+                        <span>
+                            <h5>Market Overview</h5>
+                            <p>Keep up with the latest crypto trends</p>
+                        </span>
+                    </a>
+
+                    <!-- Market Data -->
+                    <a href="./marketData.html"><img src="./assets/images/web-analytics.png" alt="Market Data">
+                        <span>
+                            <h5>Market Data</h5>
+                            <p>Capture market opportunities</p>
+                        </span>
+                    </a>
+
+                    <!-- Feed -->
+                    <a href="#"><img src="./assets/images/feed.png" alt="Feed">
+                        <span>
+                            <h5>Feed</h5>
+                            <p>Discover current trends</p>
+                        </span>
+                    </a>
+
+                    <!-- Insight -->
+                    <a href="#"><img src="./assets/images/evaluate.png" alt="Insight">
+                        <span>
+                            <h5>Insight</h5>
+                            <p>Stay ahead with news and analysis</p>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Exchange -->
+            <div class="dropdown">
+                <button class="dropbtn">Exchange <i class="fa-solid fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <!-- Swap -->
+                    <a href="#"><img src="./assets/images/exchange.png" alt="Swap">
+                        <span>
+                            <h5>Swap</h5>
+                            <p>Buy and sell crypto in a click</p>
+                        </span>
+                    </a>
+
+                    <!-- Spot Trading -->
+                    <a href="#"><img src="./assets/images/exchange (1).png" alt="Spot Trading">
+                        <span>
+                            <h5>Spot Trading</h5>
+                            <p>Easily trade with any crypto combination</p>
+                        </span>
+                    </a>
+
+                    <!-- Margin Trading -->
+                    <a href="#"><img src="./assets/images/technical-analysis.png" alt="Margin Trading">
+                        <span>
+                            <h5>Margin Trading</h5>
+                            <p>Multiply profits with loans</p>
+                        </span>
+                    </a>
+
+                    <!-- Strategic Trading -->
+                    <a href="#"><img src="./assets/images/solution.png" alt="Strategic Trading">
+                        <span>
+                            <h5>Strategic Trading</h5>
+                            <p>Smart trading tools</p>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- More -->
+            <div class="dropdown">
+                <button class="dropbtn">More <i class="fa-solid fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <!-- Referral -->
+                    <a href="#"><img src="./assets/images/reference.png" alt="Referral">
+                        <span>
+                            <h5>Referral</h5>
+                            <p>Receive up to 40% referral rewards</p>
+                        </span>
+                    </a>
+
+                    <!-- Ambassador -->
+                    <a href="#"><img src="./assets/images/independence.png" alt="Ambassador">
+                        <span>
+                            <h5>Ambassador</h5>
+                            <p>Partners in promoting CoinEx</p>
+                        </span>
+                    </a>
+
+                    <!-- VIP -->
+                    <a href="#"><img src="./assets/images/vip-pass.png" alt="VIP">
+                        <span>
+                            <h5>VIP</h5>
+                            <p>Enjoy an array of execlusive VIP privileges</p>
+                        </span>
+                    </a>
+
+                    <!-- Broker -->
+                    <a href="#"><img src="./assets/images/insurance-agent.png" alt="Broker">
+                        <span>
+                            <h5>Broker</h5>
+                            <p>Earn competitive rebates</p>
+                        </span>
+                    </a>
+
+                    <!-- Academy -->
+                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                        <span>
+                            <h5>Academy</h5>
+                            <p>Master cryptocurrency knowledge</p>
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         <!-- Right-side menu -->
@@ -45,12 +187,42 @@
             <!-- <a href="#">Log In</a>
             <a href="#" class="signup-btn">Sign Up</a> -->
 
-            <img src="./assets/images/avatar.png" alt="Profile" class="profile-img">
-            <span class="border-l-2 border-r-2">
-                <a href="#"><i class="fa-solid fa-download"></i></a>
-                <a href="#"><i class="fa-solid fa-moon"></i></a>
+            <!-- <img src="./assets/images/avatar.png" alt="Profile" class="profile-img"> -->
+            <a href="#"><img src="./assets/images/profile.png" alt="profile" class="w-12 mr-5 inline-block"></a>
+            <!-- <span class="border-l-2 border-r-2">
+                <a href="#" class="mx-5"><i class="fa-solid fa-download"></i></a>
+                <a href="#" class="mx-5" type="button" id="dark-switch"><i class="fa-solid fa-moon"
+                        id="mode-btn"></i></a>
             </span>
-            <a href="#"><i class="fa-solid fa-globe"></i></a>
+            <a href="#" class="mx-5"><i class="fa-solid fa-globe"></i></a> -->
+
+            <div class="clickdown">
+                <button onclick="clickdown()"><i
+                        class="fa-solid fa-bars text-3xl align-middle mr-5 clickbtn"></i></button>
+                <div id="myDropdown" class="clickdown-content">
+                    <!-- Sign Up / Login div -->
+                    <div class="signup-login-container">
+                        <a href="./signup.html" id="signup">Sign Up</a>
+                        <a href="./login.html" id="login">Log In</a>
+                    </div>
+                    <ul class="w-[90%] m-auto text-white">
+                        <li>
+                            <h5><i class="fa-solid fa-language mr-3 text-2xl"></i>English</h5>
+                        </li>
+                        <li>
+                            <h5><i class="fa-solid fa-coins mr-3 text-2xl"></i>Currency</h5>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <h5><i class="fa-solid fa-circle-half-stroke mr-3 text-2xl"></i>Dark Mode</h5><button
+                                id="dark-switch"><i class="fa-solid fa-moon text-3xl" id="mode-btn"></i></button>
+                        </li>
+                        <li>
+                            <h5><i class="fa-regular fa-circle-down mr-3 text-2xl"></i>Download App</h5>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -65,8 +237,9 @@
                     Exchange</h1>
                 <p>Making Crypto Trading Easier</p>
                 <form class="email-acc-container my-10">
-                    <input type="text" id="email-acc" class="border px-[30px] py-[10px] rounded-[5px] w-[300px] md:w-[250px]"
-                        name="email-acc" placeholder="Email Account">
+                    <input type="text" id="email-acc"
+                        class="border px-[30px] py-[10px] rounded-[5px] w-[300px] md:w-[250px]" name="email-acc"
+                        placeholder="Email Account">
                     <input type="submit" class="signup-btn" name="signup-btn" value="Sign Up">
                 </form>
             </div>
@@ -83,78 +256,89 @@
                         <ul>
                             <li class="minus">
                                 <a href="https://example.com/btc" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.svg" alt="BTC Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.svg" alt="BTC Logo"
+                                        class="logo">
                                     <div class="pair">BTC/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/eth" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="ETH Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="ETH Logo"
+                                        class="logo">
                                     <div class="pair">ETH/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/ltc" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/litecoin-ltc-logo.svg" alt="LTC Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/litecoin-ltc-logo.svg" alt="LTC Logo"
+                                        class="logo">
                                     <div class="pair">LTC/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="minus">
                                 <a href="https://example.com/xrp" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/xrp-xrp-logo.svg" alt="XRP Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/xrp-xrp-logo.svg" alt="XRP Logo"
+                                        class="logo">
                                     <div class="pair">XRP/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/ada" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/cardano-ada-logo.svg" alt="ADA Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/cardano-ada-logo.svg" alt="ADA Logo"
+                                        class="logo">
                                     <div class="pair">ADA/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="minus">
                                 <a href="https://example.com/dot" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.svg" alt="DOT Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.svg" alt="DOT Logo"
+                                        class="logo">
                                     <div class="pair">DOT/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/bnb" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="BNB Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="BNB Logo"
+                                        class="logo">
                                     <div class="pair">BNB/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="minus">
                                 <a href="https://example.com/sol" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="SOL Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="SOL Logo"
+                                        class="logo">
                                     <div class="pair">SOL/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/doge" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.svg" alt="DOGE Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.svg" alt="DOGE Logo"
+                                        class="logo">
                                     <div class="pair">DOGE/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="minus">
                                 <a href="https://example.com/uni" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/uniswap-uni-logo.svg" alt="UNI Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/uniswap-uni-logo.svg" alt="UNI Logo"
+                                        class="logo">
                                     <div class="pair">UNI/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
-                                     
+
                             <li class="plus">
                                 <a href="https://example.com/avax" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/avalanche-avax-logo.svg" alt="AVAX Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/avalanche-avax-logo.svg" alt="AVAX Logo"
+                                        class="logo">
                                     <div class="pair">AVAX/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
@@ -167,85 +351,96 @@
                               </a>
                           </li>   -->
                         </ul>
-                  
+
                         <ul aria-hidden="true">
                             <li class="minus">
                                 <a href="https://example.com/btc" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.svg" alt="BTC Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.svg" alt="BTC Logo"
+                                        class="logo">
                                     <div class="pair">BTC/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/eth" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="ETH Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="ETH Logo"
+                                        class="logo">
                                     <div class="pair">ETH/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/ltc" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/litecoin-ltc-logo.svg" alt="LTC Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/litecoin-ltc-logo.svg" alt="LTC Logo"
+                                        class="logo">
                                     <div class="pair">LTC/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="minus">
                                 <a href="https://example.com/xrp" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/xrp-xrp-logo.svg" alt="XRP Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/xrp-xrp-logo.svg" alt="XRP Logo"
+                                        class="logo">
                                     <div class="pair">XRP/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/ada" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/cardano-ada-logo.svg" alt="ADA Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/cardano-ada-logo.svg" alt="ADA Logo"
+                                        class="logo">
                                     <div class="pair">ADA/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="minus">
                                 <a href="https://example.com/dot" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.svg" alt="DOT Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.svg" alt="DOT Logo"
+                                        class="logo">
                                     <div class="pair">DOT/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/bnb" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="BNB Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="BNB Logo"
+                                        class="logo">
                                     <div class="pair">BNB/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="minus">
                                 <a href="https://example.com/sol" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="SOL Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/solana-sol-logo.svg" alt="SOL Logo"
+                                        class="logo">
                                     <div class="pair">SOL/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
                                 <a href="https://example.com/doge" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.svg" alt="DOGE Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.svg" alt="DOGE Logo"
+                                        class="logo">
                                     <div class="pair">DOGE/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="minus">
                                 <a href="https://example.com/uni" class="crypto-box">
-                                    <img src="https://cryptologos.cc/logos/uniswap-uni-logo.svg" alt="UNI Logo" class="logo">
+                                    <img src="https://cryptologos.cc/logos/uniswap-uni-logo.svg" alt="UNI Logo"
+                                        class="logo">
                                     <div class="pair">UNI/USDT<span class="percentage">Loading...</span></div>
                                     <div class="price">Loading...</div>
                                 </a>
                             </li>
                             <li class="plus">
-                              <a href="https://example.com/avax" class="crypto-box">
-                                  <img src="https://cryptologos.cc/logos/avalanche-avax-logo.svg" alt="AVAX Logo" class="logo">
-                                  <div class="pair">AVAX/USDT<span class="percentage">Loading...</span></div>
-                                  <div class="price">Loading...</div>
-                              </a>
-                          </li>
+                                <a href="https://example.com/avax" class="crypto-box">
+                                    <img src="https://cryptologos.cc/logos/avalanche-avax-logo.svg" alt="AVAX Logo"
+                                        class="logo">
+                                    <div class="pair">AVAX/USDT<span class="percentage">Loading...</span></div>
+                                    <div class="price">Loading...</div>
+                                </a>
+                            </li>
                             <!-- <li class="minus">
                               <a href="https://example.com/bsv" class="crypto-box">
                                   <img src="https://cryptologos.cc/logos/bitcoin-sv-bsv-logo.svg" alt="BSV Logo" class="logo">
@@ -253,10 +448,10 @@
                                   <div class="price">Loading...</div>
                               </a>
                           </li>            -->
-                            
+
                         </ul>
                     </div>
-                    <script src="./js/l-r-loop.js"></script>  <!-- Link to the external JS file -->
+                    <script src="./js/l-r-loop.js"></script> <!-- Link to the external JS file -->
                 </div>
             </section>
 
@@ -273,19 +468,36 @@
                                 <i class="fa-solid fa-up-right-and-down-left-from-center ml-2"></i>
                             </button>
                         </div>
-                        <table id="crypto-table">
-                            <thead>
-                                <tr>
-                                    <th>Coins</th>
-                                    <th>Price [USD]</th>
-                                    <th>24H Change</th>
-                                    <th>Market Cap [USD]</th>
-                                </tr>
-                            </thead>
-                            <tbody id="crypto-body">
-                                <!-- Data will be inserted here dynamically -->
-                            </tbody>
-                        </table>
+
+                        <!-- Table menus -->
+                        <!-- <div class="table-nav">
+                            <a href="#">Hot</a>
+                            <a href="#">New</a>
+                            <a href="#">Gainers</a>
+                            <a href="#">Losers</a>
+                            <a href="#">Leaders</a>
+                            <a href="#">Market Cap</a>
+                        </div>
+                        <hr> -->
+
+                        <!-- Table-1: Hot table -->
+                        <div id="hot">
+                            <table id="crypto-table">
+                                <thead>
+                                    <tr>
+                                        <th>Coins</th>
+                                        <th>Price [USD]</th>
+                                        <th>24H Change</th>
+                                        <th>Market Cap [USD]</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- Hot data in table body -->
+                                <tbody id="crypto-body">
+                                    <!-- Data will be inserted here dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <script src="./js/tableScript.js"></script>
                 </div>
@@ -313,11 +525,11 @@
             <section class="download-container">
                 <!-- Image Div -->
                 <div class="w-[400px] h-[400px] overflow-hidden">
-                    <img src="./assets/images/download_bg.webp" alt="phone photo" class="w-[1000px]">
+                    <img src="./assets/images/download_bg.webp" alt="phone photo" class="w-[1000px]" id="phone-bg">
                 </div>
                 <!-- Content Div -->
                 <div>
-                    <span class="leading-[60px] text-5xl font-bold tracking-wider">
+                    <span class="leading-[60px] text-5xl font-bold tracking-wider download-header">
                         <h1>Trade crypto. Anytime.</h1>
                         <h1>Anywhere.</h1>
                     </span>
@@ -443,6 +655,12 @@
             </span>
         </div>
     </footer>
+
+    <!-- ===================================JavaScripts=============================== -->
+
+    <!-- Side menu icon clicking -->
+    <script src="./js/dropdownScript.js"></script>
+
 </body>
 
 </html>

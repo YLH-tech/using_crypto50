@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="marketsStyle.css">
+    <title>Combined Crypto Tables</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Combined Crypto Tables</h1>
+        
+        <!-- Table 1: Top Gainers -->
+        <div id="top-gainers">
+            <div class="header">
+                <h2>Top Gainers</h2>
+                <button class="more-button">See More <img src="images/arrow.png" alt="arrow" class="arrow-icon"></button>
+            </div>
+            <table id="gainers-table">
+                <thead>
+                    <tr>
+                        <th>Coin</th>
+                        <th>Price</th>
+                        <th>24H-change</th>
+                        <th>Market Cap</th>
+                    </tr>
+                </thead>
+                <tbody id="gainers-table-body">
+                    <!-- Gainers rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Table 2: Top Losers -->
+        <div id="top-losers">
+            <div class="header">
+                <h2>Top Losers</h2>
+                <button class="more-button">See More <img src="images/arrow.png" alt="arrow" class="arrow-icon"></button>
+            </div>
+            <table id="losers-table">
+                <thead>
+                    <tr>
+                        <th>Coin</th>
+                        <th>Price</th>
+                        <th>24H-change</th>
+                        <th>Market Cap</th>
+                    </tr>
+                </thead>
+                <tbody id="loser-table-body">
+                    <!-- Losers rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Table 3: Market Data -->
+        <div id="market-data">
+            <div class="header">
+                <h2>Market Cap</h2>
+                <button class="more-button">See More <img src="images/arrow.png" alt="arrow" class="arrow-icon"></button>
+            </div>
+            <table id="marketcap-table">
+                <thead>
+                    <tr>
+                        <th>Coin</th>
+                        <th>Price</th>
+                        <th>24H-change</th>
+                        <th>Market Cap</th>
+                    </tr>
+                </thead>
+                <tbody id="marketcap-table-body">
+                    <!-- Market data rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="marketsScript.js"></script>
+</body>
+</html>

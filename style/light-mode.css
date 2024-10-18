@@ -1,0 +1,24 @@
+@import url(./mainStyle.css); /* linking to the main Style */
+
+:root{
+
+    /* Light Mode */
+    --font-color-- : #000000;
+    --iconic-color-- : #78B7D0;
+    --secondary-font-color--: #B7B7B7;
+    --entry-color--: rgb(241, 246, 244);
+    --download-bg-color-- : rgb(247, 248, 250);
+    --download-icons-color--: rgb(113, 117, 137);
+
+    /* Dark Mode */
+    --dark-font-color-- : #FCFAEE;
+    --dark-body-color--: rgb(45, 48, 55);
+    --dark-entry-color--: rgb(41, 41, 41);
+
+    /* Transition Duration */
+    --transistion-time-- : 0.3s;
+}
+
+body, nav, .entry-section, .download-container, .container{
+    transition: var(--transistion-time--);
+}

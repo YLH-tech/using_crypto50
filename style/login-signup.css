@@ -1,0 +1,106 @@
+:root{
+
+    /* Light Mode */
+    --font-color-- : #000000;
+    --iconic-color-- : #78B7D0;
+    --secondary-font-color--: #B7B7B7;
+    --entry-color--: rgb(241, 246, 244);
+    --download-bg-color-- : rgb(247, 248, 250);
+    --download-icons-color--: rgb(113, 117, 137);
+
+    /* Dark Mode */
+    --dark-font-color-- : #FCFAEE;
+    --dark-body-color--: rgb(45, 48, 55);
+    --dark-entry-color--: rgb(41, 41, 41);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+main{
+    width: 80%;
+    height: 800px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 1px solid black; */
+    border-radius: 30px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--iconic-color--);
+}
+img{
+    width: 400px;
+}
+form{
+    width: 45%;
+    height: fit-content;
+    /* border: 1px solid black; */
+    padding: 50px;
+    border-radius: 30px;
+    background-color: var(--entry-color--);
+}
+form p{
+    margin-bottom: 20px;
+    color: var(--secondary-font-color--);
+}
+fieldset{
+    border-radius: 50px;
+    /* height: 100px; */
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 5px 20px;
+    box-sizing: border-box;
+}
+fieldset legend{
+    margin-left: 30px;
+}
+fieldset span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    top: -4px;
+}
+fieldset input{
+    width: 90%;
+    height: 40px;
+    font-size: 16px;
+    display: block;
+    border: 0;
+    position: relative;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+.active-btn{
+    width: 150px;
+    height: 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color: var(--iconic-color--);
+    color: var(--dark-font-color--);
+}
+form .btn-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Common Properties */
+.bg-trans{
+    background-color: transparent;
+    border: 1px solid var(--iconic-color--);
+    color: var(--iconic-color--);
+    width: 150px;
+    height: 40px;
+    border-radius: 50px;
+    border: 0;
+}
+.btn-gp{
+    display: inline-block;
+}

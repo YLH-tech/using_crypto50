@@ -80,7 +80,13 @@ binanceSocket.onmessage = function(event) {
         document.getElementById(`price-${coin.id}`).innerHTML = price;
 
         const change = parseFloat(streamData.P).toFixed(2);
-        document.getElementById(`change-${coin.id}`).innerHTML = `${change}%`;
+        let changeValue;
+        if(change > 0){
+            changeValue = `+${change}`; 
+        } else {
+            changeValue = change;
+        }
+        document.getElementById(`change-${coin.id}`).innerHTML = changeValue + "%";
         document.getElementById(`change-${coin.id}`).style.color = change < 0 ? 'red' : 'green';
     }
 };

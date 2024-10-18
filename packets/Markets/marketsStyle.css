@@ -1,0 +1,149 @@
+/* General Styles */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Table Styles */
+div {
+    margin-bottom: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.more-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.more-button .arrow-icon {
+    margin-left: 5px;
+    width: 12px;
+    height: 12px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Price Change Styles */
+.price-change-positive {
+    color: green;
+}
+
+.price-change-negative {
+    color: red;
+}
+
+/* Coin Logo Styles */
+.coin-logo {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+}
+.table-link {
+    display: block; /* Make the link block-level */
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+    padding: 10px; /* Add some padding */
+}
+
+.table-link:hover {
+    background-color: #f0f0f0; /* Change background on hover */
+}
+
+.coin-logo {
+    width: 30px; /* Set logo size */
+    height: 30px; /* Set logo size */
+    margin-right: 10px; /* Add space between logo and name */
+}
+
+/* .coin-link {
+    display: table-row;
+    text-decoration: none;
+    color: inherit; /* Inherit text color from parent */
+/* } */ */
+/* 
+.coin-link:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Add a hover effect */
+/* } */ */
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .more-button {
+        margin-top: 10px;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .coin-logo {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    th, td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .more-button {
+        padding: 8px 10px;
+    }
+}

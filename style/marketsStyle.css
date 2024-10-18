@@ -1,0 +1,65 @@
+@import url(./navigation.css); /* Navigation Bar */
+@import url(./dropDownBtn.css); /* Drop Down Button */
+:root{
+
+    /* Light Mode */
+    --font-color-- : #000000;
+    --iconic-color-- : #78B7D0;
+    --secondary-font-color--: #B7B7B7;
+    --entry-color--: rgb(241, 246, 244);
+    --download-bg-color-- : rgb(247, 248, 250);
+    --download-icons-color--: rgb(113, 117, 137);
+    --body-color-- : #F4F6FF;
+
+    /* Dark Mode */
+    --dark-font-color-- : #FCFAEE;
+    --dark-body-color--: rgb(45, 48, 55);
+    --dark-entry-color--: rgb(41, 41, 41);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: var(--body-color--);
+}
+.market-data-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+.table-container{
+    width: 600px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+}
+.content-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.content-container h2{
+    font-size: 20px;
+}
+.more-icon{
+    color: var(--iconic-color--);
+}
+.tables{
+    width: 100%;
+}
+th{
+    padding-bottom: 20px;
+    color: var(--secondary-font-color--);
+}
+td{
+    padding: 10px 0;
+}
+/* Coin Style */
+.coin-logo{
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+}
