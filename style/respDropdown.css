@@ -1,0 +1,82 @@
+:root {
+  /* Light Mode */
+  --font-color--: #000000;
+  --iconic-color--: #78b7d0;
+  --secondary-font-color--: #b7b7b7;
+  --entry-color--: rgb(241, 246, 244);
+  --download-bg-color--: rgb(247, 248, 250);
+  --download-icons-color--: rgb(113, 117, 137);
+
+  /* Dark Mode */
+  --dark-font-color--: #fcfaee;
+  --dark-body-color--: rgb(45, 48, 55);
+  --dark-entry-color--: rgb(41, 41, 41);
+
+  /* Transition Duration */
+  --transistion-time--: 0.3s;
+}
+
+.resp-clickdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--dark-body-color--);
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  /* right: 0%; */
+  /* top: 100%; */
+  border-radius: 10px;
+}
+
+.resp-clickdown-content a {
+  color: var(--dark-font-color--);
+  padding: 12px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.resp-clickdown-content a:hover {
+    background-color: var(--dark-entry-color--);
+}
+
+.resp-clickdown-content a span{
+    display: inline-block;
+    line-height: 25px;
+    margin-left: 10px;
+}
+
+.resp-clickdown-content a span p{
+    color: var(--secondary-font-color--);
+    font-size: 14px;
+}
+
+.resp-clickdown-content img{
+    width: 40px;
+    display: inline-block;
+}
+
+/* Responsive phone Clickdown Button */
+.resp-clickbtn {
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  left: 120%;
+}
+
+.resp-clickdown {
+  position: absolute;
+  display: inline-block;
+}
+
+#resp-myDropdown{
+  width: 400px;
+}
+
+.show {
+  display: block;
+}
+

@@ -12,6 +12,7 @@
     <!-- Style link -->
     <link id="themeStylesheet" rel="stylesheet" href="./style/mainStyle.css">
     <link rel="stylesheet" href="./style/dropDownBtn.css">
+    <link rel="stylesheet" href="./style/respDropdown.css"> <!-- For mobile phone dropdown button -->
     <!-- <link rel="stylesheet" href="./style/marketsStyle.css"> -->
 
     <!-- Fontawesome link -->
@@ -35,139 +36,163 @@
             <!-- Web Logo -->
             <img src="#" alt="LOGO" class="inline-block">
 
-            <!-- Buy Crypto -->
-            <div class="dropdown">
-                <button class="dropbtn">Buy Crypto <i class="fa-solid fa-caret-down"></i></button>
-                <div class="dropdown-content">
+            <div id="non-mobile" hidden>
+                <!-- Buy Crypto -->
+                <div class="dropdown">
+                    <button class="dropbtn">Buy Crypto <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
 
-                    <!-- P2P Trading -->
-                    <a href="#"><img src="./assets/images/peer-to-peer.png" alt="p2p">
-                        <span>
-                            <h5>P2P Trading</h5>
-                            <p>Buy and sell crypto peer to peer</p>
-                        </span>
-                    </a>
+                        <!-- P2P Trading -->
+                        <a href="#"><img src="./assets/images/peer-to-peer.png" alt="p2p">
+                            <span>
+                                <h5>P2P Trading</h5>
+                                <p>Buy and sell crypto peer to peer</p>
+                            </span>
+                        </a>
 
-                    <!-- Third-party Trading -->
-                    <a href="#"><img src="./assets/images/network.png" alt="third party">
-                        <span>
-                            <h5>Third-party Trading</h5>
-                            <p>Buy and sell crypto through institutions</p>
-                        </span>
-                    </a>
+                        <!-- Third-party Trading -->
+                        <a href="#"><img src="./assets/images/network.png" alt="third party">
+                            <span>
+                                <h5>Third-party Trading</h5>
+                                <p>Buy and sell crypto through institutions</p>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Markets -->
+                <div class="dropdown">
+                    <button class="dropbtn">Markets <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+
+                        <!-- Market Overview -->
+                        <a href="#"><img src="./assets/images/market.png" alt="Market Overview">
+                            <span>
+                                <h5>Market Overview</h5>
+                                <p>Keep up with the latest crypto trends</p>
+                            </span>
+                        </a>
+
+                        <!-- Market Data -->
+                        <a href="./marketData.html"><img src="./assets/images/web-analytics.png" alt="Market Data">
+                            <span>
+                                <h5>Market Data</h5>
+                                <p>Capture market opportunities</p>
+                            </span>
+                        </a>
+
+                        <!-- Feed -->
+                        <a href="#"><img src="./assets/images/feed.png" alt="Feed">
+                            <span>
+                                <h5>Feed</h5>
+                                <p>Discover current trends</p>
+                            </span>
+                        </a>
+
+                        <!-- Insight -->
+                        <a href="#"><img src="./assets/images/evaluate.png" alt="Insight">
+                            <span>
+                                <h5>Insight</h5>
+                                <p>Stay ahead with news and analysis</p>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exchange -->
+                <div class="dropdown">
+                    <button class="dropbtn">Exchange <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <!-- Swap -->
+                        <a href="#"><img src="./assets/images/exchange.png" alt="Swap">
+                            <span>
+                                <h5>Swap</h5>
+                                <p>Buy and sell crypto in a click</p>
+                            </span>
+                        </a>
+
+                        <!-- Spot Trading -->
+                        <a href="#"><img src="./assets/images/exchange (1).png" alt="Spot Trading">
+                            <span>
+                                <h5>Spot Trading</h5>
+                                <p>Easily trade with any crypto combination</p>
+                            </span>
+                        </a>
+
+                        <!-- Margin Trading -->
+                        <a href="#"><img src="./assets/images/technical-analysis.png" alt="Margin Trading">
+                            <span>
+                                <h5>Margin Trading</h5>
+                                <p>Multiply profits with loans</p>
+                            </span>
+                        </a>
+
+                        <!-- Strategic Trading -->
+                        <a href="#"><img src="./assets/images/solution.png" alt="Strategic Trading">
+                            <span>
+                                <h5>Strategic Trading</h5>
+                                <p>Smart trading tools</p>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- More -->
+                <div class="dropdown">
+                    <button class="dropbtn">More <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <!-- Referral -->
+                        <a href="#"><img src="./assets/images/reference.png" alt="Referral">
+                            <span>
+                                <h5>Referral</h5>
+                                <p>Receive up to 40% referral rewards</p>
+                            </span>
+                        </a>
+
+                        <!-- Ambassador -->
+                        <a href="#"><img src="./assets/images/independence.png" alt="Ambassador">
+                            <span>
+                                <h5>Ambassador</h5>
+                                <p>Partners in promoting CoinEx</p>
+                            </span>
+                        </a>
+
+                        <!-- VIP -->
+                        <a href="#"><img src="./assets/images/vip-pass.png" alt="VIP">
+                            <span>
+                                <h5>VIP</h5>
+                                <p>Enjoy an array of execlusive VIP privileges</p>
+                            </span>
+                        </a>
+
+                        <!-- Broker -->
+                        <a href="#"><img src="./assets/images/insurance-agent.png" alt="Broker">
+                            <span>
+                                <h5>Broker</h5>
+                                <p>Earn competitive rebates</p>
+                            </span>
+                        </a>
+
+                        <!-- Academy -->
+                        <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                            <span>
+                                <h5>Academy</h5>
+                                <p>Master cryptocurrency knowledge</p>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Markets -->
-            <div class="dropdown">
-                <button class="dropbtn">Markets <i class="fa-solid fa-caret-down"></i></button>
-                <div class="dropdown-content">
-
-                    <!-- Market Overview -->
-                    <a href="#"><img src="./assets/images/market.png" alt="Market Overview">
+            <div class="resp-clickdown" id="mobile">
+                <button class="resp-clickbtn" onclick="resp_clickdown()"><i
+                        class="fa-solid fa-braille ml-3 text-1xl align-middle"></i></button>
+                <div id="resp-myDropdown" class="resp-clickdown-content">
+                    <!-- Academy -->
+                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
                         <span>
-                            <h5>Market Overview</h5>
-                            <p>Keep up with the latest crypto trends</p>
-                        </span>
-                    </a>
-
-                    <!-- Market Data -->
-                    <a href="./marketData.html"><img src="./assets/images/web-analytics.png" alt="Market Data">
-                        <span>
-                            <h5>Market Data</h5>
-                            <p>Capture market opportunities</p>
-                        </span>
-                    </a>
-
-                    <!-- Feed -->
-                    <a href="#"><img src="./assets/images/feed.png" alt="Feed">
-                        <span>
-                            <h5>Feed</h5>
-                            <p>Discover current trends</p>
-                        </span>
-                    </a>
-
-                    <!-- Insight -->
-                    <a href="#"><img src="./assets/images/evaluate.png" alt="Insight">
-                        <span>
-                            <h5>Insight</h5>
-                            <p>Stay ahead with news and analysis</p>
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Exchange -->
-            <div class="dropdown">
-                <button class="dropbtn">Exchange <i class="fa-solid fa-caret-down"></i></button>
-                <div class="dropdown-content">
-                    <!-- Swap -->
-                    <a href="#"><img src="./assets/images/exchange.png" alt="Swap">
-                        <span>
-                            <h5>Swap</h5>
-                            <p>Buy and sell crypto in a click</p>
-                        </span>
-                    </a>
-
-                    <!-- Spot Trading -->
-                    <a href="#"><img src="./assets/images/exchange (1).png" alt="Spot Trading">
-                        <span>
-                            <h5>Spot Trading</h5>
-                            <p>Easily trade with any crypto combination</p>
-                        </span>
-                    </a>
-
-                    <!-- Margin Trading -->
-                    <a href="#"><img src="./assets/images/technical-analysis.png" alt="Margin Trading">
-                        <span>
-                            <h5>Margin Trading</h5>
-                            <p>Multiply profits with loans</p>
-                        </span>
-                    </a>
-
-                    <!-- Strategic Trading -->
-                    <a href="#"><img src="./assets/images/solution.png" alt="Strategic Trading">
-                        <span>
-                            <h5>Strategic Trading</h5>
-                            <p>Smart trading tools</p>
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- More -->
-            <div class="dropdown">
-                <button class="dropbtn">More <i class="fa-solid fa-caret-down"></i></button>
-                <div class="dropdown-content">
-                    <!-- Referral -->
-                    <a href="#"><img src="./assets/images/reference.png" alt="Referral">
-                        <span>
-                            <h5>Referral</h5>
-                            <p>Receive up to 40% referral rewards</p>
-                        </span>
-                    </a>
-
-                    <!-- Ambassador -->
-                    <a href="#"><img src="./assets/images/independence.png" alt="Ambassador">
-                        <span>
-                            <h5>Ambassador</h5>
-                            <p>Partners in promoting CoinEx</p>
-                        </span>
-                    </a>
-
-                    <!-- VIP -->
-                    <a href="#"><img src="./assets/images/vip-pass.png" alt="VIP">
-                        <span>
-                            <h5>VIP</h5>
-                            <p>Enjoy an array of execlusive VIP privileges</p>
-                        </span>
-                    </a>
-
-                    <!-- Broker -->
-                    <a href="#"><img src="./assets/images/insurance-agent.png" alt="Broker">
-                        <span>
-                            <h5>Broker</h5>
-                            <p>Earn competitive rebates</p>
+                            <h5>Academy</h5>
+                            <p>Master cryptocurrency knowledge</p>
                         </span>
                     </a>
 
@@ -178,9 +203,28 @@
                             <p>Master cryptocurrency knowledge</p>
                         </span>
                     </a>
+
+                    <!-- Academy -->
+                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                        <span>
+                            <h5>Academy</h5>
+                            <p>Master cryptocurrency knowledge</p>
+                        </span>
+                    </a>
+
+                    <!-- Academy -->
+                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                        <span>
+                            <h5>Academy</h5>
+                            <p>Master cryptocurrency knowledge</p>
+                        </span>
+                    </a>
+
                 </div>
             </div>
         </div>
+
+
 
         <!-- Right-side menu -->
         <div class="nav-subdiv">
@@ -188,7 +232,7 @@
             <a href="#" class="signup-btn">Sign Up</a> -->
 
             <!-- <img src="./assets/images/avatar.png" alt="Profile" class="profile-img"> -->
-            <a href="#"><img src="./assets/images/profile.png" alt="profile" class="w-12 mr-5 inline-block"></a>
+            <a href="#"><img src="./assets/images/profile.png" alt="profile" class="w-12 inline-block"></a>
             <!-- <span class="border-l-2 border-r-2">
                 <a href="#" class="mx-5"><i class="fa-solid fa-download"></i></a>
                 <a href="#" class="mx-5" type="button" id="dark-switch"><i class="fa-solid fa-moon"
@@ -197,14 +241,32 @@
             <a href="#" class="mx-5"><i class="fa-solid fa-globe"></i></a> -->
 
             <div class="clickdown">
-                <button onclick="clickdown()"><i
-                        class="fa-solid fa-bars text-3xl align-middle mr-5 clickbtn"></i></button>
+                <button onclick="clickdown()"><i class="fa-solid fa-bars text-3xl align-middle clickbtn"></i></button>
                 <div id="myDropdown" class="clickdown-content">
+                    <!-- Menu Options -->
+                    <ul class="w-[90%] m-auto text-white">
+                        <li>
+                            <h5><i class="fa-solid fa-language mr-3 text-2xl"></i>English</h5>
+                        </li>
+                        <li>
+                            <h5><i class="fa-solid fa-coins mr-3 text-2xl"></i>Currency</h5>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <h5><i class="fa-solid fa-circle-half-stroke mr-3 text-2xl"></i>Dark Mode</h5><button
+                                id="dark-switch"><i class="fa-solid fa-moon text-3xl" id="mode-btn"></i></button>
+                        </li>
+                        <li>
+                            <h5><i class="fa-regular fa-circle-down mr-3 text-2xl"></i>Download App</h5>
+                        </li>
+                    </ul>
+
                     <!-- Sign Up / Login div -->
                     <div class="signup-login-container">
                         <a href="./signup.html" id="signup">Sign Up</a>
                         <a href="./login.html" id="login">Log In</a>
                     </div>
+
+                    <!-- Setting Options -->
                     <ul class="w-[90%] m-auto text-white">
                         <li>
                             <h5><i class="fa-solid fa-language mr-3 text-2xl"></i>English</h5>
@@ -238,8 +300,8 @@
                 <p>Making Crypto Trading Easier</p>
                 <form class="email-acc-container my-10">
                     <input type="text" id="email-acc"
-                        class="border px-[30px] py-[10px] rounded-[5px] w-[300px] md:w-[250px]" name="email-acc"
-                        placeholder="Email Account">
+                        class="border px-[30px] py-[10px] rounded-[5px] w-[300px] md:w-[250px] max-sm:w-[200px]"
+                        name="email-acc" placeholder="Email Account">
                     <input type="submit" class="signup-btn" name="signup-btn" value="Sign Up">
                 </form>
             </div>
@@ -525,7 +587,7 @@
             <section class="download-container">
                 <!-- Image Div -->
                 <div class="w-[400px] h-[400px] overflow-hidden">
-                    <img src="./assets/images/download_bg.webp" alt="phone photo" class="w-[1000px]" id="phone-bg">
+                    <img src="./assets/images/download_bg.webp" alt="phone photo" class="phone-pic" id="phone-bg">
                 </div>
                 <!-- Content Div -->
                 <div>
@@ -551,23 +613,25 @@
                             </span>
                         </div>
 
-                        <!-- Apple Store -->
-                        <a href="#" class="app-shops">
-                            <i class="fa-brands fa-apple"></i>
-                            <h5>App Store</h5>
-                        </a>
+                        <div class="app-container">
+                            <!-- Apple Store -->
+                            <a href="#" class="app-shops">
+                                <i class="fa-brands fa-apple"></i>
+                                <h5>App Store</h5>
+                            </a>
 
-                        <!-- Google Play -->
-                        <a href="#" class="app-shops">
-                            <i class="fa-brands fa-google-play"></i>
-                            <h5>Google Play</h5>
-                        </a>
+                            <!-- Google Play -->
+                            <a href="#" class="app-shops">
+                                <i class="fa-brands fa-google-play"></i>
+                                <h5>Google Play</h5>
+                            </a>
 
-                        <!-- Android APK -->
-                        <a href="" class="app-shops">
-                            <i class="fa-brands fa-android"></i>
-                            <h5>Android APK</h5>
-                        </a>
+                            <!-- Android APK -->
+                            <a href="" class="app-shops">
+                                <i class="fa-brands fa-android"></i>
+                                <h5>Android APK</h5>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -578,14 +642,14 @@
     <footer>
         <div class="align-margin footer-sec"> <!-- to align margin -->
             <!-- Contact Icon Section -->
-            <div class="contact-container w-[30%]">
+            <div class="contact-container w-[30%] mb-5">
                 <span>
                     <img src="#" alt="LOGO">
                     <p>Making Crypto Trading Easier</p>
                 </span>
 
                 <!-- Icon Container -->
-                <span class="icon-container">
+                <span class="icon-container" hidden>
                     <!-- Phone Contact -->
                     <a href="#"><img src="./assets/images/phone-call.png" alt="Phone" class="contact-icons"></a>
                     <!-- Telegram Account -->
@@ -598,22 +662,30 @@
 
             <!-- About -->
             <ul>
-                <h2 class="text-2xl font-bold mb-5">About</h2>
-                <li>About us</li>
-                <li>Contact Us</li>
-                <li>Terms of Service</li>
-                <li>Privacy Policy</li>
-                <li>Disclaimer</li>
-                <li>About CET</li>
-                <li>Asset Security</li>
-                <li>Blog</li>
+                <span class="gen-info-container">
+                    <h2 class="text-2xl font-bold mb-5" onclick="myFunction_gsm('sec1')">About</h2><i
+                        class="fa-solid fa-angle-right" id="right-arrow1"></i>
+                </span>
+                <span id="sec1">
+                    <li>About us</li>
+                    <li>Contact Us</li>
+                    <li>Terms of Service</li>
+                    <li>Privacy Policy</li>
+                    <li>Disclaimer</li>
+                    <li>About CET</li>
+                    <li>Asset Security</li>
+                    <li>Blog</li>
+                </span>
             </ul>
 
             <!-- Services -->
             <ul class="">
-                <h2 class="text-2xl font-bold mb-5">Services</h2>
+                <span class="gen-info-container">
+                    <h2 class="text-2xl font-bold mb-5" onclick="myFunction_gsm('sec2')">Services</h2>
+                    <i class="fa-solid fa-angle-right" id="right-arrow2"></i>
+                </span>
                 <!-- First Coloum -->
-                <span>
+                <span id="sec2">
                     <li>Market Maker</li>
                     <li>Broker</li>
                     <li>Referral Reward</li>
@@ -637,14 +709,19 @@
 
             <!-- Support -->
             <ul>
-                <h2 class="text-2xl font-bold mb-5">Support</h2>
-                <li>Academy</li>
-                <li>Help Center</li>
-                <li>Announcements</li>
-                <li>Contact Support</li>
-                <li>ST Alert</li>
-                <li>Law Enforcement</li>
-                <li>Official Verification</li>
+                <span class="gen-info-container">
+                    <h2 class="text-2xl font-bold mb-5" onclick="myFunction_gsm('sec3')">Support</h2>
+                    <i class="fa-solid fa-angle-right" id="right-arrow3"></i>
+                </span>
+                <span id="sec3">
+                    <li>Academy</li>
+                    <li>Help Center</li>
+                    <li>Announcements</li>
+                    <li>Contact Support</li>
+                    <li>ST Alert</li>
+                    <li>Law Enforcement</li>
+                    <li>Official Verification</li>
+                </span>
             </ul>
         </div>
         <!-- Footer baseline (Second Container)-->
@@ -660,6 +737,41 @@
 
     <!-- Side menu icon clicking -->
     <script src="./js/dropdownScript.js"></script>
+
+    <!-- Clicking buttons for more infos in footer -->
+    <script>
+        function myFunction_gsm(sectionId) {
+            let sec = document.querySelectorAll('.sec');
+
+            sec.forEach(itm => {
+                if (itm.id !== sectionId) itm.style.display = 'none'
+            })
+            var x = document.getElementById(sectionId);
+            let arrow_no;
+            if(sectionId == 'sec1') {
+                arrow_no = 1;
+            } else if(sectionId == 'sec2') {
+                arrow_no = 2;
+            } else {
+                arrow_no = 3;
+            }
+            let right_arrow = document.getElementById(`right-arrow${arrow_no}`);
+
+
+            if (x.style.display === "block") {
+                x.style.display = "none";
+                right_arrow.style.rotate = "0deg";
+            } else {
+                x.style.display = "block";
+                right_arrow.style.rotate = "90deg";
+            }
+        }
+
+        let sec = document.querySelectorAll('.sec');
+        sec.forEach(itm => {
+            itm.style.display = 'none'
+        })
+    </script>
 
 </body>
 

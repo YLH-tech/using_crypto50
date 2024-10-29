@@ -15,6 +15,9 @@
     --dark-font-color-- : #FCFAEE;
     --dark-body-color--: rgb(45, 48, 55);
     --dark-entry-color--: rgb(41, 41, 41);
+
+    /* Phone Responsive */
+    --notify-color--: #EEEEEE;
 }
 
 /* Main Properties */
@@ -81,6 +84,33 @@
     }
     .entry-section img{
         width: 200px;
+    }
+}
+
+/* For max 500px phones */
+@media  screen and (max-width: 500px) {
+    .content-container h1{
+        font-size: 30px;
+        letter-spacing: 2px;
+    }
+    .content-container p{
+        font-size: 15px;
+    }
+    .entry-section img{
+        display: none;
+    }
+    .align-margin{
+        width: 98%;
+    }
+    .pair{
+        font-size: 12px;
+    }
+    .price{
+        font-size: 20px;
+    }
+    .crypto-box{
+        width: 200px;
+        padding: 8px 20px;
     }
 }
 /* ========================= */
@@ -208,7 +238,7 @@ td:first-child {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     .container {
         width: 100%; /* Full width for mobile screens */
         padding: 10px; /* Reduced padding for smaller screens */
@@ -324,6 +354,21 @@ h2 {
     }
 }
 
+@media screen and (max-width: 500px) {
+    .ranking-breaking{
+        display: block;
+        height: fit-content;
+        width: 100%;
+    }
+    .crypto-ranking{
+        width: 100%;
+        margin: 30px 0;
+    }
+    .crypto-news{
+        width: 100%;
+        margin: 30px 0;
+    }
+}
 
 /* ========================= */
 /* Download Section */
@@ -344,6 +389,9 @@ h2 {
     justify-content: space-between;
     align-items: center;
 }
+.phone-pic{
+    width: 1000px;
+}
 .qr-container{
     display: flex;
     justify-content: space-between;
@@ -362,6 +410,41 @@ h2 {
 }
 .app-shops h5{
     font-size: 12px;
+}
+
+/* For Max width Phone responsive devices */
+@media screen and (max-width: 500px) {
+    .download-container{
+        width: 90%;
+        margin: auto; /* align center */
+        display: block;
+        background-color: var(--notify-color--);
+        padding: 20px;
+    }
+    .download-header h1{
+        font-size: 25px;
+        line-height: 10px;
+        margin: 30px 0;
+    }
+    .info-container{
+        display: block;
+    }
+    .phone-pic{
+        width: 500px;
+        left: 45%;
+        top: 75%;
+        transform: translate(-50%, -50%);
+        position: relative;
+    }
+    .qr-container{
+        justify-content: flex-start;
+    }
+    .app-container{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 30px 0 0;
+    }
 }
 
 /* ========================= */
@@ -387,6 +470,9 @@ footer p{
     justify-content: space-between;
     height: 100%;
 }
+.gen-info-container .fa-angle-right{
+    display: none;
+}
 .icon-container a{
     display: inline-block;
     margin-right: 10px;
@@ -400,4 +486,27 @@ footer .contact-icons{
 .footer-baseline{
     height: 50px;
     background-color: var(--iconic-color--);
+}
+
+@media screen and (max-width: 500px) {
+    .footer-sec{
+        display: block;
+        height: fit-content;
+    }
+    .gen-info-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    .gen-info-container .fa-angle-right{
+        display: block;
+        font-size: 20px;
+        margin-right: 20px;
+        transition: 0.2s;
+    }
+    #sec1, #sec2, #sec3{
+        display: none;
+        margin: 0 30px;
+        color: var(--secondary-font-color--);
+    }
 }

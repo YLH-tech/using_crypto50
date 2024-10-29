@@ -20,5 +20,6 @@
 }
 
 body, nav, .entry-section, .download-container, .container{
+    width: 100%;
     transition: var(--transistion-time--);
 }

@@ -37,6 +37,15 @@ nav{
 }
 .nav-subdiv{
     align-items: center; /* Align profile vartically */
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+#non-mobile{
+    display: block;
+}
+#mobile{
+    display: none;
 }
 .profile-img{
     width: 40px;
@@ -62,5 +71,22 @@ nav{
     }
     .profile-img{
         width: 30px;
+    }
+}
+
+/* For max 500px phones  */
+@media screen and (max-width: 500px) {
+    nav{
+        width: 100%;
+        font-size: 15px;
+    }
+    .profile-img{
+        width: 30px;
+    }
+    #non-mobile{
+        display: none;
+    }
+    #mobile{
+        display: block;
     }
 }

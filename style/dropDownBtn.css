@@ -132,3 +132,32 @@
   background-color: var(--iconic-color--);
   color: var(--dark-font-color--);
 }
+
+@media screen and (max-width: 500px) {
+  .signup-login-container{
+    width: 70%;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px auto;
+    gap: 30px;
+  }
+  #signup, #login{
+    width: 200px;
+    border: 1px solid var(--iconic-color--);
+    border-radius: 50px;
+    padding: 0;
+    text-align: center;
+    color: var(--iconic-color--);
+  }
+  #login{
+    background-color: var(--iconic-color--);
+    color: var(--dark-font-color--);
+  }
+  .clickdown-content{
+    min-width: 400px;
+    padding: 0px;
+    border-radius: 5px;
+  }
+}

@@ -57,9 +57,9 @@ function initializeTopGainersTable() {
     topGainers.forEach(coin => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td class="w-[200px]">
+            <td class="w-[250px]">
                 <a href="coin-details.html?id=${coin.id}" class="table-link">
-                    <img src="images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})
+                    <img src="./assets/images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})
                 </a>
             </td>
             <td id="gainer-price-${coin.id}" class="text-right">$${prices[coin.id] || '--'}</td>
@@ -85,7 +85,7 @@ function initializeTopLosersTable() {
     topLosers.forEach(coin => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td class="w-[200px]">
+            <td class="w-[250px]">
                 <a href="coin-details.html?id=${coin.id}" class="table-link">
                     <img src="images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})
                 </a>
@@ -111,7 +111,7 @@ function initializeMarketCapTable() {
     coins.forEach(coin => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td class="w-[200px]">
+            <td class="w-[250px]">
                 <a href="coin-details.html?id=${coin.id}" class="table-link">
                     <img src="images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})
                 </a>
