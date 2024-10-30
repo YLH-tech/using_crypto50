@@ -416,7 +416,7 @@ h2 {
 @media screen and (max-width: 500px) {
     .download-container{
         width: 90%;
-        margin: auto; /* align center */
+        margin: 20px auto; /* align center */
         display: block;
         background-color: var(--notify-color--);
         padding: 20px;
@@ -430,11 +430,12 @@ h2 {
         display: block;
     }
     .phone-pic{
-        width: 500px;
-        left: 45%;
-        top: 75%;
-        transform: translate(-50%, -50%);
-        position: relative;
+        width: 80%;
+        /* left: 45%; */
+        /* top: 75%; */
+        /* transform: translate(-50%, -50%); */
+        /* position: relative; */
+        margin: auto;
     }
     .qr-container{
         justify-content: flex-start;
