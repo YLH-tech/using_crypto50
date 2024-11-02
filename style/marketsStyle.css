@@ -1,65 +1,290 @@
 @import url(./navigation.css); /* Navigation Bar */
 @import url(./dropDownBtn.css); /* Drop Down Button */
-:root{
+:root {
+  /* Light Mode */
+  --font-color--: #000000;
+  --iconic-color--: #78b7d0;
+  --secondary-font-color--: #b7b7b7;
+  --entry-color--: rgb(241, 246, 244);
+  --download-bg-color--: rgb(247, 248, 250);
+  --download-icons-color--: rgb(113, 117, 137);
+  --body-color--: #f4f6ff;
 
-    /* Light Mode */
-    --font-color-- : #000000;
-    --iconic-color-- : #78B7D0;
-    --secondary-font-color--: #B7B7B7;
-    --entry-color--: rgb(241, 246, 244);
-    --download-bg-color-- : rgb(247, 248, 250);
-    --download-icons-color--: rgb(113, 117, 137);
-    --body-color-- : #F4F6FF;
-
-    /* Dark Mode */
-    --dark-font-color-- : #FCFAEE;
-    --dark-body-color--: rgb(45, 48, 55);
-    --dark-entry-color--: rgb(41, 41, 41);
+  /* Dark Mode */
+  --dark-font-color--: #fcfaee;
+  --dark-body-color--: rgb(45, 48, 55);
+  --dark-entry-color--: rgb(41, 41, 41);
 }
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-body{
-    background-color: var(--body-color--);
+body {
+  background-color: var(--body-color--);
 }
-.market-data-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 30px;
+.market-data-container {
+  gap: 30px;
 }
-.table-container{
-    width: 600px;
-    border-radius: 20px;
-    padding: 20px;
-    background-color: #ffffff;
+.group-div{
+  width: 65%;
 }
-.content-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.first-group{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
 }
-.content-container h2{
-    font-size: 20px;
+.second-group{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
 }
-.more-icon{
-    color: var(--iconic-color--);
+thead,
+tbody tr {
+  table-layout: fixed;
+  display: table;
+  width: 100%;
+  font-size: 14px;
 }
-.tables{
-    width: 100%;
+.table-container {
+  width: fit-content;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #ffffff;
 }
-th{
-    padding-bottom: 20px;
-    color: var(--secondary-font-color--);
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-td{
-    padding: 10px 0;
+.content-container h2 {
+  font-size: 20px;
+}
+.more-icon {
+  color: var(--iconic-color--);
+}
+th {
+  padding-bottom: 20px;
+  color: var(--secondary-font-color--);
+}
+
+.table-body {
+  display: block;
+  height: 400px;
+  overflow: auto;
+}
+td {
+  padding: 10px 0;
+}
+.crypto-name{
+    width: 40%;
 }
 /* Coin Style */
-.coin-logo{
-    width: 25px;
-    height: 25px;
-    margin-right: 8px;
+.coin-logo {
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+}
+
+/* ======================== */
+/* Scroll Bar Behavior */
+/* ======================== */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.table-body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.table-body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.description p{
+  text-align: center;
+  color: var(--secondary-font-color--);
+}
+
+
+/* Market Bar Graph */
+.container-price-distribution {
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.distribution-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  border: 2px solid grey; /* Grey border added to the whole container */
+  padding: 10px; /* Padding added for better spacing */
+  border-radius: 5px; /* Rounded corners for the container */
+  background-color: white; /* Optional: Background color for better contrast */
+}
+
+.distribution {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+
+.column-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+}
+
+
+.column {
+  width: 60px;
+  height: 10px; /* Base height */
+  margin-bottom: 5px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid grey; /* Grey border added to each column */
+  transition: height 0.5s ease;
+  border-top-left-radius: 5px;  /* Set top-left border radius */
+  border-top-right-radius: 5px; /* Set top-right border radius */
+}
+
+
+.light-green {
+  background-color: lightgreen;
+}
+
+.light-red {
+  background-color: lightcoral;
+}
+
+.light-grey {
+  background-color: lightgrey;
+}
+
+.label {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.number {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.price-distribution {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px; /* Space between distribution and price section */
+  border-top: 2px solid grey; /* Optional: border for separation */
+  padding-top: 10px; /* Optional: padding for space */
+}
+
+.price-down {
+  background-color: lightcoral;
+  padding: 5px;
+  border-radius: 5px 0 0 5px; /* Rounded left corners */
+  color: white;
+  width: 50%; /* Half of the section for price down */
+}
+
+.price-up {
+  background-color: lightgreen;
+  padding: 5px;
+  border-radius: 0 5px 5px 0; /* Rounded right corners */
+  color: white;
+  width: 50%; /* Half of the section for price up */
+}
+
+/* Market Line Graph */
+.container-price-distribution{
+  margin: 30px 0;
+}
+.container-price-distribution h2{
+  text-align: left;
+  font-size: 25px;
+}
+.distribution-container{
+  border-radius: 10px;
+}
+
+.align-margin{
+  width: 90%;
+  margin: auto;
+}
+
+/* ========================= */
+/* Footer */
+/* ========================= */
+footer{
+  background-color: #f2f2f2;
+  padding-top: 50px;
+}
+footer p{
+  color: var(--secondary-font-color--);
+}
+.footer-sec{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 300px;
+  margin: 40px auto;
+}
+.contact-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.gen-info-container .fa-angle-right{
+  display: none;
+}
+.icon-container a{
+  display: inline-block;
+  margin-right: 10px;
+}
+footer .contact-icons{
+  width: 30px;
+}
+.footer-sec ul{
+  line-height: 30px;
+}
+.footer-baseline{
+  height: 50px;
+  background-color: var(--iconic-color--);
+}
+
+@media screen and (max-width: 500px) {
+  .footer-sec{
+      display: block;
+      height: fit-content;
+  }
+  .icon-container{
+      display: none;
+  }
+  .gen-info-container{ 
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+  }
+  .gen-info-container .fa-angle-right{
+      display: block;
+      font-size: 20px;
+      margin-right: 20px;
+      transition: 0.2s;
+  }
+  #sec1, #sec2, #sec3{
+      display: none;
+      margin: 0 30px;
+      color: var(--secondary-font-color--);
+  }
 }

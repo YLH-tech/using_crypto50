@@ -228,8 +228,8 @@
 
         <!-- Right-side menu -->
         <div class="nav-subdiv">
-            <!-- <a href="#">Log In</a>
-            <a href="#" class="signup-btn">Sign Up</a> -->
+            <a href="#">Log In</a>
+            <a href="#" class="signup-btn">Sign Up</a>
 
             <!-- <img src="./assets/images/avatar.png" alt="Profile" class="profile-img"> -->
             <a href="#"><img src="./assets/images/profile.png" alt="profile" class="w-12 inline-block"></a>
@@ -244,7 +244,7 @@
                 <button onclick="clickdown()"><i class="fa-solid fa-bars text-3xl align-middle clickbtn"></i></button>
                 <div id="myDropdown" class="clickdown-content">
                     <!-- Menu Options -->
-                    <ul class="w-[90%] m-auto text-white">
+                    <ul class="w-[90%] m-auto text-white mobile">
                         <li>
                             <a href="#"><i class="fa-brands fa-gg-circle text-2xl mr-3"></i>P2P Trading</a>
                         </li>
@@ -252,10 +252,12 @@
                             <a href="#"><i class="fa-solid fa-people-arrows text-2xl mr-3"></i>Third-party Trading</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa-solid fa-square-poll-vertical text-2xl mr-3"></i>Market Overview</a>
+                            <a href="#"><i class="fa-solid fa-square-poll-vertical text-2xl mr-3"></i>Market
+                                Overview</a>
                         </li>
                         <li>
-                            <a href="./marketData.html"><i class="fa-solid fa-magnifying-glass-chart text-2xl mr-3"></i>Market Data</a>
+                            <a href="./marketData.html"><i
+                                    class="fa-solid fa-magnifying-glass-chart text-2xl mr-3"></i>Market Data</a>
                         </li>
                     </ul>
 
@@ -635,6 +637,159 @@
                 </div>
             </section>
         </div>
+
+        <!-- FAQs -->
+        <!-- FAQs -->
+        <section class="faqs" data-aos="fade-up">
+            <span class="blur-spot"></span>
+            <h1>FAQs</h1>
+
+            <div class="faqs-main-container">
+                <!-- first div -->
+                <div class="first-faq-div">
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>Forgot the funds password processing method for platform transactions</h2>
+                            <p class="faqs-text">If you forget the trading fund password on the platform,please go to
+                                "My-Settings-Click SetFund Password" or contact customer service to reset
+                            </p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>What is the value of the stop loss and profit setting in opening a position?
+                                <br>
+                                How should it be set?</h2>
+                            <p class="faqs-text">Take profit and stop loss as the upper limit of profit and loss set by you. When the set amount ofstop profit and stop  loss is reached,  the system will automatically close the position. It can be usedfor risk control when you buy a contract. Half of the  set profit-taking amount is: amount of increasex quantity x leverage multiple, set stop loss.
+                                <br>
+                                We recommend that you set it according to your actual asset situation and reasonably controlthe risk.</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>How to reduce contract risk?</h2>
+                            <p class="faqs-text">You can transfer the available assets of the remaining accounts to the contract account bytransferring funds,  or reduce the risk by reducing the open positions.
+                            </p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>What does the quantity in the contract opening mean?</h2>
+                            <p class="faqs-text">The quantity in the open position represents the number of currencies you expect to buy. Forexample:  select on the opening page of the BTC/USDT trading pair, buy long, enter the price as1000USDT,  and enter the amount as 10BTC, it means: you expect to buy 10 BTC with a unit price of1000USDT.</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>How is the handling fee in the contract calculated?</h2>
+                            <p class="faqs-text">Handling fee-opening price*opening quantity*handling fee rate</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>Notes on forced liquidation</h2>
+                            <p class="faqs-text">Risk is a measure of the risk of your assets. When the risk is equal to 100%,  your position isregarded as a liquidation, and the risk = (position margin/contract account equity)
+
+                                *100%, in order to prevent users from penetrating the position,  the system sets the risk adjustmentratio. When the risk reaches the risk value set by the system,  the system will force the position tobe closed. For example:  the adjustment ratio set by the system is 10%, when your risk is greaterthan or equal to 90%,  all your positions will be forced to liquidate by the system
+                                
+                                Note:  If the system's forced liquidation is caused by excessive risk, all your positions will beliquidated. Therefore,  I hope you can reasonably control your risk to avoid unnecessary losses.</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                </div>
+
+                <!-- second div -->
+                <div class="second-faq-div">
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>What are the contract trading rules?</h2>
+                            <p class="faqs-text">Transaction type
+
+                                Trading types are divided into two directions: long positions(buy) and short positions (sell):
+                                
+                                Buy long (bullish) means that you think that the current index is likely to rise,  and you want to buya certain number of certain contracts at the price you set or the current market price.
+                                
+                                Sell short (bearish) means that you think that the current index is likely to fall,  and you want to sellla certain number of new contracts at a price you set or the current market price.Ordering  methodLimited price order: you need to specify the price and quantity of the order placed
+                                
+                                Market order: you only need to set the order quantity, the price is the current market pricePositions
+                                
+                                When the order you submit for opening a position is completed, it is called a position
+                                
+                                Contract delivery issues
+                                
+                                The platform contract is a perpetual contract with no set delivery time. As long as the system doesnot meet the  conditions for liquidation or you do not manually close the position, you can hold theposition permanently.
+                                <br>
+                                System liquidation
+                                <br>
+                                1: The system will automatically close the position if the set value of Take Profit and Stop Loss isreached
+                                <br>
+                                2: The risk is too high, the system is forced to close the position</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>What are limit order and market order?</h2>
+                            <p class="faqs-text">The limit order refers to the price you expect to entrust the platform to trade,  and the marketorder refers to the direct entrustment of the platform to trade at the current price. In the rules  foropening a position, market orders take precedence over limit orders.
+                                <br>
+                                If you choose a limit order,  please open a position reasonably based on the current currencymarket price to avoid losses due to unreasonable opening  prices</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>What does the risk level of contract transactions represent</h2>
+                            <p class="faqs-text">Risk degree is a risk indicator in your contract account . A risk degree equal to 100% isconsidered as a liquidation. We  suggest that when your risk exceeds 50%,  you need to open yourposition carefully to avoid losses due to liquidation. You can reduce your risk by replenishing  theavailable funds of contract assets, or reducing your positions.</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>Why is currency exchange necessary?</h2>
+                            <p class="faqs-text">The purpose of the exchange is to allow the smooth circulation of funds in different currencies inyour assets,  and the QcC obtained in the futures account can be freely converted into USDT fortrading. USDT in other accounts can  also be freely converted to QcC for trading.</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>How to buy USDT through the platform?</h2>
+                            <p class="faqs-text">Method 1: Select the order you want to buy through the platform buy and sell list to buy and sell.
+                                <br>
+                                Method 2: Click the publish button to publish a buy or sell order for quick transactions according to your needs
+                                <br>
+                                The system will quickly match you with buying and selling users.Note:  If the purchase order is notpaid after 15 minutes, the system will automatically cancel the order,  please pay in time. If the orderis cancelled more than 3 times on the same day,  the transaction cannot be performed again on thesame day, and the trading authority will be restored the next day</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                    <div class="faqs-container">
+                        <span class="faqs-content">
+                            <h2>Why does the converted amount of assets change?</h2>
+                            <p class="faqs-text">The equivalent calculation in the asset is the value of the current holding digital currency
+                                converted into USDT,
+                                which changes due to the price fluctuation of the digital asset.
+                                The number of your digital assets has not changed.</p>
+                        </span>
+                        <i class="fa-solid fa-plus" onclick="plus_minus(this);showorhide(this)"></i>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -648,7 +803,7 @@
                 </span>
 
                 <!-- Icon Container -->
-                <span class="icon-container" hidden>
+                <span class="icon-container">
                     <!-- Phone Contact -->
                     <a href="#"><img src="./assets/images/phone-call.png" alt="Phone" class="contact-icons"></a>
                     <!-- Telegram Account -->
@@ -747,9 +902,9 @@
             })
             var x = document.getElementById(sectionId);
             let arrow_no;
-            if(sectionId == 'sec1') {
+            if (sectionId == 'sec1') {
                 arrow_no = 1;
-            } else if(sectionId == 'sec2') {
+            } else if (sectionId == 'sec2') {
                 arrow_no = 2;
             } else {
                 arrow_no = 3;
@@ -770,6 +925,69 @@
         sec.forEach(itm => {
             itm.style.display = 'none'
         })
+    </script>
+
+    <!-- FAQs Scrip -->
+    <script>
+        // FAQs Plus / Minus
+        $(document).ready(function () {
+            $(this).click(function () {
+                $(this).toggleClass("hide");
+            });
+        });
+
+        function plus_minus(x) {
+            // Find the h2 tag within the same container
+            const faqContainer = x.closest('.faqs-container');
+            const faqTitle = faqContainer.querySelector('h2');
+
+            if (x.classList.contains("fa-plus")) {
+                x.classList.add("fa-minus");
+                x.classList.remove("fa-plus");
+                x.style.color = "#0095ff"; // Change icon color to blue
+                faqTitle.style.color = "#0095ff"; // Change h2 color to blue
+            } else {
+                x.classList.add("fa-plus");
+                x.classList.remove("fa-minus");
+                x.style.color = "#000000"; // Change icon color back to black
+                faqTitle.style.color = "#000000"; // Change h2 color back to black
+            }
+        }
+
+        function showorhide(element) {
+            // Find the <p> tag within the same container
+            const faqContainer = element.closest('.faqs-container');
+            const faqText = faqContainer.querySelector('.faqs-text');
+
+            // Toggle the display of the <p> tag with a smooth transition
+            if (faqText.classList.contains('show')) {
+                // Trigger the pop-down animation
+                faqText.style.animation = 'popDown 0.5s forwards';
+                setTimeout(() => {
+                    faqText.classList.remove('show'); // Remove the class after animation ends
+                    faqText.style.display = 'none'; // Ensure it is hidden after animation
+                    element.classList.remove('fa-minus'); // Change back to plus icon
+                    element.classList.add('fa-plus');
+                    element.style.color = 'black'; // Reset icon color to black after hiding (optional)
+                }, 500); // Match the duration of the animation
+            } else {
+                faqText.style.display = 'block'; // Show the element first
+                faqText.classList.add('show'); // Then add the class to trigger the animation
+                faqText.style.animation = 'popUp 0.5s forwards';
+                element.classList.remove('fa-plus'); // Change to minus icon
+                element.classList.add('fa-minus');
+                element.style.color = ''; // Reset icon color (optional, based on your styling)
+            }
+        }
+    </script>
+
+    <!-- Animation -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 2000,
+            once: true,
+        });
     </script>
 
 </body>

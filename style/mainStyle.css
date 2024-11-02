@@ -26,6 +26,10 @@
     padding: 0;
 }
 
+.mobile{
+    display: none;
+}
+
 
 
 /* ========================= */
@@ -183,16 +187,13 @@ th, td {
     padding: 10px;
     text-align: left;
     font-size: 16px; /* Base font size */
-    color: #555;
 }
 th {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #666;
 }
 td {
-    background-color: #f9f9f9;
     font-weight: 500;
 }
 tr td {
@@ -239,6 +240,9 @@ td:first-child {
 }
 
 @media (max-width: 500px) {
+    .mobile{
+        display: block;
+    }
     .container {
         width: 100%; /* Full width for mobile screens */
         padding: 10px; /* Reduced padding for smaller screens */
@@ -455,6 +459,106 @@ h2 {
 }
 
 /* ========================= */
+/* FAQs */
+/* ========================= */
+
+.faqs {
+    width: 1514px;
+    margin: auto;
+  }
+  .faqs .blur-spot {
+    display: block;
+    width: 150px;
+    height: 80px;
+    position: absolute;
+    left: 41%;
+    background-color: #34fbe74b;
+    border-radius: 50%;
+    filter: blur(20px);
+    /* z-index: -1; */
+  }
+  .faqs .blur-bg {
+    width: 200px;
+    height: 74px;
+    background-color: #0093ff;
+    filter: blur(3px);
+    display: inline;
+    border-radius: 50%;
+    position: relative;
+  }
+  .faqs h1 {
+    font-size: 65px;
+    text-align: center;
+    font-family: var(--Poppins-font--);
+    margin: 50px;
+  }
+  .faqs .faqs-main-container {
+    display: flex;
+    justify-content: space-between;
+    font-family: "DM Sans", sans-serif;
+  }
+  .faqs .faqs-main-container .first-faq-div {
+    width: 645px;
+    height: 548px;
+  }
+  .faqs .faqs-main-container .faqs-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+  .faqs .faqs-main-container .faqs-container .faqs-content {
+    width: 553px;
+  }
+  .faqs .faqs-main-container .faqs-container .faqs-content h2 {
+    font-size: 18.69px;
+    margin: 20px 0;
+  }
+  .faqs .faqs-main-container .faqs-container .faqs-content p {
+    font-size: 15.29px;
+    margin: 15px 0;
+  }
+  .faqs .faqs-main-container .faqs-container i {
+    margin: 20px 0;
+  }
+  .faqs .faqs-main-container hr {
+    color: #00000050;
+  }
+  .faqs-text {
+    display: none;
+    opacity: 0;
+    transform: scaleY(0); /* Start with the element scaled down */
+    transform-origin: top; /* Set the origin for the transform */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .faqs-text.show {
+    display: block;
+    animation: popUp 0.5s forwards; /* Apply the animation */
+  }
+  
+  @keyframes popUp {
+    0% {
+      opacity: 0;
+      transform: scaleY(0); /* Start with the element scaled down */
+    }
+    100% {
+      opacity: 1;
+      transform: scaleY(1); /* Scale up to its original size */
+    }
+  }
+  
+  @keyframes popDown {
+    0% {
+      opacity: 1;
+      transform: scaleY(1); /* Start with the element fully scaled */
+    }
+    100% {
+      opacity: 0;
+      transform: scaleY(0); /* Scale down to hide */
+    }
+  }
+
+/* ========================= */
 /* Footer */
 /* ========================= */
 footer{
@@ -500,7 +604,10 @@ footer .contact-icons{
         display: block;
         height: fit-content;
     }
-    .gen-info-container{
+    .icon-container{
+        display: none;
+    }
+    .gen-info-container{ 
         display: flex;
         justify-content: space-between;
         align-items: center

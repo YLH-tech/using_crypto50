@@ -57,7 +57,7 @@ function initializeTopGainersTable() {
     topGainers.forEach(coin => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td class="w-[250px]">
+            <td class="crypto-name">
                 <a href="coin-details.html?id=${coin.id}" class="table-link">
                     <img src="./assets/images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})
                 </a>
@@ -85,9 +85,9 @@ function initializeTopLosersTable() {
     topLosers.forEach(coin => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td class="w-[250px]">
+            <td class="crypto-name">
                 <a href="coin-details.html?id=${coin.id}" class="table-link">
-                    <img src="images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})
+                    <img src="./assets/images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})
                 </a>
             </td>
             <td id="loser-price-${coin.id}" class="text-right">$${prices[coin.id] || '--'}</td>
@@ -111,9 +111,9 @@ function initializeMarketCapTable() {
     coins.forEach(coin => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td class="w-[250px]">
+            <td class="crypto-name">
                 <a href="coin-details.html?id=${coin.id}" class="table-link">
-                    <img src="images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})
+                    <img src="./assets/images/${coin.id}.png" alt="${coin.name} logo" class="coin-logo inline-block"> ${coin.name} (${coin.id})
                 </a>
             </td>
             <td id="market-cap-price-${coin.id}" class="text-right">$${prices[coin.id] || '--'}</td>
@@ -164,3 +164,132 @@ setInterval(() => {
     initializeTopLosersTable();
     initializeMarketCapTable();
 }, 500);
+
+
+// for marketBarGraph
+
+const fetchMarketData = async () => {
+    const historicalDataPromises = coins.map(coin =>
+        fetch(`https://api.binance.com/api/v3/klines?symbol=${coin.symbol}&interval=1M&limit=12`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => ({
+                name: coin.name,
+                prices: data.map(item => parseFloat(item[4])), // Closing prices
+            }))
+            .catch(error => {
+                console.error(`Error fetching market data for ${coin.name}:`, error);
+                return null; // Return null if there's an error
+            })
+    );
+
+    return Promise.all(historicalDataPromises);
+};
+
+const drawChart = async () => {
+    const marketData = await fetchMarketData();
+    const filteredData = marketData.filter(data => data !== null); // Remove null entries
+
+    const ctx = document.getElementById('cryptoChart').getContext('2d');
+
+    const datasets = filteredData.map(data => ({
+        label: data.name,
+        data: data.prices,
+        borderColor: getRandomColor(),
+        backgroundColor: 'rgba(0, 0, 0, 0.1)', // Slightly transparent fill
+        fill: true,
+        tension: 0.2,
+        pointRadius: 6, // Increased point size
+        pointHoverRadius: 8 // Increased hover point size
+    }));
+
+    const lastYearDates = Array.from({ length: 12 }, (_, i) => {
+        const date = new Date();
+        date.setMonth(date.getMonth() - i);
+        return date.toLocaleString('default', { month: 'long' }); // Get full month name
+    }).reverse(); // Reverse to have the most recent month on the right
+
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: lastYearDates,
+            datasets: datasets
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true, // Allow the chart to fill its container
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        font: {
+                            size: 14, // Increase font size
+                        },
+                    },
+                },
+                title: {
+                    display: true,
+                    text: 'Cryptocurrency Price Chart for Last Year',
+                    font: {
+                        size: 20,
+                    },
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (tooltipItem) => {
+                            return `${tooltipItem.dataset.label}: $${tooltipItem.raw.toFixed(2)}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Months',
+                        font: {
+                            size: 16,
+                        },
+                    },
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: 12,
+                        maxRotation: 0,
+                        minRotation: 0,
+                    },
+                    grid: {
+                        display: false, // Hide grid lines for a cleaner look
+                    },
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Price (USDT)',
+                        font: {
+                            size: 16,
+                        },
+                    },
+                    beginAtZero: true,
+                    grid: {
+                        color: '#e0e0e0', // Light grid color for better visibility
+                    },
+                }
+            }
+        }
+    });
+};
+
+const getRandomColor = () => {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
+
+drawChart(); // Call the function to draw the chart

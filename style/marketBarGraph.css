@@ -1,0 +1,31 @@
+#chartContainer {
+    width: 80%; /* Set the width to 80% */
+    max-width: 1200px; /* Optional: Limit maximum width for larger screens */
+    height: 550px; /* Increased height for the chart */
+    max-height: 600px; /* Maximum height */
+    position: relative;
+    background-color: white; /* White background for contrast */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Clip any overflow content */
+    padding: 20px; /* Add padding for inner spacing */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Space between children */
+}
+
+canvas {
+    width: 80% !important; /* Ensure the canvas takes full width */
+    height: 500px !important; /* Fixed height for the canvas */
+}
+
+.description {
+    font-size: 14px; /* Font size for description */
+    color: #555; /* Dark gray color */
+    text-align: center; /* Center the description text */
+    padding: 10px 0; /* Padding for top and bottom */
+}
+#cryptoChart {
+    width: 600px; /* Sets width to full container width */
+    height: 250px; /* Set desired height here */
+}

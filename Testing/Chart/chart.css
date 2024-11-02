@@ -1,0 +1,343 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align: center;
+    padding: 1px;
+    background-color: #6e7680;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1400px; /* Maintain overall max width */
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.market-list {
+    width: 20%;
+    height: 600px; /* Reduced height */
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.market-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.market-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.market-list li:hover {
+    background-color: #e2e6ea;
+    transform: scale(1.02);
+}
+
+.market-list li strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.market-list li .price {
+    color: #28a745;
+}
+
+.market-list li .price.negative {
+    color: #dc3545;
+}
+
+.chart-area {
+    width: 60%;
+    height: 600px; /* Reduced height */
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#chart {
+    width: 100%;
+    height: 500px; /* Adjusted height for the chart */
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#timeframes button {
+    margin: 5px;
+    padding: 5px;
+    background-color: #6e7680;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#timeframes button.active {
+    background-color: #3f4142;
+}
+
+#timeframes button:hover {
+    background-color: #4a5457;
+    transform: scale(1.05);
+}
+
+#ohlc-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%; /* Ensure full width */
+    max-width: 1200px; /* Set max width */
+    margin: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#ohlc-container div {
+    flex: 1;
+    min-width: 100px; /* Adjusted minimum width for OHLC items */
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+#chart-container {
+    flex: 2;
+    padding: 10px;
+}
+
+.order-book {
+    flex: 1;
+    height: 600px; /* Reduced height */
+    background-color: #f9f9f9;
+    border-left: 1px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-book h1 {
+    font-size: 18px; /* Reduced font size for the "Order Book" header */
+    margin: 0; /* Remove margin to reduce height */
+    padding: 2px 0; /* Reduced padding */
+    text-align: center; /* Center the header text */
+}
+
+.order-book table {
+    width: 100%; /* Ensure full width for table */
+    border-collapse: collapse;
+    table-layout: fixed; /* Ensures fixed layout for the table */
+}
+
+.order-book th,
+.order-book td {
+    padding: 6px; /* Reduced padding */
+    overflow: hidden; /* Prevents overflow for table cells */
+    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+    font-size: 14px; /* Smaller font size for headers and cells */
+}
+.order-book th{
+    text-align: left;
+}
+.order-book td{
+    text-align: right;
+}
+
+.order-book-header {
+    height: 40px; /* Set your desired height */
+    line-height: 40px; /* Center the text vertically */
+    font-size: 18px; /* Adjust font size as needed */
+}
+
+.sell-order {
+    background-color: #ffcccc; /* Light red for sell orders */
+}
+
+.buy-order {
+    background-color: #ccffcc; /* Light green for buy orders */
+}
+
+#order-book th,
+#order-book td {
+    padding: 6px; /* Reduced padding */
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    font-size: 14px; /* Smaller font size for headers and cells */
+}
+
+.--buttons {
+    text-align: center;
+    margin: 20px;
+}
+
+.trade-buttons button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.trade-buttons button:hover {
+    background-color: #0056b3;
+}
+
+#ohlc-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    max-width: 800px; /* Set a maximum width for the OHLC container */
+    margin: 10px auto; /* Center it on the page */
+}
+
+#ohlc-container div {
+    flex: 1;
+    min-width: 100px; /* Reduced minimum width for each OHLC item */
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+#ohlc-container span {
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+/* Adjusted Buy/Sell Columns */
+.trade-columns {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+    max-width: 1400px;
+}
+
+.buy-column,
+.sell-column {
+    width: 48%; /* Keep width consistent */
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+}
+
+.buy-column h2,
+.sell-column h2 {
+    margin-bottom: 10px;
+}
+
+.buy-column {
+    margin-right: 10px;
+}
+.sell-column {
+    margin-left: 10px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .market-list,
+    .order-book {
+        width: 100%; /* Full width on smaller screens */
+        max-height: none;
+        overflow-y: auto;
+    }
+
+    .chart-area {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    #chart {
+        height: 300px; /* Further adjusted height for smaller screens */
+    }
+
+    #ohlc-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    #ohlc-container div {
+        margin-bottom: 10px;
+    }
+}
+
+#tradingview-widget-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+#tradingview_abcde {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 90%; /* Full width for inputs */
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #fff;
+}
+
+button {
+    width: 20%; /* Full width for buttons */
+    padding: 10px;
+    background-color: #1a73e8;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0b59d0;
+}
+
