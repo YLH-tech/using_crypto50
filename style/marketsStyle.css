@@ -1,20 +1,7 @@
 @import url(./navigation.css); /* Navigation Bar */
 @import url(./dropDownBtn.css); /* Drop Down Button */
-:root {
-  /* Light Mode */
-  --font-color--: #000000;
-  --iconic-color--: #78b7d0;
-  --secondary-font-color--: #b7b7b7;
-  --entry-color--: rgb(241, 246, 244);
-  --download-bg-color--: rgb(247, 248, 250);
-  --download-icons-color--: rgb(113, 117, 137);
-  --body-color--: #f4f6ff;
+@import url(./commond_command.css); /* Command Commands */
 
-  /* Dark Mode */
-  --dark-font-color--: #fcfaee;
-  --dark-body-color--: rgb(45, 48, 55);
-  --dark-entry-color--: rgb(41, 41, 41);
-}
 
 * {
   margin: 0;

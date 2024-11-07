@@ -1,3 +1,17 @@
+<?php 
+    session_start();
+    require_once "./php/login.php";
+    
+    require './php/db_connection.php';
+    
+    if (isset($_SESSION['user_id'])) {
+        $sql = "SELECT * FROM user WHERE id = " . $_SESSION['user_id'];
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        $image = $row['profile'];
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

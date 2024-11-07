@@ -1,0 +1,52 @@
+@import url(./commond_command.css);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.sec-font-color{
+    color: var(--secondary-font-color--);
+}
+body{
+    background-color: rgba(213, 213, 213, 0.495);
+}
+.main-container{
+    background-color: #ffffff;
+    width: 60%;
+    margin: 50px auto;
+    padding: 50px;
+    border-radius: 20px;
+}
+.from-coin-div{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 30px;
+    
+}
+.amount-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.to-coin-div{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 30px;
+    
+}
+.exchange-history{
+    width: 90%;
+    margin: auto;
+}
+.exchange-history table{
+    width: 100%;
+}
+.exchange-history thead{
+    background-color: var(--secondary-font-color--);
+}
+.exchange-history thead tr{
+    border-radius: 10px;
+}
+.exchange-history thead tr th{
+    padding: 10px;
+}
