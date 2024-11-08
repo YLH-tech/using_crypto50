@@ -7,6 +7,8 @@
     --entry-color--: rgb(241, 246, 244);
     --download-bg-color-- : rgb(247, 248, 250);
     --download-icons-color--: rgb(113, 117, 137);
+    --body-color--: rgba(213, 213, 213, 0.495);
+    --inner-section-color--: #ffffff;
 
     /* Dark Mode */
     --dark-font-color-- : #FCFAEE;

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit</title>
+
+    <!-- Style links -->
+    <link rel="stylesheet" href="./style/navigation.css">
+    <link rel="stylesheet" href="./style/deposit.css">
+
+    <!-- Tailwind CSS link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <!-- Fontawesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- Uploading File -->
+    <script src="./js/fileUpload.js"></script>
+
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <!-- Left-side menus -->
+        <div class="nav-subdiv">
+
+            <!-- Web Logo -->
+            <img src="#" alt="LOGO" class="inline-block">
+
+            <div id="non-mobile" hidden>
+                <!-- Buy Crypto -->
+                <div class="dropdown">
+                    <button class="dropbtn">Buy Crypto <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+
+                        <!-- P2P Trading -->
+                        <a href="#"><img src="./assets/images/peer-to-peer.png" alt="p2p">
+                            <span>
+                                <h5>P2P Trading</h5>
+                                <p>Buy and sell crypto peer to peer</p>
+                            </span>
+                        </a>
+
+                        <!-- Third-party Trading -->
+                        <a href="#"><img src="./assets/images/network.png" alt="third party">
+                            <span>
+                                <h5>Third-party Trading</h5>
+                                <p>Buy and sell crypto through institutions</p>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Markets -->
+                <div class="dropdown">
+                    <button class="dropbtn">Markets <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+
+                        <!-- Market Overview -->
+                        <a href="#"><img src="./assets/images/market.png" alt="Market Overview">
+                            <span>
+                                <h5>Market Overview</h5>
+                                <p>Keep up with the latest crypto trends</p>
+                            </span>
+                        </a>
+
+                        <!-- Market Data -->
+                        <a href="./marketData.html"><img src="./assets/images/web-analytics.png" alt="Market Data">
+                            <span>
+                                <h5>Market Data</h5>
+                                <p>Capture market opportunities</p>
+                            </span>
+                        </a>
+
+                        <!-- Feed -->
+                        <a href="#"><img src="./assets/images/feed.png" alt="Feed">
+                            <span>
+                                <h5>Feed</h5>
+                                <p>Discover current trends</p>
+                            </span>
+                        </a>
+
+                        <!-- Insight -->
+                        <a href="#"><img src="./assets/images/evaluate.png" alt="Insight">
+                            <span>
+                                <h5>Insight</h5>
+                                <p>Stay ahead with news and analysis</p>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exchange -->
+                <div class="dropdown">
+                    <button class="dropbtn">Exchange <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <!-- Swap -->
+                        <a href="#"><img src="./assets/images/exchange.png" alt="Swap">
+                            <span>
+                                <h5>Swap</h5>
+                                <p>Buy and sell crypto in a click</p>
+                            </span>
+                        </a>
+
+                        <!-- Spot Trading -->
+                        <a href="#"><img src="./assets/images/exchange (1).png" alt="Spot Trading">
+                            <span>
+                                <h5>Spot Trading</h5>
+                                <p>Easily trade with any crypto combination</p>
+                            </span>
+                        </a>
+
+                        <!-- Margin Trading -->
+                        <a href="#"><img src="./assets/images/technical-analysis.png" alt="Margin Trading">
+                            <span>
+                                <h5>Margin Trading</h5>
+                                <p>Multiply profits with loans</p>
+                            </span>
+                        </a>
+
+                        <!-- Strategic Trading -->
+                        <a href="#"><img src="./assets/images/solution.png" alt="Strategic Trading">
+                            <span>
+                                <h5>Strategic Trading</h5>
+                                <p>Smart trading tools</p>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- More -->
+                <div class="dropdown">
+                    <button class="dropbtn">More <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="dropdown-content">
+                        <!-- Referral -->
+                        <a href="#"><img src="./assets/images/reference.png" alt="Referral">
+                            <span>
+                                <h5>Referral</h5>
+                                <p>Receive up to 40% referral rewards</p>
+                            </span>
+                        </a>
+
+                        <!-- Ambassador -->
+                        <a href="#"><img src="./assets/images/independence.png" alt="Ambassador">
+                            <span>
+                                <h5>Ambassador</h5>
+                                <p>Partners in promoting CoinEx</p>
+                            </span>
+                        </a>
+
+                        <!-- VIP -->
+                        <a href="#"><img src="./assets/images/vip-pass.png" alt="VIP">
+                            <span>
+                                <h5>VIP</h5>
+                                <p>Enjoy an array of execlusive VIP privileges</p>
+                            </span>
+                        </a>
+
+                        <!-- Broker -->
+                        <a href="#"><img src="./assets/images/insurance-agent.png" alt="Broker">
+                            <span>
+                                <h5>Broker</h5>
+                                <p>Earn competitive rebates</p>
+                            </span>
+                        </a>
+
+                        <!-- Academy -->
+                        <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                            <span>
+                                <h5>Academy</h5>
+                                <p>Master cryptocurrency knowledge</p>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resp-clickdown" id="mobile" hidden>
+                <button class="resp-clickbtn" onclick="resp_clickdown()"><i
+                        class="fa-solid fa-braille ml-3 text-1xl align-middle"></i></button>
+                <div id="resp-myDropdown" class="resp-clickdown-content">
+                    <!-- Academy -->
+                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                        <span>
+                            <h5>Academy</h5>
+                            <p>Master cryptocurrency knowledge</p>
+                        </span>
+                    </a>
+
+                    <!-- Academy -->
+                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                        <span>
+                            <h5>Academy</h5>
+                            <p>Master cryptocurrency knowledge</p>
+                        </span>
+                    </a>
+
+                    <!-- Academy -->
+                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                        <span>
+                            <h5>Academy</h5>
+                            <p>Master cryptocurrency knowledge</p>
+                        </span>
+                    </a>
+
+                    <!-- Academy -->
+                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                        <span>
+                            <h5>Academy</h5>
+                            <p>Master cryptocurrency knowledge</p>
+                        </span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Right-side menu -->
+        <div class="nav-subdiv">
+            <a href="#">Log In</a>
+            <a href="#"><span class="signup-btn">Sign Up</span></a>
+
+            <!-- <img src="./assets/images/avatar.png" alt="Profile" class="profile-img"> -->
+            <a href="#"><img src="./assets/images/profile.png" alt="profile" class="w-12 inline-block"></a>
+            <!-- <span class="border-l-2 border-r-2">
+                <a href="#" class="mx-5"><i class="fa-solid fa-download"></i></a>
+                <a href="#" class="mx-5" type="button" id="dark-switch"><i class="fa-solid fa-moon"
+                        id="mode-btn"></i></a>
+            </span>
+            <a href="#" class="mx-5"><i class="fa-solid fa-globe"></i></a> -->
+
+            <div class="clickdown">
+                <button onclick="clickdown()"><i class="fa-solid fa-bars text-3xl align-middle clickbtn"></i></button>
+                <div id="myDropdown" class="clickdown-content">
+                    <!-- Menu Options -->
+                    <ul class="w-[90%] m-auto text-white mobile">
+                        <li>
+                            <a href="#"><i class="fa-brands fa-gg-circle text-2xl mr-3"></i>P2P Trading</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-people-arrows text-2xl mr-3"></i>Third-party Trading</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-solid fa-square-poll-vertical text-2xl mr-3"></i>Market
+                                Overview</a>
+                        </li>
+                        <li>
+                            <a href="./marketData.html"><i
+                                    class="fa-solid fa-magnifying-glass-chart text-2xl mr-3"></i>Market Data</a>
+                        </li>
+                    </ul>
+
+                    <!-- Sign Up / Login div -->
+                    <div class="signup-login-container">
+                        <a href="./signup.html" id="signup">Sign Up</a>
+                        <a href="./login.html" id="login">Log In</a>
+                    </div>
+
+                    <!-- Setting Options -->
+                    <ul class="w-[90%] m-auto text-white">
+                        <li>
+                            <h5><i class="fa-solid fa-language mr-3 text-2xl"></i>English</h5>
+                        </li>
+                        <li>
+                            <h5><i class="fa-solid fa-coins mr-3 text-2xl"></i>Currency</h5>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <h5><i class="fa-solid fa-circle-half-stroke mr-3 text-2xl"></i>Dark Mode</h5><button
+                                id="dark-switch"><i class="fa-solid fa-moon text-3xl" id="mode-btn"></i></button>
+                        </li>
+                        <li>
+                            <h5><i class="fa-regular fa-circle-down mr-3 text-2xl"></i>Download App</h5>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+    <!-- Deposite main section -->
+    <main>
+        <h1 class="text-5xl my-5">Deposit</h1>
+
+        <!-- Sub Container -->
+        <div class="main-container">
+            <!-- Processing div -->
+            <form action="" method="post">
+                <div class="sub-container">
+                    <ol class="list-decimal text-2xl">
+                        <li>
+                            <h3 class="text-2xl mb-5">Select Coin/ Token</h3>
+                            <select name="coin-select" id="coin-select" class="coin-selection">
+                                <option value="BTC">BTC</option>
+                                <option value="ETH">ETH</option>
+                                <option value="USDT">USDT</option>
+                                <option value="USDC">USDC</option>
+                                <option value="BND">BND</option>
+                                <option value="DOGE">DOGE</option>
+                                <option value="TRX">TRX</option>
+                                <option value="DOT">DOT</option>
+                                <option value="ADA">ADA</option>
+                                <option value="BSV">BSV</option>
+                                <option value="XRP">XRP</option>
+                                <option value="LTC">LTC</option>
+                                <option value="EOS">EOS</option>
+                                <option value="BCH">BCH</option>
+                                <option value="DF">DF</option>
+                                <option value="QTUM">QTUM</option>
+                                <option value="IOTA">IOTA</option>
+                                <option value="NEO">NEO</option>
+                                <option value="NAS">NAS</option>
+                                <option value="ELA">ELA</option>
+                                <option value="SNT">SNT</option>
+                                <option value="WICC">WICC</option>
+                            </select>
+                        </li>
+                        <br>
+                        <li>
+                            <h3 class="text-2xl my-5">Generate Deposit Address</h3>
+                            <p class="text-[18px]">Select Network</p>
+
+                            <!-- Input section -->
+                            <div class="input-section">
+                                <!-- For showing selected coin -->
+                                <h3 class="selected-coin flex items-center gap-2 bg-grey-custom w-[300px]">
+                                    <img src="./assets/images/BTC.png" class="w-8" alt="BTC">Bitcoin
+                                </h3>
+
+                                <!-- For input amount -->
+                                <input type="number" class="bg-grey-custom" id="coin-amount" placeholder="Enter amount">
+
+                                <input type="file" accept=".jpeg,.jpg,.png,.heic" id="file-upload"
+                                    onchange="showUploadedFile()" hidden>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <br><br>
+                <input type="submit" class="text-2xl req-btn" value="Request">
+
+            </form>
+
+            <!-- File Upload -->
+            <div class="card">
+                <h3>Upload Files</h3>
+                <div class="drop_box" id="drop-box">
+                    <header>
+                        <h4>Select File here to verify.</h4>
+                    </header>
+                    <p>Files Supported: .JPEG, .JPG, .PNG, .HEIC</p>
+                    <button class="btn" id="upload-btn">Choose File</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <br><br><br>
+    <!-- Transaction History -->
+    <section class="transaction-history">
+        <h1 class="text-3xl">Transaction History</h1>
+        <button type="submit" class="bg-red-400 p-2 rounded-md text-white my-3" name="clear_record"
+            onclick="return confirm('Are you sure you want to clear your transaction history?');">Clear
+            Record</button>
+        <br>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th class="rounded-l-md">Action</th>
+                    <th>Coin type</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Admin Note</th>
+                    <th class="rounded-r-md">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr>
+
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr>
+
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <!-- Script functions -->
+    <script src="./js/dropdownScript.js"></script> <!-- drop down btn script -->
+
+    <script>
+        $('#upload-btn').click(function () {
+            $('#file-upload').click();
+        });
+    </script>
+
+</body>
+
+</html>

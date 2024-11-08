@@ -29,10 +29,6 @@ $recordsResult = $conn->query($recordsSql);
 
 ?>
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -142,13 +138,13 @@ $recordsResult = $conn->query($recordsSql);
             </div>
 
             <br>
-            <img src="./assets/images/transfer.png" alt="Exchange icon" class="w-10 m-auto cursor-pointer">
+            <img src="./assets/images/transfer.png" alt="Exchange icon" class="w-10 m-auto cursor-pointer" onclick="swapping()">
             <br>
 
             <!-- To coin -->
             <div class="to-coin-div">
                 <label>To Coin:</label>
-                <select name="to_coin" required>
+                <select name="to_coin" id="to_coin" required>
                     <option value="BTC">BTC</option>
                     <option value="ETH">ETH</option>
                     <option value="USDT">USDT</option>
@@ -198,26 +194,52 @@ $recordsResult = $conn->query($recordsSql);
                     <th class="rounded-r-xl">Exchanged At</th>
                 </tr>
             </thead>
+            <tbody>
+                <?php if ($recordsResult->num_rows > 0): ?>
+                <?php while ($record = $recordsResult->fetch_assoc()): ?>
+                <tr>
+                    <td>
+                        <?php echo $record['from_coin']; ?>
+                    </td>
+                    <td>
+                        <?php echo $record['to_coin']; ?>
+                    </td>
+                    <td>
+                        <?php echo $record['from_amount']; ?>
+                    </td>
+                    <td>
+                        <?php echo $record['to_amount']; ?>
+                    </td>
+                    <td>
+                        <?php echo $record['rate']; ?>
+                    </td>
+                    <td>
+                        <?php echo $record['transaction_date']; ?>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+                <?php else: ?>
+                <tr>
+                    <td colspan="6">No exchange records found.</td>
+                </tr>
+                <?php endif; ?>
+            </tbody>
         </table>
     </div>
 
-    <?php if ($recordsResult->num_rows > 0): ?>
-        <?php while ($record = $recordsResult->fetch_assoc()): ?>
-            <tr>
-                <td><?php echo $record['from_coin']; ?></td>
-                <td><?php echo $record['to_coin']; ?></td>
-                <td><?php echo $record['from_amount']; ?></td>
-                <td><?php echo $record['to_amount']; ?></td>
-                <td><?php echo $record['rate']; ?></td>
-                <td><?php echo $record['transaction_date']; ?></td>
-            </tr>
-        <?php endwhile; ?>
-    <?php else: ?>
-        <tr>
-            <td colspan="6">No exchange records found.</td>
-        </tr>
-    <?php endif; ?>
 
+    <!-- Swapping Function -->
+    <script src="./js/dropdownScript.js"></script> <!-- drop down btn script -->
+    <script>
+        function swapping() {
+            let fromValue = document.getElementById("from_coin");
+            let toValue = document.getElementById("to_coin");
+            let emptryCup;
+            emptryCup = fromValue.value;
+            fromValue.value = toValue.value;
+            toValue.value = emptryCup;
+        }
+    </script>
 </body>
 
 </html>

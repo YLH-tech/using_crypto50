@@ -25,7 +25,6 @@
 
     <!-- Style link -->
     <link id="themeStylesheet" rel="stylesheet" href="./style/mainStyle.css">
-    <link rel="stylesheet" href="./style/dropDownBtn.css">
     <link rel="stylesheet" href="./style/respDropdown.css"> <!-- For mobile phone dropdown button -->
     <!-- <link rel="stylesheet" href="./style/marketsStyle.css"> -->
 
@@ -243,7 +242,7 @@
         <!-- Right-side menu -->
         <div class="nav-subdiv">
             <a href="#">Log In</a>
-            <a href="#" class="signup-btn">Sign Up</a>
+            <a href="#"><span class="signup-btn">Sign Up</span></a>
 
             <!-- <img src="./assets/images/avatar.png" alt="Profile" class="profile-img"> -->
             <a href="#"><img src="./assets/images/profile.png" alt="profile" class="w-12 inline-block"></a>

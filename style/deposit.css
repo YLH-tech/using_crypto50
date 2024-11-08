@@ -1,0 +1,165 @@
+@import url(./commond_command.css);
+
+
+:root{
+    --align-measure--: 80%;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--body-color--);
+}
+
+/* Easy Uses */
+.bg-grey-custom {
+  background-color: var(--body-color--);
+}
+
+main {
+  width: var(--align-measure--);
+  margin: auto;
+}
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: var(--inner-section-color--);
+  padding: 50px;
+  border-radius: 20px;
+  gap: 20px;
+}
+form{
+    width: 50%;
+}
+.coin-selection {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--body-color--);
+  border: 1px solid var(--iconic-color--);
+  border-radius: 10px;
+}
+.input-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.selected-coin {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid var(--iconic-color--);
+  border-radius: 10px;
+}
+#coin-amount {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--iconic-color--);
+  border-radius: 10px;
+}
+.req-btn{
+    background-color: var(--iconic-color--);
+    color: var(--dark-font-color--);
+    padding: 5px 20px;
+    border-radius: 10px
+}
+
+/* File Upload */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 500px;
+  height: 100%;
+  background-color: #ffffff;
+  padding: 10px 30px 40px;
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.drop_box {
+  margin: 10px 0;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 3px dotted #a3a3a3;
+  border-radius: 5px;
+}
+
+.drop_box h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2e2e2e;
+}
+
+.drop_box p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #a3a3a3;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: #005af0;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #005af0;
+  padding: 10px 20px;
+  border: none;
+  outline: 1px solid #010101;
+}
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+
+
+/* Transaction History Table */
+.transaction-history{
+    width: var(--align-measure--);
+    margin: auto;
+}
+.transaction-history table{
+    width: 100%;
+    background-color: var(--inner-section-color--);
+    border-radius: 10px;
+}
+.transaction-history table th{
+    height: 50px;
+    background-color: var(--secondary-font-color--);
+    border: 1px solid var(--body-color--);
+}
+.transaction-history table td{
+    border: 1px solid var(--secondary-font-color--);
+    height: 30px;
+    padding: 10px;
+}

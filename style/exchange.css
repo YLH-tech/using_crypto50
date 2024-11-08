@@ -8,10 +8,10 @@
     color: var(--secondary-font-color--);
 }
 body{
-    background-color: rgba(213, 213, 213, 0.495);
+    color: var(--body-color--);
 }
 .main-container{
-    background-color: #ffffff;
+    background-color: var(--inner-section-color--);
     width: 60%;
     margin: 50px auto;
     padding: 50px;
