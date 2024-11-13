@@ -33,7 +33,7 @@ main {
 form{
     width: 50%;
 }
-.coin-selection {
+.data-inputs {
   width: 100%;
   padding: 10px;
   background-color: var(--body-color--);
@@ -51,6 +51,9 @@ form{
   padding: 10px;
   border: 1px solid var(--iconic-color--);
   border-radius: 10px;
+}
+.all-btn{
+  color: var(--iconic-color--);
 }
 #coin-amount {
   width: 100%;
@@ -162,4 +165,25 @@ form{
     border: 1px solid var(--secondary-font-color--);
     height: 30px;
     padding: 10px;
+}
+
+
+/* =================== */
+/* Withdraw */
+/* =================== */
+
+.showing-amount{
+  width: 500px;
+  line-height: 50px;
+  background-color: var(--body-color--);
+  padding: 30px;
+  border-radius: 10px;
+
+}
+.showing-amount h1{
+  font-size: 20px;
+  display: inline-block;
+}
+.showing-amount span{
+  font-size: 20px;
 }

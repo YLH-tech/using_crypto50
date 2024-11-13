@@ -1,0 +1,26 @@
+@import url(./commond_command.css);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.main-container{
+    width: 98%;
+    margin: auto;
+    padding: 20px;
+}
+.balance-info-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.balance-table{
+    width: 100%;
+}
+.table-row{
+    border-bottom: 1px solid var(--secondary-font-color--);
+}
+.table-row td{
+    padding: 20px 0;
+}

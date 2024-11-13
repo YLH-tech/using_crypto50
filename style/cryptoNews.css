@@ -1,0 +1,191 @@
+@import url(./commond_command.css);
+
+body {
+  background-color: var(--body-color--);
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Breakings */
+.crypto-news {
+  padding: 20px;
+  border-radius: 10px;
+}
+#news-container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  margin: 0 auto; /* Center the container */
+}
+#news-title {
+  background-color: #f8f9fa; /* Match the background color of the container */
+  padding: 10px; /* Space around title */
+  border-bottom: 1px solid #e9ecef; /* Add a bottom border for separation */
+}
+h2 {
+  font-size: 24px; /* Adjust font size for the title */
+  margin: 0; /* Remove margin to keep it tight */
+  color: #333; /* Darker color for better readability */
+}
+#news-scroll-area {
+}
+#news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Newest news from the top */
+}
+#news-list li {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding: 10px; /* Add padding for better spacing */
+  border: none; /* No borders */
+  animation: riseUp 1s ease-out forwards;
+  opacity: 0;
+}
+#news-list li a {
+  color: #007bff;
+  text-decoration: none;
+}
+#news-list li a:hover {
+  text-decoration: underline;
+}
+
+/* Animation for rising news */
+@keyframes riseUp {
+  from {
+    transform: translateY(-20px); /* Start slightly above */
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* For max 1200px width laptops/ tablets */
+@media screen and (max-width: 1300px) {
+  h2 {
+    font-size: 14px;
+  }
+  #news-list li {
+    font-size: 14px;
+  }
+  #news-scroll-area {
+    max-height: 455px;
+  }
+}
+
+/* For max 1000px laptops/ tablets */
+@media screen and (max-width: 1000px) {
+  .more-button {
+    padding: 5px 10px;
+  }
+  .ranking-breaking {
+    height: 600px;
+  }
+  #crypto-table thead th {
+    font-size: 8x;
+  }
+  .crypto-ranking {
+    height: 100%;
+  }
+  .crypto-news {
+    height: 100%;
+  }
+  #news-scroll-area {
+    max-height: 425px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ranking-breaking {
+    display: block;
+    height: fit-content;
+    width: 100%;
+  }
+  .crypto-ranking {
+    width: 100%;
+    margin: 30px 0;
+  }
+  .crypto-news {
+    width: 100%;
+    margin: 30px 0;
+  }
+}
+
+/* Tables */
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--body-color--);
+}
+.market-data-container {
+  gap: 30px;
+}
+.group-div {
+  width: 65%;
+}
+.first-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+.second-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+}
+thead,
+tbody tr {
+  table-layout: fixed;
+  display: table;
+  width: 100%;
+  font-size: 14px;
+}
+.table-container {
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+}
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content-container h2 {
+  font-size: 20px;
+}
+.more-icon {
+  color: var(--iconic-color--);
+}
+th {
+  padding-bottom: 20px;
+  color: var(--secondary-font-color--);
+}
+
+.table-body {
+  display: block;
+}
+td {
+  padding: 10px 0;
+}
+.crypto-name {
+  width: 40%;
+}
+/* Coin Style */
+.coin-logo {
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+}

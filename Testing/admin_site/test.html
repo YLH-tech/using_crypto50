@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Link to Font Awesome for the eye icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Style for password input with icon */
+        .password-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        #password {
+            width: 100%;
+            padding-right: 40px; /* Make room for the icon */
+        }
+
+        /* Style for the eye icon */
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+        }
+
+        .toggle-password:hover {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="login.php" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <div class="password-container">
+            <input type="password" id="password" name="password" required>
+            <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+        </div>
+        <br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function () {
+            // Toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Toggle the eye / eye-slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+</body>
+</html>

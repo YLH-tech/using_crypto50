@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Table 1: Market Cap -->
+    <div class="table-container marketcap">
+        <!-- heading -->
+        <div class="content-container">
+            <h2>Market Cap</h2>
+            <a href="#" class="more-icon">More <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+        <hr class="my-3">
+        <!-- Data table -->
+        <table id="marketcap-table" class="tables">
+            <thead>
+                <tr>
+                    <th class="text-left crypto-name">Coin</th>
+                    <th class="text-right">Price (USD)</th>
+                    <th class="text-right">24H Change</th>
+                    <th class="text-right">Market Cap</th>
+                </tr>
+            </thead>
+            <tbody id="marketcap-table-body" class="table-body marketcap-body">
+                <!-- Data will appear linking with marketsScript.js -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Table 2: Top Gainers -->
+    <div class="table-container">
+        <!-- heading -->
+        <div class="content-container">
+            <h2>Top Gainers</h2>
+            <a href="#" class="more-icon">More <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+        <hr class="my-3">
+        <!-- Data table -->
+        <table id="gainers-table" class="tables">
+            <thead>
+                <tr>
+                    <th class="text-left crypto-name">Coin</th>
+                    <th class="text-right">Price (USD)</th>
+                    <th class="text-right">24H Change</th>
+                    <th class="text-right">Market Cap</th>
+                </tr>
+            </thead>
+            <tbody id="gainers-table-body" class="table-body">
+                <!-- Data will appear linking with marketsScript.js -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Table 3: Top Losers -->
+    <div class="table-container">
+        <!-- heading -->
+        <div class="content-container">
+            <h2>Top Losers</h2>
+            <a href="#" class="more-icon">More <i class="fa-solid fa-angle-right"></i></a>
+        </div>
+        <hr class="my-3">
+        <!-- Data table -->
+        <table id="losers-table" class="tables">
+            <thead>
+                <tr>
+                    <th class="text-left crypto-name">Coin</th>
+                    <th class="text-right">Price (USD)</th>
+                    <th class="text-right">24H Change</th>
+                    <th class="text-right">Market Cap</th>
+                </tr>
+            </thead>
+            <tbody id="loser-table-body" class="table-body">
+                <!-- Data will appear linking with marketsScript.js -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../js/marketsScript.js"></script>
+</body>
+</html>

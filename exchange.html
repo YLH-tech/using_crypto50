@@ -1,34 +1,3 @@
-<?php
-session_start();
-include 'db_connection.php';
-
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
-    header("Location: login.php");
-    exit();
-}
-
-$userId = $_SESSION['user_id'];
-
-if (isset($_POST['clear_record'])) {
-    $clear_stmt = $conn->prepare("DELETE FROM transactions_exchange WHERE user_id = ?");
-    $clear_stmt->execute([$userId]); // Use $userId instead of $user_id
-    header("Location: dashboard.php"); // Refresh the page
-    exit();
-}
-
-
-// Fetch user's current balances for displaying
-$sql = "SELECT BTC, ETH, USDT, BND, USDC, DOGE, TRX, DOT, ADA, BSV, XRP, LTC, EOS, BCH, DF, QTUM, IOTA, NEO, NAS, ELA, SNT, WICC FROM user_balances WHERE user_id = $userId";
-$balanceResult = $conn->query($sql);
-$balance = $balanceResult->fetch_assoc();
-
-// Fetch user's exchange records
-$recordsSql = "SELECT from_coin, to_coin, from_amount, to_amount, rate, transaction_date 
-               FROM transactions_exchange WHERE user_id = $userId ORDER BY transaction_date DESC";
-$recordsResult = $conn->query($recordsSql);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +34,7 @@ $recordsResult = $conn->query($recordsSql);
 
 <body>
 
-    <h2>Your Balance</h2>
+    <!-- <h2>Your Balance</h2>
     <p>BTC: <span id="BTC_balance"><?php echo $balance['BTC']; ?></span></p>
 <p>ETH: <span id="ETH_balance"><?php echo $balance['ETH']; ?></span></p>
 <p>USDT: <span id="USDT_balance"><?php echo $balance['USDT']; ?></span></p>
@@ -88,7 +57,7 @@ $recordsResult = $conn->query($recordsSql);
 <p>NAS: <span id="NAS_balance"><?php echo $balance['NAS']; ?></span></p>
 <p>ELA: <span id="ELA_balance"><?php echo $balance['ELA']; ?></span></p>
 <p>SNT: <span id="SNT_balance"><?php echo $balance['SNT']; ?></span></p>
-<p>WICC: <span id="WICC_balance"><?php echo $balance['WICC']; ?></span></p>
+<p>WICC: <span id="WICC_balance"><?php echo $balance['WICC']; ?></span></p> -->
 
     <br><br>
     <h2 class="text-center text-4xl">Exchange Coins</h2>
@@ -195,34 +164,7 @@ $recordsResult = $conn->query($recordsSql);
                 </tr>
             </thead>
             <tbody>
-                <?php if ($recordsResult->num_rows > 0): ?>
-                <?php while ($record = $recordsResult->fetch_assoc()): ?>
-                <tr>
-                    <td>
-                        <?php echo $record['from_coin']; ?>
-                    </td>
-                    <td>
-                        <?php echo $record['to_coin']; ?>
-                    </td>
-                    <td>
-                        <?php echo $record['from_amount']; ?>
-                    </td>
-                    <td>
-                        <?php echo $record['to_amount']; ?>
-                    </td>
-                    <td>
-                        <?php echo $record['rate']; ?>
-                    </td>
-                    <td>
-                        <?php echo $record['transaction_date']; ?>
-                    </td>
-                </tr>
-                <?php endwhile; ?>
-                <?php else: ?>
-                <tr>
-                    <td colspan="6">No exchange records found.</td>
-                </tr>
-                <?php endif; ?>
+               
             </tbody>
         </table>
     </div>

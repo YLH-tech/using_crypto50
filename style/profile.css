@@ -24,7 +24,8 @@ body{
 
 /* Side bar Navigation */
 nav{
-    width: 15%;
+    width: 20%;
+    padding-right: 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -76,6 +77,13 @@ nav a{
 }
 
 /* Personal Information */
+#myProfile-heading{
+    text-align: center;
+    padding: 10px 20px;
+    background-color: var(--iconic-color--);
+    border-radius: 40px;
+    color: var(--dark-font-color--);
+}
 .personal-info-container{
     border: 1px solid var(--secondary-font-color--);
     border-radius: 10px;

@@ -1,0 +1,68 @@
+@import url(commond_command.css);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Common Properties */
+.iconic-color{
+    color: var(--iconic-color--);
+}
+
+body{
+    background-color: var(--body-color--);
+}
+
+.main-container{
+    width: 80%;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+.main-container h1{
+    text-align: center;
+    font-size: 50px;
+}
+.info-container{
+    width: 600px;
+    display: block;
+    margin: auto;
+}
+.qr-container{
+    display: block;
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    padding: 30px;
+    box-sizing: border-box;
+}
+.qr-container p{
+    text-align: center;
+    color: var(--secondary-font-color--);
+}
+.qr-container img{
+    width: 200px;
+    margin: auto;
+    display: block;
+}
+.code-container{
+    line-height: 50px;
+}
+.code-container #wallet-code{
+    font-size: 20px;
+}
+.code-container button{
+    width: 100px;
+    height: 35px;
+    padding: 10p;
+    border-radius: 5px;
+    border: 0;
+    background-color: var(--iconic-color--);
+    color: var(--dark-font-color--);
+    margin: auto;
+    display: block;
+}

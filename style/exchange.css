@@ -8,7 +8,7 @@
     color: var(--secondary-font-color--);
 }
 body{
-    color: var(--body-color--);
+    background-color: var(--body-color--);
 }
 .main-container{
     background-color: var(--inner-section-color--);

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+
+    <!-- Style Links -->
+    <link rel="stylesheet" href="./style/userDashboard.css">
+    <link rel="stylesheet" href="./style/footer.css">
+
+    <!-- Fontawesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind CSS link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Balance Info Div -->
+        <div class="balance-info-container">
+            <!-- Amount Div -->
+            <div>
+                <h1 class="text-5xl font-bold">Custody Dashboard</h1>
+                <h2 class="text-4xl font-bold my-5">$1,000,000.00</h2>
+                <h4 class="text-[14px]">$123,45 (6.78%) <i class="fa-solid fa-arrow-trend-up"></i></h4>
+            </div>
+            <a href="./recordsHistory.html"><button class="py-2 px-8 bg-gray-300 rounded-3xl">View History</button></a>
+        </div>
+        <br><br>
+        <!-- Balances Details Container -->
+        <div class="balance-details-container">
+            <h1 class="text-2xl font-bold">Balances</h1>
+            <br>
+            <h2 class="text-1xl py-1 px-10 rounded-2xl bg-black w-fit text-gray-100">Crypto Balances</h2>
+            <br>
+            <!-- Balance Table -->
+            <table class="balance-table">
+                <thead>
+                    <tr class="text-right">
+                        <th class="text-left">Asset</th>
+                        <th>Balance</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Coin Datas -->
+                    <tr class="text-right table-row">
+                        <td class="text-left flex gap-3 items-center font-bold"><img src="./assets/images/BTC.png"
+                                alt="Coin Icon" class="w-10"> Bitcoin</td>
+                        <td>1,950.283 BTC</td>
+                        <td>$40,000.00</td>
+                        <td class="w-[25%]">
+                            <a href="./deposit.html"><button class="py-2 px-10 mx-1 bg-black text-gray-100 rounded-3xl">Deposit</button></a>
+                            <a href="./withdraw.html"><button class="py-2 px-10 mx-1 rounded-3xl bg-gray-200">Withdraw</button></a>
+                        </td>
+                    </tr>
+
+                    <tr class="text-right table-row">
+                        <td class="text-left flex gap-3 items-center font-bold"><img src="./assets/images/ETH.png"
+                                alt="Coin Icon" class="w-10"> Ethereum</td>
+                        <td>1,950.283 BTC</td>
+                        <td>$40,000.00</td>
+                        <td class="w-[25%]">
+                            <a href="./deposit.html"><button class="py-2 px-10 mx-1 bg-black text-gray-100 rounded-3xl">Deposit</button></a>
+                            <a href="./withdraw.html"><button class="py-2 px-10 mx-1 rounded-3xl bg-gray-200">Withdraw</button></a>
+                        </td>
+                    </tr>
+
+                    <tr class="text-right table-row">
+                        <td class="text-left flex gap-3 items-center font-bold"><img src="./assets/images/DOGE.png"
+                                alt="Coin Icon" class="w-10"> Doge Coin</td>
+                        <td>1,950.283 BTC</td>
+                        <td>$40,000.00</td>
+                        <td class="w-[25%]">
+                            <a href="./deposit.html"><button class="py-2 px-10 mx-1 bg-black text-gray-100 rounded-3xl">Deposit</button></a>
+                            <a href="./withdraw.html"><button class="py-2 px-10 mx-1 rounded-3xl bg-gray-200">Withdraw</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <a href="#" class="m-5 font-bold"><i class="fa-solid fa-plus"></i> Add new asset</a>
+        </div>
+    </main>
+
+     <!-- Footer -->
+     <footer>
+        <div class="align-margin footer-sec"> <!-- to align margin -->
+            <!-- Contact Icon Section -->
+            <div class="contact-container w-[30%] mb-5">
+                <span>
+                    <img src="#" alt="LOGO">
+                    <p>Making Crypto Trading Easier</p>
+                </span>
+
+                <!-- Icon Container -->
+                <span class="icon-container">
+                    <!-- Phone Contact -->
+                    <a href="#"><img src="./assets/images/phone-call.png" alt="Phone" class="contact-icons"></a>
+                    <!-- Telegram Account -->
+                    <a href="#"><img src="./assets/images/telegram.png" alt="Telegram" class="contact-icons"></a>
+                    <!-- Email -->
+                    <a href="#"><img src="./assets/images/gmail.png" alt="Email" class="contact-icons"></a>
+                    <p>© 2024-2024 CoinEx.com. All rights reserved.</p>
+                </span>
+            </div>
+
+            <!-- About -->
+            <ul>
+                <span class="gen-info-container">
+                    <h2 class="text-2xl font-bold mb-5" onclick="myFunction_gsm('sec1')">About</h2><i
+                        class="fa-solid fa-angle-right" id="right-arrow1"></i>
+                </span>
+                <span id="sec1">
+                    <li>About us</li>
+                    <li>Contact Us</li>
+                    <li>Terms of Service</li>
+                    <li>Privacy Policy</li>
+                    <li>Disclaimer</li>
+                    <li>About CET</li>
+                    <li>Asset Security</li>
+                    <li>Blog</li>
+                </span>
+            </ul>
+
+            <!-- Services -->
+            <ul class="">
+                <span class="gen-info-container">
+                    <h2 class="text-2xl font-bold mb-5" onclick="myFunction_gsm('sec2')">Services</h2>
+                    <i class="fa-solid fa-angle-right" id="right-arrow2"></i>
+                </span>
+                <!-- First Coloum -->
+                <span id="sec2">
+                    <li>Market Maker</li>
+                    <li>Broker</li>
+                    <li>Referral Reward</li>
+                    <li>Ambassador</li>
+                    <li>VIP</li>
+                    <li>Partner</li>
+                    <li>Creator Program</li>
+                </span>
+
+                <!-- Second Coloum -->
+                <!-- <span>
+                    <li>Fees Standard</li>
+                    <li>Apply for Token Listing</li>
+                    <li>Crypto List</li>
+                    <li>API File</li>
+                    <li>BI Download</li>
+                    <li>Proof of Reserve</li>
+                    <li>Historical Market Data</li>
+                </span> -->
+            </ul>
+
+            <!-- Support -->
+            <ul>
+                <span class="gen-info-container">
+                    <h2 class="text-2xl font-bold mb-5" onclick="myFunction_gsm('sec3')">Support</h2>
+                    <i class="fa-solid fa-angle-right" id="right-arrow3"></i>
+                </span>
+                <span id="sec3">
+                    <li>Academy</li>
+                    <li>Help Center</li>
+                    <li>Announcements</li>
+                    <li>Contact Support</li>
+                    <li>ST Alert</li>
+                    <li>Law Enforcement</li>
+                    <li>Official Verification</li>
+                </span>
+            </ul>
+        </div>
+        <!-- Footer baseline (Second Container)-->
+        <div class="footer-baseline">
+            <span class="align-margin flex justify-between leading-[50px] text-white">
+                <h3>2024-10-15 14:49</h3>
+                <h3>24H Value : </h3>
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>

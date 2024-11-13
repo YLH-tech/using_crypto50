@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw</title>
+
+    <!-- Style link -->
+    <link rel="stylesheet" href="./style/deposit_withdraw.css">
+
+    <!-- Tailwind CSS link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <!-- Withdraw main section -->
+    <main>
+        <h1 class="text-5xl my-5">Withdraw</h1>
+
+        <!-- Sub Container -->
+        <div class="main-container">
+            <!-- Processing div -->
+            <form action="" method="post">
+                <div class="sub-container">
+                    <ol class="list-decimal text-2xl">
+                        <li>
+                            <label for="coin-select" class="text-2xl">Select Coin/ Token</label>
+                            <br>
+                            <select name="coin-select" id="coin-select" class="data-inputs">
+                                <option value="BTC">BTC</option>
+                                <option value="ETH">ETH</option>
+                                <option value="USDT">USDT</option>
+                                <option value="USDC">USDC</option>
+                                <option value="BND">BND</option>
+                                <option value="DOGE">DOGE</option>
+                                <option value="TRX">TRX</option>
+                                <option value="DOT">DOT</option>
+                                <option value="ADA">ADA</option>
+                                <option value="BSV">BSV</option>
+                                <option value="XRP">XRP</option>
+                                <option value="LTC">LTC</option>
+                                <option value="EOS">EOS</option>
+                                <option value="BCH">BCH</option>
+                                <option value="DF">DF</option>
+                                <option value="QTUM">QTUM</option>
+                                <option value="IOTA">IOTA</option>
+                                <option value="NEO">NEO</option>
+                                <option value="NAS">NAS</option>
+                                <option value="ELA">ELA</option>
+                                <option value="SNT">SNT</option>
+                                <option value="WICC">WICC</option>
+                            </select>
+                        </li>
+                        <br>
+                        <li>  
+                            <label for="wallet-add" class="text-2xl">Wallet Address</label>
+                            <br>
+                            <input type="text" id="wallet-add" class="data-inputs" placeholder="Enter wallet address">
+                        </li>
+                        <br>
+                        <li>
+                            <h3 class="text-2xl">Withdraw Amount</h3>
+                            <p class="text-[18px]">Select Network</p>
+
+                            <!-- Input section -->
+                            <div class="input-section">
+                                <!-- For showing selected coin -->
+                                <h3 class="selected-coin flex items-center gap-2 bg-grey-custom w-[300px]">
+                                    <img src="./assets/images/BTC.png" class="w-8 dynamic-image" alt="BTC">Bitcoin
+                                </h3>
+
+                                <!-- For input amount -->
+                                <input type="number" class="bg-grey-custom" id="coin-amount" placeholder="Enter amount">
+
+                                <button class="all-btn">All</button>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <br><br>
+                <input type="submit" class="text-2xl req-btn" value="Request">
+            </form>
+
+            <!-- Showing amount -->
+            <div class="showing-amount">
+                <h1>Service Charge : </h1> <span id="service-charge">0.0</span>
+                <br>
+                <h1>Avaliable Amount : </h1> <span id="avaliable-amount">0.0</span>
+            </div>
+        </div>
+    </main>
+    <br><br><br>
+    <!-- Transaction History -->
+    <section class="transaction-history">
+        <h1 class="text-3xl">Withdraw History</h1>
+        <button type="submit" class="bg-red-400 p-2 rounded-md text-white my-3" name="clear_record"
+            onclick="return confirm('Are you sure you want to clear your transaction history?');">Clear
+            Record</button>
+        <br>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th class="rounded-l-md">Date</th>
+                    <th>Coin Amount</th>
+                    <th>Wallet Address</th>
+                    <th>Service Charge</th>
+                    <th>Net Amount</th>
+                    <th class="rounded-r-md">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr>
+
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr>
+
+                <tr>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                    <td>Hello</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+@import url(./commond_command.css);
+
+/* ========================= */
+/* Footer */
+/* ========================= */
+.align-margin{
+    width: 85%;
+    margin: auto;
+}
+
+footer{
+    background-color: #f2f2f2;
+    padding-top: 50px;
+}
+footer p{
+    color: var(--secondary-font-color--);
+}
+.footer-sec{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 300px;
+    margin: 40px auto;
+}
+.contact-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.gen-info-container .fa-angle-right{
+    display: none;
+}
+.icon-container a{
+    display: inline-block;
+    margin-right: 10px;
+}
+footer .contact-icons{
+    width: 30px;
+}
+.footer-sec ul{
+    line-height: 30px;
+}
+.footer-baseline{
+    height: 50px;
+    background-color: var(--iconic-color--);
+}
+
+@media screen and (max-width: 500px) {
+    .footer-sec{
+        display: block;
+        height: fit-content;
+    }
+    .icon-container{
+        display: none;
+    }
+    .gen-info-container{ 
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    .gen-info-container .fa-angle-right{
+        display: block;
+        font-size: 20px;
+        margin-right: 20px;
+        transition: 0.2s;
+    }
+    #sec1, #sec2, #sec3{
+        display: none;
+        margin: 0 30px;
+        color: var(--secondary-font-color--);
+    }
+}
