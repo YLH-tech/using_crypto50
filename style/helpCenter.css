@@ -1,0 +1,177 @@
+@import url(./commond_command.css);
+
+body {
+  background-color: var(--body-color--);
+}
+
+main {
+  width: 95%;
+  margin: auto;
+}
+
+/* ========================= */
+/* Intro Section */
+/* ========================= */
+.intro-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+.intro-container button {
+  padding: 10px 50px;
+  border-radius: 10px;
+  color: var(--dark-font-color--);
+  background-color: var(--iconic-color--);
+  transition: 0.2s;
+}
+.intro-container button:hover {
+  background-color: var(--secondary-font-color--);
+  color: #ffffff;
+  transition: 0.5s;
+}
+.intro-container img {
+  width: 600px;
+}
+.intro-content {
+  width: 40%;
+}
+.intro-content h1 {
+  color: var(--iconic-color--);
+}
+
+/* Contact Div */
+.contact-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.contact-sub-container {
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+.contact-sub-container h1 {
+  color: var(--iconic-color--);
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+.contact-sub-container p {
+  text-align: justify;
+  font-size: 20px;
+}
+.contact-div .contact-menus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.contact-menus img {
+  width: 50px;
+}
+
+/* ========================= */
+/* FAQs */
+/* ========================= */
+
+.faqs {
+  width: 90%;
+  margin: auto;
+}
+.faqs .blur-spot {
+  display: block;
+  width: 150px;
+  height: 80px;
+  position: absolute;
+  left: 41%;
+  background-color: #34fbe74b;
+  border-radius: 50%;
+  filter: blur(20px);
+  /* z-index: -1; */
+}
+.faqs .blur-bg {
+  width: 200px;
+  height: 74px;
+  background-color: #0093ff;
+  filter: blur(3px);
+  display: inline;
+  border-radius: 50%;
+  position: relative;
+}
+.faqs h1 {
+  font-size: 65px;
+  text-align: center;
+  font-family: var(--Poppins-font--);
+  margin: 50px;
+}
+.faqs .faqs-main-container {
+  display: flex;
+  justify-content: space-between;
+  font-family: "DM Sans", sans-serif;
+}
+.faqs .faqs-main-container .first-faq-div {
+  width: 645px;
+  height: fit-content;
+}
+.faqs .faqs-main-container .faqs-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+.faqs .faqs-main-container .faqs-container .faqs-content {
+  width: 553px;
+}
+.faqs .faqs-main-container .faqs-container .faqs-content h2 {
+  font-size: 18.69px;
+  margin: 20px 0;
+}
+.faqs .faqs-main-container .faqs-container .faqs-content p {
+  font-size: 15.29px;
+  margin: 15px 0;
+}
+.faqs .faqs-main-container .faqs-container i {
+  margin: 20px 0;
+}
+.faqs .faqs-main-container hr {
+  color: #00000050;
+}
+.faqs-text {
+  display: none;
+  opacity: 0;
+  transform: scaleY(0); /* Start with the element scaled down */
+  transform-origin: top; /* Set the origin for the transform */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.faqs-text.show {
+  display: block;
+  animation: popUp 0.5s forwards; /* Apply the animation */
+}
+
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: scaleY(0); /* Start with the element scaled down */
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1); /* Scale up to its original size */
+  }
+}
+
+@keyframes popDown {
+  0% {
+    opacity: 1;
+    transform: scaleY(1); /* Start with the element fully scaled */
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0); /* Scale down to hide */
+  }
+}

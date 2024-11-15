@@ -391,7 +391,6 @@
     </div>
 
     <!-- Footer  -->
-       <!-- Footer -->
     <footer>
         <div class="align-margin footer-sec"> <!-- to align margin -->
             <!-- Contact Icon Section -->
@@ -496,6 +495,41 @@
 
     <!-- Market Bar Graph Script -->
     <script src="./js/marketBarGraph.js"></script>
+
+    <!-- Clicking buttons for more infos in footer -->
+    <script>
+        function myFunction_gsm(sectionId) {
+            let sec = document.querySelectorAll('.sec');
+
+            sec.forEach(itm => {
+                if (itm.id !== sectionId) itm.style.display = 'none'
+            })
+            var x = document.getElementById(sectionId);
+            let arrow_no;
+            if (sectionId == 'sec1') {
+                arrow_no = 1;
+            } else if (sectionId == 'sec2') {
+                arrow_no = 2;
+            } else {
+                arrow_no = 3;
+            }
+            let right_arrow = document.getElementById(`right-arrow${arrow_no}`);
+
+
+            if (x.style.display === "block") {
+                x.style.display = "none";
+                right_arrow.style.rotate = "0deg";
+            } else {
+                x.style.display = "block";
+                right_arrow.style.rotate = "90deg";
+            }
+        }
+
+        let sec = document.querySelectorAll('.sec');
+        sec.forEach(itm => {
+            itm.style.display = 'none'
+        })
+    </script>
 </body>
 
 </html>
