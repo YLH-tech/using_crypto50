@@ -5,6 +5,10 @@
     margin: 0;
     padding: 0;
 }
+
+.show{
+    display: block;
+}
 main{
     width: 80%;
     height: 800px;
@@ -19,6 +23,7 @@ main{
     left: 50%;
     transform: translate(-50%,-50%);
     background-color: var(--iconic-color--);
+    z-index: -1;
 }
 img{
     width: 400px;
@@ -69,6 +74,10 @@ fieldset input{
     height: 40px;
     border-radius: 50px;
     border: 0;
+    background-color: rgba(174, 174, 174, 0.599);
+}
+.checked .active-btn{
+    
     background-color: var(--iconic-color--);
     color: var(--dark-font-color--);
 }
@@ -76,6 +85,45 @@ form .btn-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* Term and agreement */
+.term-agreement-container{
+    width: 60%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.term-agreement-container h1{
+    font-size: 30px;
+    color: var(--iconic-color--);
+}
+.term-agreement-container p{
+    font-size: 20px;
+    text-align: justify;
+}
+.btns{
+    padding: 10px 30px;
+    border: 0;
+    border-radius: 10px;
+}
+#agree{
+    background-color: var(--iconic-color--);
+    color: var(--dark-font-color--);
+}
+#agree:hover{
+    background-color: green;
+}
+#cancel{
+    background-color: var(--body-color--);
+}
+#cancel:hover{
+    background-color: red;
+    color: var(--dark-font-color--);
 }
 
 /* Common Properties */
