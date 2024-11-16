@@ -1,8 +1,7 @@
 @import url(./commond_command.css);
 
-
-:root{
-    --align-measure--: 80%;
+:root {
+  --align-measure--: 98%;
 }
 * {
   margin: 0;
@@ -21,8 +20,16 @@ main {
   width: var(--align-measure--);
   margin: auto;
 }
-.main-container {
+.main-section {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin: auto;
+}
+.main-container {
+  width: 60%;
+  /* display: flex; */
   justify-content: space-between;
   align-items: flex-start;
   background-color: var(--inner-section-color--);
@@ -30,8 +37,51 @@ main {
   border-radius: 20px;
   gap: 20px;
 }
-form{
-    width: 50%;
+.withdraw-container{
+  width: 60%;
+  display: block;
+}
+
+.coin-price {
+  width: 40%;
+  height: 500px;
+  background-color: var(--inner-section-color--);
+  padding: 20px;
+  border-radius: 20px;
+}
+.coin-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  text-indent: 0;
+}
+.coin-table thead,
+tbody,
+tr {
+  table-layout: fixed;
+  display: table;
+  width: 100%;
+}
+.coin-table thead tr th {
+  color: var(--secondary-font-color--);
+}
+.scrollable-area {
+  height: 80%;
+  display: block;
+  overflow: auto;
+}
+.coin-prices {
+  text-align: right;
+}
+.scrollable-area .coins {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.scrollable-area img {
+  width: 30px;
 }
 .data-inputs {
   width: 100%;
@@ -52,7 +102,7 @@ form{
   border: 1px solid var(--iconic-color--);
   border-radius: 10px;
 }
-.all-btn{
+.all-btn {
   color: var(--iconic-color--);
 }
 #coin-amount {
@@ -61,11 +111,11 @@ form{
   border: 1px solid var(--iconic-color--);
   border-radius: 10px;
 }
-.req-btn{
-    background-color: var(--iconic-color--);
-    color: var(--dark-font-color--);
-    padding: 5px 20px;
-    border-radius: 10px
+.req-btn {
+  background-color: var(--iconic-color--);
+  color: var(--dark-font-color--);
+  padding: 5px 20px;
+  border-radius: 10px;
 }
 
 /* File Upload */
@@ -145,45 +195,42 @@ form{
   border-radius: 4px;
 }
 
-
 /* Transaction History Table */
-.transaction-history{
-    width: var(--align-measure--);
-    margin: auto;
+.transaction-history {
+  width: var(--align-measure--);
+  margin: auto;
 }
-.transaction-history table{
-    width: 100%;
-    background-color: var(--inner-section-color--);
-    border-radius: 10px;
+.transaction-history table {
+  width: 100%;
+  background-color: var(--inner-section-color--);
+  border-radius: 10px;
 }
-.transaction-history table th{
-    height: 50px;
-    background-color: var(--secondary-font-color--);
-    border: 1px solid var(--body-color--);
+.transaction-history table th {
+  height: 50px;
+  background-color: var(--secondary-font-color--);
+  border: 1px solid var(--body-color--);
 }
-.transaction-history table td{
-    border: 1px solid var(--secondary-font-color--);
-    height: 30px;
-    padding: 10px;
+.transaction-history table td {
+  border: 1px solid var(--secondary-font-color--);
+  height: 30px;
+  padding: 10px;
 }
-
 
 /* =================== */
 /* Withdraw */
 /* =================== */
 
-.showing-amount{
+.showing-amount {
   width: 500px;
   line-height: 50px;
   background-color: var(--body-color--);
   padding: 30px;
   border-radius: 10px;
-
 }
-.showing-amount h1{
+.showing-amount h1 {
   font-size: 20px;
   display: inline-block;
 }
-.showing-amount span{
+.showing-amount span {
   font-size: 20px;
 }

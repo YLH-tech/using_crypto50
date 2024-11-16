@@ -9,6 +9,7 @@
     <!-- Style links -->
     <link rel="stylesheet" href="./style/navigation.css">
     <link rel="stylesheet" href="./style/deposit_withdraw.css">
+    <link rel="stylesheet" href="./style/footer.css">
 
     <!-- Tailwind CSS link -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -296,76 +297,231 @@
     <main>
         <h1 class="text-5xl my-5">Deposit</h1>
 
-        <!-- Sub Container -->
-        <div class="main-container">
-            <!-- Processing div -->
-            <form action="" method="post">
-                <div class="sub-container">
-                    <ol class="list-decimal text-2xl">
-                        <li>
-                            <h3 class="text-2xl mb-5">Select Coin/ Token</h3>
-                            <select name="coin-select" id="coin-select" class="data-inputs">
-                                <option value="BTC">BTC</option>
-                                <option value="ETH">ETH</option>
-                                <option value="USDT">USDT</option>
-                                <option value="USDC">USDC</option>
-                                <option value="BND">BND</option>
-                                <option value="DOGE">DOGE</option>
-                                <option value="TRX">TRX</option>
-                                <option value="DOT">DOT</option>
-                                <option value="ADA">ADA</option>
-                                <option value="BSV">BSV</option>
-                                <option value="XRP">XRP</option>
-                                <option value="LTC">LTC</option>
-                                <option value="EOS">EOS</option>
-                                <option value="BCH">BCH</option>
-                                <option value="DF">DF</option>
-                                <option value="QTUM">QTUM</option>
-                                <option value="IOTA">IOTA</option>
-                                <option value="NEO">NEO</option>
-                                <option value="NAS">NAS</option>
-                                <option value="ELA">ELA</option>
-                                <option value="SNT">SNT</option>
-                                <option value="WICC">WICC</option>
-                            </select>
-                        </li>
-                        <br>
-                        <li>
-                            <h3 class="text-2xl my-5">Generate Deposit Address</h3>
-                            <p class="text-[18px]">Select Network</p>
+        <div class="main-section">
+            <!-- Sub Container -->
+            <div class="main-container">
+                <ol class="list-decimal text-2xl">
+                    <!-- Processing div -->
+                    <form action="" method="post">
+                        <div class="sub-container">
+                            <li>
+                                <h3 class="text-2xl mb-5">Select Coin/ Token</h3>
+                                <select name="coin-select" id="coin-select" class="data-inputs">
+                                    <option value="BTC">BTC</option>
+                                    <option value="ETH">ETH</option>
+                                    <option value="USDT">USDT</option>
+                                    <option value="USDC">USDC</option>
+                                    <option value="BND">BND</option>
+                                    <option value="DOGE">DOGE</option>
+                                    <option value="TRX">TRX</option>
+                                    <option value="DOT">DOT</option>
+                                    <option value="ADA">ADA</option>
+                                    <option value="BSV">BSV</option>
+                                    <option value="XRP">XRP</option>
+                                    <option value="LTC">LTC</option>
+                                    <option value="EOS">EOS</option>
+                                    <option value="BCH">BCH</option>
+                                    <option value="DF">DF</option>
+                                    <option value="QTUM">QTUM</option>
+                                    <option value="IOTA">IOTA</option>
+                                    <option value="NEO">NEO</option>
+                                    <option value="NAS">NAS</option>
+                                    <option value="ELA">ELA</option>
+                                    <option value="SNT">SNT</option>
+                                    <option value="WICC">WICC</option>
+                                </select>
+                            </li>
+                            <br>
+                            <li>
+                                <h3 class="text-2xl my-5">Generate Deposit Address</h3>
+                                <p class="text-[18px]">Select Network</p>
 
-                            <!-- Input section -->
-                            <div class="input-section">
-                                <!-- For showing selected coin -->
-                                <h3 class="selected-coin flex items-center gap-2 bg-grey-custom w-[300px]">
-                                    <img src="./assets/images/BTC.png" class="w-8" alt="BTC">Bitcoin
-                                </h3>
+                                <!-- Input section -->
+                                <div class="input-section">
+                                    <!-- For showing selected coin -->
+                                    <h3 class="selected-coin flex items-center gap-2 bg-grey-custom w-[300px]">
+                                        <img src="./assets/images/BTC.png" class="w-8" alt="BTC">Bitcoin
+                                    </h3>
 
-                                <!-- For input amount -->
-                                <input type="number" class="bg-grey-custom" id="coin-amount" placeholder="Enter amount">
+                                    <!-- For input amount -->
+                                    <input type="number" class="bg-grey-custom" id="coin-amount"
+                                        placeholder="Enter amount" required>
 
-                                <input type="file" accept=".jpeg,.jpg,.png,.heic" id="file-upload"
-                                    onchange="showUploadedFile()" hidden>
+                                    <input type="file" accept=".jpeg,.jpg,.png,.heic" id="file-upload"
+                                        onchange="showUploadedFile()" hidden>
+                                </div>
+                            </li>
+                        </div>
+                        <br><br>
+                        <input type="submit" id="request-btn" class="text-2xl req-btn" value="Request" hidden>
+                    </form>
+
+                    <li>
+                        <!-- File Upload -->
+                        <div class="card">
+                            <h3>Upload Files</h3>
+                            <div class="drop_box" id="drop-box">
+                                <header>
+                                    <h4>Select File here to verify.</h4>
+                                </header>
+                                <p>Files Supported: .JPEG, .JPG, .PNG, .HEIC</p>
+                                <button class="btn" id="upload-btn">Choose File</button>
                             </div>
-                        </li>
-                    </ol>
-                </div>
-                <br><br>
-                <input type="submit" class="text-2xl req-btn" value="Request">
+                        </div>
+                    </li>
+                    <br>
+                    <button class="req-btn" onclick="document.getElementById('request-btn').click();">Request</button>
+                </ol>
+            </div>
 
-            </form>
+            <!-- Your Balance -->
+            <div class="coin-price" style="height: 845px;">
+                <h2 class="text-4xl">Your Balance</h2>
+                <br>
+                <!-- Table for coin price -->
+                <table class="coin-table">
+                    <thead>
+                        <tr>
+                            <th class="text-left text-2xl">Coin</th>
+                            <th class="text-right text-2xl">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody class="scrollable-area h-[88%]">
+                        <tr>
+                            <td class="coins"><img src="./assets/images/BTC.png" alt="BTC icon"> BTC: </td>
+                            <td class="coin-prices" id="BTC_balance">
+                                <?php echo $balance['BTC']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/ETH.png" alt="ETH icon"> ETH: </td>
+                            <td class="coin-prices" id="ETH_balance">
+                                <?php echo $balance['ETH']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="USDT icon"> USDT: </td>
+                            <td class="coin-prices" id="USDT_balance">
+                                <?php echo $balance['USDT']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="USDC icon"> USDC: </td>
+                            <td class="coin-prices" id="USDC_balance">
+                                <?php echo $balance['USDC']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="BND icon"> BND: </td>
+                            <td class="coin-prices" id="BND_balance">
+                                <?php echo $balance['BND']; ?>
+                            </td>
+                        </tr>
 
-            <!-- File Upload -->
-            <div class="card">
-                <h3>Upload Files</h3>
-                <div class="drop_box" id="drop-box">
-                    <header>
-                        <h4>Select File here to verify.</h4>
-                    </header>
-                    <p>Files Supported: .JPEG, .JPG, .PNG, .HEIC</p>
-                    <button class="btn" id="upload-btn">Choose File</button>
-                </div>
-
+                        <tr>
+                            <td class="coins"><img src="./assets/images/DOGE.png" alt="DOGE icon"> DOGE: </td>
+                            <td class="coin-prices" id="DOGE_balance">
+                                <?php echo $balance['DOGE']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/TRX.png" alt="TRX icon"> TRX: </td>
+                            <td class="coin-prices" id="TRX_balance">
+                                <?php echo $balance['TRX']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/DOT.png" alt="DOT icon"> DOT: </td>
+                            <td class="coin-prices" id="DOT_balance">
+                                <?php echo $balance['DOT']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/ADA.png" alt="ADA icon"> ADA: </td>
+                            <td class="coin-prices" id="ADA_balance">
+                                <?php echo $balance['ADA']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="BSV icon"> BSV: </td>
+                            <td class="coin-prices" id="BSV_balance">
+                                <?php echo $balance['BSV']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/XRP.png" alt="XRP icon"> XRP: </td>
+                            <td class="coin-prices" id="XRP_balance">
+                                <?php echo $balance['XRP']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/LTC.png" alt="LTC icon"> LTC: </td>
+                            <td class="coin-prices" id="LTC_balance">
+                                <?php echo $balance['LTC']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/EOS.png" alt="EOS icon"> EOS: </td>
+                            <td class="coin-prices" id="EOS_balance">
+                                <?php echo $balance['EOS']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/BCH.png" alt="BCH icon"> BCH: </td>
+                            <td class="coin-prices" id="BCH_balance">
+                                <?php echo $balance['BCH']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="DF icon"> DF: </td>
+                            <td class="coin-prices" id="DF_balance">
+                                <?php echo $balance['DF']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="QTUM icon"> QTUM: </td>
+                            <td class="coin-prices" id="QTUM_balance">
+                                <?php echo $balance['QTUM']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="IOTA icon"> IOTA: </td>
+                            <td class="coin-prices" id="IOTA_balance">
+                                <?php echo $balance['IOTA']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/NEO.png" alt="NEO icon"> NEO: </td>
+                            <td class="coin-prices" id="NEO_balance">
+                                <?php echo $balance['NEO']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="NAS icon"> NAS: </td>
+                            <td class="coin-prices" id="NAS_balance">
+                                <?php echo $balance['NAS']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="ELA icon"> ELA: </td>
+                            <td class="coin-prices" id="ELA_balance">
+                                <?php echo $balance['ELA']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="SNT icon"> SNT: </td>
+                            <td class="coin-prices" id="SNT_balance">
+                                <?php echo $balance['SNT']; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="coins"><img src="./assets/images/" alt="WICC icon"> WICC: </td>
+                            <td class="coin-prices" id="WICC_balance">
+                                <?php echo $balance['WICC']; ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>
@@ -420,10 +576,141 @@
         </table>
     </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="align-margin footer-sec"> <!-- to align margin -->
+            <!-- Contact Icon Section -->
+            <div class="contact-container w-[30%] mb-5">
+                <span>
+                    <img src="#" alt="LOGO">
+                    <p>Making Crypto Trading Easier</p>
+                </span>
+
+                <!-- Icon Container -->
+                <span class="icon-container">
+                    <!-- Phone Contact -->
+                    <a href="#"><img src="./assets/images/phone-call.png" alt="Phone" class="contact-icons"></a>
+                    <!-- Telegram Account -->
+                    <a href="#"><img src="./assets/images/telegram.png" alt="Telegram" class="contact-icons"></a>
+                    <!-- Email -->
+                    <a href="#"><img src="./assets/images/gmail.png" alt="Email" class="contact-icons"></a>
+                    <p>© 2024-2024 CoinEx.com. All rights reserved.</p>
+                </span>
+            </div>
+
+            <!-- About -->
+            <ul>
+                <span class="gen-info-container">
+                    <h2 class="text-2xl font-bold mb-5" onclick="myFunction_gsm('sec1')">About</h2><i
+                        class="fa-solid fa-angle-right" id="right-arrow1"></i>
+                </span>
+                <span id="sec1">
+                    <li>About us</li>
+                    <li>Contact Us</li>
+                    <li>Terms of Service</li>
+                    <li>Privacy Policy</li>
+                    <li>Disclaimer</li>
+                    <li>About CET</li>
+                    <li>Asset Security</li>
+                    <li>Blog</li>
+                </span>
+            </ul>
+
+            <!-- Services -->
+            <ul class="">
+                <span class="gen-info-container">
+                    <h2 class="text-2xl font-bold mb-5" onclick="myFunction_gsm('sec2')">Services</h2>
+                    <i class="fa-solid fa-angle-right" id="right-arrow2"></i>
+                </span>
+                <!-- First Coloum -->
+                <span id="sec2">
+                    <li>Market Maker</li>
+                    <li>Broker</li>
+                    <li>Referral Reward</li>
+                    <li>Ambassador</li>
+                    <li>VIP</li>
+                    <li>Partner</li>
+                    <li>Creator Program</li>
+                </span>
+
+                <!-- Second Coloum -->
+                <!-- <span>
+                    <li>Fees Standard</li>
+                    <li>Apply for Token Listing</li>
+                    <li>Crypto List</li>
+                    <li>API File</li>
+                    <li>BI Download</li>
+                    <li>Proof of Reserve</li>
+                    <li>Historical Market Data</li>
+                </span> -->
+            </ul>
+
+            <!-- Support -->
+            <ul>
+                <span class="gen-info-container">
+                    <h2 class="text-2xl font-bold mb-5" onclick="myFunction_gsm('sec3')">Support</h2>
+                    <i class="fa-solid fa-angle-right" id="right-arrow3"></i>
+                </span>
+                <span id="sec3">
+                    <li>Academy</li>
+                    <li>Help Center</li>
+                    <li>Announcements</li>
+                    <li>Contact Support</li>
+                    <li>ST Alert</li>
+                    <li>Law Enforcement</li>
+                    <li>Official Verification</li>
+                </span>
+            </ul>
+        </div>
+        <!-- Footer baseline (Second Container)-->
+        <div class="footer-baseline">
+            <span class="align-margin flex justify-between leading-[50px] text-white">
+                <h3>2024-10-15 14:49</h3>
+                <h3>24H Value : </h3>
+            </span>
+        </div>
+    </footer>
+
 
     <!-- Script functions -->
     <script src="./js/dropdownScript.js"></script> <!-- drop down btn script -->
 
+    <!-- Clicking buttons for more infos in footer -->
+    <script>
+        function myFunction_gsm(sectionId) {
+            let sec = document.querySelectorAll('.sec');
+
+            sec.forEach(itm => {
+                if (itm.id !== sectionId) itm.style.display = 'none'
+            })
+            var x = document.getElementById(sectionId);
+            let arrow_no;
+            if (sectionId == 'sec1') {
+                arrow_no = 1;
+            } else if (sectionId == 'sec2') {
+                arrow_no = 2;
+            } else {
+                arrow_no = 3;
+            }
+            let right_arrow = document.getElementById(`right-arrow${arrow_no}`);
+
+
+            if (x.style.display === "block") {
+                x.style.display = "none";
+                right_arrow.style.rotate = "0deg";
+            } else {
+                x.style.display = "block";
+                right_arrow.style.rotate = "90deg";
+            }
+        }
+
+        let sec = document.querySelectorAll('.sec');
+        sec.forEach(itm => {
+            itm.style.display = 'none'
+        })
+    </script>
+
+    <!-- File uploading -->
     <script>
         $('#upload-btn').click(function () {
             $('#file-upload').click();

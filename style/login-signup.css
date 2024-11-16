@@ -75,6 +75,7 @@ fieldset input{
     border-radius: 50px;
     border: 0;
     background-color: rgba(174, 174, 174, 0.599);
+    cursor: pointer;
 }
 .checked .active-btn{
     
