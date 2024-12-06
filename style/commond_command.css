@@ -1,7 +1,7 @@
 :root{
 
     /* Light Mode */
-    --font-color-- : #000000;
+    --font-color-- : #1d1c1c;
     --iconic-color-- : #78B7D0;
     --secondary-font-color--: #B7B7B7;
     --entry-color--: rgb(241, 246, 244);
@@ -20,4 +20,8 @@
 
     /* Transition Duration */
     --transistion-time-- : 0.3s;
+}
+
+.web-logo{
+    width: 50px;
 }

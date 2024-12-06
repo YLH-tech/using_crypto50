@@ -37,6 +37,24 @@ main {
   border-radius: 20px;
   gap: 20px;
 }
+.qr-container .qr-img{
+  width: 200px;
+  margin: auto;
+}
+.qr-container .qr-explain{
+  text-align: center;
+  color: var(--secondary-font-color--);
+}
+.code-container{
+  width: 500px;
+  text-align: center;
+  font-size: 18px;
+  background-color: transparent;
+}
+.copy-btn{
+  background-color: transparent;
+  margin: auto;
+}
 .withdraw-container{
   width: 60%;
   display: block;
@@ -44,7 +62,7 @@ main {
 
 .coin-price {
   width: 40%;
-  height: 500px;
+  height: 650px;
   background-color: var(--inner-section-color--);
   padding: 20px;
   border-radius: 20px;
@@ -66,7 +84,7 @@ tr {
   color: var(--secondary-font-color--);
 }
 .scrollable-area {
-  height: 80%;
+  height: 500px;
   display: block;
   overflow: auto;
 }
@@ -132,7 +150,6 @@ tr {
 .card {
   border-radius: 10px;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
-  width: 500px;
   height: 100%;
   background-color: #ffffff;
   padding: 10px 30px 40px;

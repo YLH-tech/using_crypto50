@@ -1,0 +1,27 @@
+
+
+
+.pagination{
+    width: fit-content;
+    margin: auto;
+    display: block;
+    gap: 20px;
+    font-size: 30px;
+}
+.pagination a{
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.pagination a:hover{
+    background-color: var(--secondary-font-color--);
+}
+.datas{
+    display: none;
+}
+.datas:target{
+    display: block;
+}
+
+.selected{
+    background-color: var(--iconic-color--);
+}

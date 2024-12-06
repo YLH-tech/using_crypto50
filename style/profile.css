@@ -24,8 +24,7 @@ body{
 
 /* Side bar Navigation */
 nav{
-    width: 20%;
-    padding-right: 30px;
+    width: 15%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -43,6 +42,45 @@ nav a{
 /* Info Container */
 .info-container{
     width: 100%;
+}
+.name-chg-div, .info-chg-div{
+    width: 500px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 20px 40px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 1;
+    background-color: #ffffff;
+}
+.name-chg-div label, .info-chg-div label{
+    color: var(--iconic-color--);
+    font-size: 18px;
+    font-weight: bold;
+}
+.name-chg-div p, .info-chg-div p{
+    font-size: 12px;
+    color: var(--secondary-font-color--);
+}
+.change-input{
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--body-color--);
+    padding: 10px;
+}
+.name-chg-div span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.name-chg-div button{
+    background-color: var(--iconic-color--);
+    padding: 10px;
+    border-radius: 5px;
 }
 .name-container{
     display: flex;
@@ -77,13 +115,6 @@ nav a{
 }
 
 /* Personal Information */
-#myProfile-heading{
-    text-align: center;
-    padding: 10px 20px;
-    background-color: var(--iconic-color--);
-    border-radius: 40px;
-    color: var(--dark-font-color--);
-}
 .personal-info-container{
     border: 1px solid var(--secondary-font-color--);
     border-radius: 10px;

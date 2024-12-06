@@ -21,254 +21,237 @@
 </head>
 
 <body>
+   <!-- night mode script -->
+   <script src="./js/darkMode.js"></script>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <!-- Left-side menus -->
-        <div class="nav-subdiv">
+   <!-- Navigation Bar -->
+   <nav>
+       <!-- Left-side menus -->
+       <div class="nav-subdiv">
 
-            <!-- Web Logo -->
-            <img src="#" alt="LOGO" class="inline-block">
+           <!-- Web Logo -->
+           <div class="flex items-center">
+               <img src="./assets/images/bithumbnn_LOGO.png" alt="LOGO" class="web-logo">
+               <h1 class="text-2xl font-bold">Bithumbnn</h1>
+           </div>
 
-            <div id="non-mobile" hidden>
-                <!-- Buy Crypto -->
-                <div class="dropdown">
-                    <button class="dropbtn">Buy Crypto <i class="fa-solid fa-caret-down drop-down-arrow"></i></button>
-                    <div class="dropdown-content">
+           <div id="non-mobile" hidden>
+               <!-- Buy Crypto -->
+               <div class="dropdown">
+                   <button class="dropbtn">Buy Crypto <i class="fa-solid fa-caret-down drop-down-arrow"></i></button>
+                   <div class="dropdown-content">
 
-                        <!-- Deposit -->
-                        <a href="./deposit.html"><img src="./assets/images/deposit.png" alt="Deposit">
-                            <span>
-                                <h5>Deposit</h5>
-                                <p>Crypto deposit and your records</p>
-                            </span>
-                        </a>
+                       <!-- Deposit -->
+                       <a href="./CoinsDeposit.html"><img src="./assets/images/deposit.png" alt="Deposit">
+                           <span>
+                               <h5>Deposit</h5>
+                               <p>Crypto deposit and your records</p>
+                           </span>
+                       </a>
 
-                        <!-- Withdraw -->
-                        <a href="./withdraw.html"><img src="./assets/images/withdraw.png" alt="Withdraw">
-                            <span>
-                                <h5>Withdraw</h5>
-                                <p>Crypto withdraw and your records</p>
-                            </span>
-                        </a>
-                    </div>
-                </div>
+                       <!-- Withdraw -->
+                       <a href="./CoinsWithdraw.html"><img src="./assets/images/withdraw.png" alt="Withdraw">
+                           <span>
+                               <h5>Withdraw</h5>
+                               <p>Crypto withdraw and your records</p>
+                           </span>
+                       </a>
+                   </div>
+               </div>
 
-                <!-- Markets -->
-                <div class="dropdown">
-                    <button class="dropbtn">Markets <i class="fa-solid fa-caret-down drop-down-arrow"></i></button>
-                    <div class="dropdown-content">
+               <!-- Markets -->
+               <div class="dropdown">
+                   <button class="dropbtn">Markets <i class="fa-solid fa-caret-down drop-down-arrow"></i></button>
+                   <div class="dropdown-content">
 
-                        <!-- Market Overview -->
-                        <a href="#"><img src="./assets/images/market.png" alt="Market Overview">
-                            <span>
-                                <h5>Market Overview</h5>
-                                <p>Keep up with the latest crypto trends</p>
-                            </span>
-                        </a>
+                       <!-- Market Data -->
+                       <a href="./marketData.html"><img src="./assets/images/web-analytics.png" alt="Market Data">
+                           <span>
+                               <h5>Market Data</h5>
+                               <p>Capture market opportunities</p>
+                           </span>
+                       </a>
 
-                        <!-- Market Data -->
-                        <a href="./marketData.html"><img src="./assets/images/web-analytics.png" alt="Market Data">
-                            <span>
-                                <h5>Market Data</h5>
-                                <p>Capture market opportunities</p>
-                            </span>
-                        </a>
+                       <!-- Feed -->
+                       <a href="./cryptoNews.html"><img src="./assets/images/feed.png" alt="Feed">
+                           <span>
+                               <h5>Feed</h5>
+                               <p>Discover current trends</p>
+                           </span>
+                       </a>
 
-                        <!-- Feed -->
-                        <a href="./cryptoNews.html"><img src="./assets/images/feed.png" alt="Feed">
-                            <span>
-                                <h5>Feed</h5>
-                                <p>Discover current trends</p>
-                            </span>
-                        </a>
+                   </div>
+               </div>
 
-                        <!-- Insight -->
-                        <a href="#"><img src="./assets/images/evaluate.png" alt="Insight">
-                            <span>
-                                <h5>Insight</h5>
-                                <p>Stay ahead with news and analysis</p>
-                            </span>
-                        </a>
-                    </div>
-                </div>
+               <!-- Exchange -->
+               <div class="dropdown">
+                   <button class="dropbtn">Exchange <i class="fa-solid fa-caret-down drop-down-arrow"></i></button>
+                   <div class="dropdown-content">
+                       <!-- User Balance Profile -->
+                       <a href="#"><img src="./assets/images/tax-credit.png" alt="User Balance Profile Pic">
+                           <span>
+                               <h5>User Balance Profile</h5>
+                               <p>Your balance and your transaction history</p>
+                           </span>
+                       </a>
 
-                <!-- Exchange -->
-                <div class="dropdown">
-                    <button class="dropbtn">Exchange <i class="fa-solid fa-caret-down drop-down-arrow"></i></button>
-                    <div class="dropdown-content">
-                        <!-- User Balance Profile -->
-                        <a href="#"><img src="./assets/images/tax-credit.png" alt="User Balance Profile Pic">
-                            <span>
-                                <h5>User Balance Profile</h5>
-                                <p>Your balance and your transaction history</p>
-                            </span>
-                        </a>
+                       <!-- Coin Exchange -->
+                       <a href="./exchange.html"><img src="./assets/images/exchange (1).png" alt="Spot Trading">
+                           <span>
+                               <h5>Coin Exchange</h5>
+                               <p>Easily trade with any crypto combination</p>
+                           </span>
+                       </a>
 
-                        <!-- Coin Exchange -->
-                        <a href="./exchange.html"><img src="./assets/images/exchange (1).png" alt="Spot Trading">
-                            <span>
-                                <h5>Coin Exchange</h5>
-                                <p>Easily trade with any crypto combination</p>
-                            </span>
-                        </a>
+                       <!-- Trend Trading -->
+                       <a href="./php/Coins/btcusdt.php"><img src="./assets/images/technical-analysis.png"
+                               alt="Margin Trading">
+                           <span>
+                               <h5>Trend Trading</h5>
+                               <p>The most popular trading nowaday</p>
+                           </span>
+                       </a>
+                   </div>
+               </div>
 
-                        <!-- Trend Trading -->
-                        <a href="./php/Coins/btcusdt.php"><img src="./assets/images/technical-analysis.png"
-                                alt="Margin Trading">
-                            <span>
-                                <h5>Trend Trading</h5>
-                                <p>The most popular trading nowaday</p>
-                            </span>
-                        </a>
-                    </div>
-                </div>
+               <!-- More -->
+               <div class="dropdown">
+                   <button class="dropbtn">More <i class="fa-solid fa-caret-down drop-down-arrow"></i></button>
+                   <div class="dropdown-content">
+                       
+                       <!-- Help Center -->
+                       <a href="./helpCenter.html"><img src="./assets/images/help.png" alt="Help Center Pic">
+                           <span>
+                               <h5>Help Center</h5>
+                               <p>ready to help you</p>
+                           </span>
+                       </a>
 
-                <!-- More -->
-                <div class="dropdown">
-                    <button class="dropbtn">More <i class="fa-solid fa-caret-down drop-down-arrow"></i></button>
-                    <div class="dropdown-content">
-                        <!-- Help Center -->
-                        <a href="#"><img src="./assets/images/help.png" alt="Help Center Pic">
-                            <span>
-                                <h5>Help Center</h5>
-                                <p>ready to help you</p>
-                            </span>
-                        </a>
+                       <!-- Records History -->
+                       <a href="./records_history.html"><img src="./assets/images/clock.png" alt="History Pic">
+                           <span>
+                               <h5>Records History</h5>
+                               <p>Footprints are here</p>
+                           </span>
+                       </a>
 
-                        <!-- Wallet -->
-                        <a href="./wallet.html"><img src="./assets/images/wallet.png" alt="Wallet Pic">
-                            <span>
-                                <h5>Wallet</h5>
-                                <p>wallet qr or code, easy to use</p>
-                            </span>
-                        </a>
+                       <!-- Customer Service -->
+                       <a href="#"><img src="./assets/images/insurance-agent.png" alt="Customer Service">
+                           <span>
+                               <h5>Customer Service</h5>
+                               <p>Ready to help you</p>
+                           </span>
+                       </a>
+                   </div>
+               </div>
+           </div>
 
-                        <!-- Records History -->
-                        <a href="./records_history.html"><img src="./assets/images/clock.png" alt="History Pic">
-                            <span>
-                                <h5>Records History</h5>
-                                <p>Footprints are here</p>
-                            </span>
-                        </a>
+           <div class="resp-clickdown" id="mobile" hidden>
+               <button class="resp-clickbtn" onclick="resp_clickdown()"><i
+                       class="fa-solid fa-braille ml-3 text-1xl align-middle"></i></button>
+               <div id="resp-myDropdown" class="resp-clickdown-content">
+                   <!-- Academy -->
+                   <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                       <span>
+                           <h5>Academy</h5>
+                           <p>Master cryptocurrency knowledge</p>
+                       </span>
+                   </a>
 
-                        <!-- Customer Service -->
-                        <a href="#"><img src="./assets/images/insurance-agent.png" alt="Customer Service">
-                            <span>
-                                <h5>Customer Service</h5>
-                                <p>Ready to help you</p>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                   <!-- Academy -->
+                   <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                       <span>
+                           <h5>Academy</h5>
+                           <p>Master cryptocurrency knowledge</p>
+                       </span>
+                   </a>
 
-            <div class="resp-clickdown" id="mobile" hidden>
-                <button class="resp-clickbtn" onclick="resp_clickdown()"><i
-                        class="fa-solid fa-braille ml-3 text-1xl align-middle"></i></button>
-                <div id="resp-myDropdown" class="resp-clickdown-content">
-                    <!-- Academy -->
-                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
-                        <span>
-                            <h5>Academy</h5>
-                            <p>Master cryptocurrency knowledge</p>
-                        </span>
-                    </a>
+                   <!-- Academy -->
+                   <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                       <span>
+                           <h5>Academy</h5>
+                           <p>Master cryptocurrency knowledge</p>
+                       </span>
+                   </a>
 
-                    <!-- Academy -->
-                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
-                        <span>
-                            <h5>Academy</h5>
-                            <p>Master cryptocurrency knowledge</p>
-                        </span>
-                    </a>
+                   <!-- Academy -->
+                   <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
+                       <span>
+                           <h5>Academy</h5>
+                           <p>Master cryptocurrency knowledge</p>
+                       </span>
+                   </a>
 
-                    <!-- Academy -->
-                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
-                        <span>
-                            <h5>Academy</h5>
-                            <p>Master cryptocurrency knowledge</p>
-                        </span>
-                    </a>
-
-                    <!-- Academy -->
-                    <a href="#"><img src="./assets/images/mortarboard.png" alt="Academy">
-                        <span>
-                            <h5>Academy</h5>
-                            <p>Master cryptocurrency knowledge</p>
-                        </span>
-                    </a>
-
-                </div>
-            </div>
-        </div>
+               </div>
+           </div>
+       </div>
 
 
 
-        <!-- Right-side menu -->
-        <div class="nav-subdiv">
-            <a href="./login.html">Log In</a>
-            <a href="./signup.html"><span class="signup-btn">Sign Up</span></a>
+       <!-- Right-side menu -->
+       <div class="nav-subdiv">
+           <a href="./login.html">Log In</a>
+           <a href="./signup.html"><span class="signup-btn">Sign Up</span></a>
 
-            <!-- <img src="./assets/images/avatar.png" alt="Profile" class="profile-img"> -->
-            <a href="./profile.html"><img src="./assets/images/profile.png" alt="profile" class="w-12 inline-block"></a>
-            <!-- <span class="border-l-2 border-r-2">
-                <a href="#" class="mx-5"><i class="fa-solid fa-download"></i></a>
-                <a href="#" class="mx-5" type="button" id="dark-switch"><i class="fa-solid fa-moon"
-                        id="mode-btn"></i></a>
-            </span>
-            <a href="#" class="mx-5"><i class="fa-solid fa-globe"></i></a> -->
+           <!-- <img src="./assets/images/avatar.png" alt="Profile" class="profile-img"> -->
+           <a href="./profile.html"><img src="./assets/images/profile.png" alt="profile" class="w-12 inline-block"></a>
+           <!-- <span class="border-l-2 border-r-2">
+               <a href="#" class="mx-5"><i class="fa-solid fa-download"></i></a>
+               <a href="#" class="mx-5" type="button" id="dark-switch"><i class="fa-solid fa-moon"
+                       id="mode-btn"></i></a>
+           </span>
+           <a href="#" class="mx-5"><i class="fa-solid fa-globe"></i></a> -->
 
-            <div class="clickdown">
-                <button onclick="clickdown()"><i class="fa-solid fa-bars text-3xl align-middle clickbtn"></i></button>
-                <div id="myDropdown" class="clickdown-content">
-                    <!-- Menu Options -->
-                    <ul class="w-[90%] m-auto text-white mobile">
-                        <li>
-                            <a href="#"><i class="fa-brands fa-gg-circle text-2xl mr-3"></i>P2P Trading</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-solid fa-people-arrows text-2xl mr-3"></i>Third-party Trading</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-solid fa-square-poll-vertical text-2xl mr-3"></i>Market
-                                Overview</a>
-                        </li>
-                        <li>
-                            <a href="./marketData.html"><i
-                                    class="fa-solid fa-magnifying-glass-chart text-2xl mr-3"></i>Market Data</a>
-                        </li>
-                    </ul>
+           <div class="clickdown">
+               <button onclick="clickdown()"><i class="fa-solid fa-bars text-3xl align-middle clickbtn"></i></button>
+               <div id="myDropdown" class="clickdown-content">
+                   <!-- Menu Options -->
+                   <ul class="w-[90%] m-auto text-white mobile">
+                       <li>
+                           <a href="#"><i class="fa-brands fa-gg-circle text-2xl mr-3"></i>P2P Trading</a>
+                       </li>
+                       <li>
+                           <a href="#"><i class="fa-solid fa-people-arrows text-2xl mr-3"></i>Third-party Trading</a>
+                       </li>
+                       <li>
+                           <a href="#"><i class="fa-solid fa-square-poll-vertical text-2xl mr-3"></i>Market
+                               Overview</a>
+                       </li>
+                       <li>
+                           <a href="./marketData.html"><i
+                                   class="fa-solid fa-magnifying-glass-chart text-2xl mr-3"></i>Market Data</a>
+                       </li>
+                   </ul>
 
-                    <!-- Sign Up / Login div -->
-                    <div class="signup-login-container">
-                        <a href="./signup.html" id="signup">Sign Up</a>
-                        <a href="./login.html" id="login">Log In</a>
-                    </div>
+                   <!-- Sign Up / Login div -->
+                   <div class="signup-login-container">
+                       <a href="./signup.html" id="signup">Sign Up</a>
+                       <a href="./login.html" id="login">Log In</a>
+                   </div>
 
-                    <!-- Setting Options -->
-                    <ul class="w-[90%] m-auto text-white">
-                        <li>
-                            <h5><i class="fa-solid fa-language mr-3 text-2xl"></i>English</h5>
-                        </li>
-                        <li>
-                            <h5><i class="fa-solid fa-coins mr-3 text-2xl"></i>Currency</h5>
-                        </li>
-                        <li class="flex items-center justify-between">
-                            <h5><i class="fa-solid fa-circle-half-stroke mr-3 text-2xl"></i>Dark Mode</h5><button
-                                id="dark-switch"><i class="fa-solid fa-moon text-3xl" id="mode-btn"></i></button>
-                        </li>
-                        <li>
-                            <h5><i class="fa-regular fa-circle-down mr-3 text-2xl"></i>Download App</h5>
-                        </li>
-                    </ul>
+                   <!-- Setting Options -->
+                   <ul class="w-[90%] m-auto text-white">
+                       <li>
+                           <h5><i class="fa-solid fa-language mr-3 text-2xl"></i>English</h5>
+                       </li>
+                       <li>
+                           <h5><i class="fa-solid fa-coins mr-3 text-2xl"></i>Currency</h5>
+                       </li>
+                       <li class="flex items-center justify-between">
+                           <h5><i class="fa-solid fa-circle-half-stroke mr-3 text-2xl"></i>Dark Mode</h5><button
+                               id="dark-switch"><i class="fa-solid fa-moon text-3xl" id="mode-btn"></i></button>
+                       </li>
+                       <li>
+                           <h5><i class="fa-regular fa-circle-down mr-3 text-2xl"></i>Download App</h5>
+                       </li>
+                   </ul>
 
-                </div>
-            </div>
-        </div>
-    </nav>
+               </div>
+           </div>
+       </div>
+   </nav>
 
-    <br><br><br>
+   <br><br><br>
 
     <main>
         <!-- Intro Page -->
@@ -277,8 +260,7 @@
             <div class="intro-content">
                 <h1 class="text-6xl font-bold">Ready to help you!</h1>
                 <br>
-                <p class="text-4xl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur quasi minus
-                    culpa, cum veniam
+                <p class="text-4xl">Bithumbnn supports all cryptocurrency traders in achieving financial success
                 </p>
                 <br>
                 <a href="tel:"><button>Call Now</button></a>
@@ -291,17 +273,11 @@
             <!-- First Container -->
             <div class="contact-sub-container">
                 <h1>About us</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia dolor provident eveniet eaque aut
-                    cumque ipsa, iusto, esse deserunt assumenda quibusdam doloribus voluptatum hic enim minus unde nam
-                    illo quos.</p>
+                <p>Bithumbnn empowers individuals and businesses to navigate the exciting world of cryptocurrency with confidence. Our mission centers on providing secure, user-friendly, and innovative solutions tailored to your trading needs. With a commitment to excellence and trust, we aim to redefine how people connect with the digital economy.</p>
             </div>
             <img src="./assets/images/Contact us-amico.svg" alt="Contact Us Pic" class="w-[400px]">
             <!-- Second Container -->
             <div class="contact-sub-container contact-menu-container">
-                <!-- Phone -->
-                <a href="tel:" class="contact-menus"><img src="./assets/images/phone-call.png" alt="Phone Icon">+959 123
-                    456 789</a>
-                <br>
                 <!-- Gmail -->
                 <a href="mailto:" class="contact-menus"><img src="./assets/images/gmail.png"
                         alt="Gamil Icon">example@gmail.com</a>

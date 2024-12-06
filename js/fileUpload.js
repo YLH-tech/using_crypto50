@@ -1,12 +1,21 @@
 function showUploadedFile() {
-    let file_upload = document.getElementById('file-upload');
-    let drop_box = document.getElementById('drop-box');
+    const fileInput = document.getElementById('file-upload');
+    const previewImage = document.getElementById('imagePreview');
+    const instructions = document.getElementById('instructions');
+    const uploadButton = document.getElementById('upload-btn');
 
-    if(file_upload.files.length > 0) {
-        var fileName = file_upload.files[0].name;
-        drop_box.textContent = `Successfully Uploaded file - ${fileName}`;
-    } else {
-        window.alert("Unsuccessfully!");
+    // Check if a file was selected
+    if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // Set image source to selected file's data URL
+            previewImage.src = e.target.result;
+            previewImage.style.display = 'block';
+
+            // Hide instructions and button
+            instructions.style.display = 'none';
+            uploadButton.style.display = 'none';
+        }
+        reader.readAsDataURL(fileInput.files[0]);
     }
-
 }

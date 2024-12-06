@@ -1,0 +1,67 @@
+@import url(./commond_command.css);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+main{
+    padding: 50px;
+}
+main h1{
+    font-size: 50px;
+    text-align: center;
+}
+main p{
+    font-size: 18px;
+    text-align: center;
+    color: var(--secondary-font-color--);
+}
+.main-container{
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.coin-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.coin-div{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    background-color: var(--body-color--);
+    border-radius: 10px;
+    gap: 10px;
+    padding: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.coin-div:hover{
+    padding: 50px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.flex-start{
+    justify-content: flex-start;
+}
+.flex-end{
+    justify-content: flex-end;
+}
+.coin-div img{
+    width: 80px;
+}
+.coin-div h1{
+    font-size: 30px;
+}
+#mid-pic{
+    width: 300px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

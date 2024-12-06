@@ -1,0 +1,50 @@
+@import url(./commond_command.css);
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.selected{
+    background-color: black;
+}
+
+.main-container{
+    width: 95%;
+    margin: auto;
+    padding: 20px 20px 50px 20px;
+}
+#logo-pic{
+    width: 80px;
+}
+#heading{
+    font-size: 40px;
+    text-align: center;
+}
+#description{
+    color: var(--secondary-font-color--);
+    font-size: 20px;
+    text-align: center;
+}
+.main-heading{
+    font-size: 40px;
+}
+#welcome-heading{
+    font-size: 30px;
+}
+.term-agreement-sub-container h2{
+    margin: 20px 0 5px 0;
+}
+.term-agreement-sub-container p{
+    font-size: 20px;
+    color: var(--secondary-font-color--);
+    text-align: justify;
+}
+#ok-btn{
+    padding: 10px 50px;
+    background-color: var(--iconic-color--);
+    font-size: 20px;
+    color: var(--dark-font-color--);
+    text-decoration: none;
+    border-radius: 10px;
+}
