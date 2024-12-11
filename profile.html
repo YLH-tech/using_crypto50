@@ -1,3 +1,14 @@
+<?php
+session_start();
+require "./php/database/db_connection.php";
+$userID = $_SESSION["user_id"];
+$user = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM users WHERE id = $userID"));
+
+$name = $user['username'];
+$email = $user['email'];
+$profile = $user['profile'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +39,14 @@
 <body>
     <!-- Name Change Div -->
     <div class="name-chg-div" id="name-changing">
+        <!-- Profile Changing -->
+        <span>
+            <img src="./assets/profile/<?php echo $profile?>" alt="Profile Pic" id="profile-pic">
+            <i class="fa-solid fa-pen-to-square" id="pfp-edit-btn"
+                onclick="document.getElementById('pfp-upload').click()"></i>
+            <input type="file" id="pfp-upload" hidden>
+        </span>
+        <br>
         <span class="flex justify-between align-top">
             <label for="chg-name">Change your name</label>
             <i class="fa-solid fa-xmark cursor-pointer" onclick="open_close()"></i>
@@ -41,8 +60,8 @@
 
     <!-- Info Changing -->
     <div class="info-chg-div">
-        <span  class="flex justify-between align-center">
-            <h1 class="text-2xl">Change Info</h1>
+        <span class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Change Info</h1>
             <i class="fa-solid fa-xmark cursor-pointer" onclick="info_open_close()()"></i>
         </span>
         <br>
@@ -50,12 +69,31 @@
         <br>
         <input type="text" placeholder="Enter name" class="change-input">
         <br>
-        <label for="phone">Phone</label>
         <br>
-        <input type="text" placeholder="Enter phone number" class="change-input">
+        <button class="py-2 px-10 bg-[#78B7D0] rounded-md text-white">Submit</button>
+    </div>
+
+    <!-- Change Password -->
+    <div class="chg-password" id="pwd-chg-div">
+        <span class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Change Password</h1>
+            <i class="fa-solid fa-xmark cursor-pointer" onclick="chg_pwd_open_close()"></i>
+        </span>
+        <br>
+        <label for="current-password">Current password</label>
+        <br>
+        <input type="text" placeholder="Enter current password" class="change-input">
+        <br>
+        <label for="new-password">New password</label>
+        <br>
+        <input type="password" placeholder="Enter new password" class="change-input">
+        <br>
+        <label for="repeat-password">Retype password</label>
+        <br>
+        <input type="text" placeholder="Retype password" class="change-input">
         <br>
         <br>
-        <button class="py-2 px-10 bg-[#78B7D0] rounded-md">Submit</button>
+        <button class="py-2 px-10 bg-[#78B7D0] rounded-md text-white">Confirm</button>
     </div>
 
     <h1 class="w-[80%] m-auto text-4xl">Account Settings</h1>
@@ -73,6 +111,7 @@
             <a href="#">Data Expart</a>
             <br>
             <a href="./helpCenter.html">Customer Service</a>
+            <a href="#" onclick="chg_pwd_open_close()">Change password</a>
             <a href="#" id="delete-acc">Delete Account</a>
         </nav>
 
@@ -83,10 +122,12 @@
             <!-- Name Div -->
             <div class="name-container">
                 <div class="name-sub-container">
-                    <img src="./assets/images/profile.png" alt="Profile">
+                    <img src="./assets/profile/<?php echo $profile ?>" alt="Profile">
                     <!-- Details -->
                     <span>
-                        <h3 class="text-2xl font-bold">Rafiqur Rahman</h3> <!-- Name -->
+                        <h3 class="text-2xl font-bold">
+                            <?php echo $name ?>
+                        </h3> <!-- Name -->
                         <h5 class="my-2">User ID: 123 456 789</h5> <!-- Position -->
                     </span>
                 </div>
@@ -109,20 +150,19 @@
                     <!-- Name -->
                     <div>
                         <h5 class="text-2xl font-bold">Name</h5>
-                        <p class="text-[18px]">Rafiqur</p>
+                        <p class="text-[18px]">
+                            <?php echo $name ?>
+                        </p>
                     </div>
 
                     <!-- Email -->
                     <div>
                         <h5 class="text-2xl font-bold">Eamil address</h5>
-                        <p class="text-[18px]">refiqurrahman51@gmail.com</p>
+                        <p class="text-[18px]">
+                            <?php echo $email ?>
+                        </p>
                     </div>
 
-                    <!-- Phone -->
-                    <div>
-                        <h5 class="text-2xl font-bold">Phone</h5>
-                        <p class="text-[18px]">+09 345 678 901</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -146,6 +186,20 @@
 
         function info_open_close() {
             let tag = document.querySelector(".info-chg-div");
+
+            let main = document.getElementById("main-cont");
+
+            if (tag.classList.contains("show")) {
+                tag.classList.remove("show");
+                main.style.filter = "blur(0px)";
+            } else {
+                tag.classList.add("show");
+                main.style.filter = "blur(10px)";
+            }
+        }
+
+        function chg_pwd_open_close() {
+            let tag = document.querySelector(".chg-password");
 
             let main = document.getElementById("main-cont");
 

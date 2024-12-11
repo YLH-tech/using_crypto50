@@ -334,12 +334,12 @@ h2 {
 }
 
 /* For max 1000px laptops/ tablets */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   .more-button {
     padding: 5px 10px;
   }
   .ranking-breaking {
-    height: 600px;
+    height: fit-content;
   }
   #crypto-table thead th {
     font-size: 8x;
@@ -423,7 +423,7 @@ h2 {
 /* For Max width Phone responsive devices */
 @media screen and (max-width: 500px) {
   .download-container {
-    width: 90%;
+    /* width: 90%; */
     margin: 20px auto; /* align center */
     display: block;
     background-color: var(--notify-color--);

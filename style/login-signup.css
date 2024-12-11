@@ -80,6 +80,7 @@ fieldset input{
     text-align: center;
     line-height: 40px; /* To vertical align in middle */
     text-decoration: none;
+    border: 0;
 }
 .guest-btn{
     background-color: var(--dark-font-color--);
@@ -96,6 +97,11 @@ fieldset input{
 .checked .active-btn{
     background-color: var(--iconic-color--);
     color: var(--dark-font-color--);
+}
+.btn-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .btn-container a{
     text-decoration: none;

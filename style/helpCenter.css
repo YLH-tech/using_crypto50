@@ -116,7 +116,7 @@ main {
   font-family: "DM Sans", sans-serif;
 }
 .faqs .faqs-main-container .first-faq-div {
-  width: 645px;
+  width: 50%;
   height: fit-content;
 }
 .faqs .faqs-main-container .faqs-container {
@@ -173,5 +173,17 @@ main {
   100% {
     opacity: 0;
     transform: scaleY(0); /* Scale down to hide */
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .faqs .faqs-main-container{
+    display: block;
+  }
+  .faqs .faqs-main-container .first-faq-div{
+    width: 100%;
+  }
+  .faqs .faqs-main-container .second-faq-div{
+    width: 100%;
   }
 }

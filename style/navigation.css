@@ -1,6 +1,8 @@
 @import url(./commond_command.css); /* Command Commands */
 @import url(./dropDownBtn.css);
 
+
+
 /* Common Properties */
 nav a {
   text-decoration: none;
@@ -55,6 +57,15 @@ nav {
   transition: 0.2s;
 }
 
+.unregisted{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.click-regist{
+  display: none;
+}
+
 /* For max 1000px laptops/ tablets */
 @media screen and (max-width: 1000px) {
   nav {
@@ -62,6 +73,14 @@ nav {
   }
   .profile-img {
     width: 30px;
+  }
+  .unregisted{
+    display: none;
+  }
+  .click-regist{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly ;
   }
 }
 

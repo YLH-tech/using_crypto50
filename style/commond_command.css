@@ -25,3 +25,14 @@
 .web-logo{
     width: 50px;
 }
+
+.align-margin{
+    width: 90%;
+    margin: auto;
+}
+
+@media screen and (max-width: 1200px){
+    .align-margin{
+        width: 95%;
+    }
+}

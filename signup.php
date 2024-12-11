@@ -24,6 +24,10 @@
             border-radius: 5px;
             margin: 20px auto;
         }
+
+        .disable{
+            background-color: #B7B7B780;
+        }
     </style>
 </head>
 
@@ -171,28 +175,23 @@
                     <i class="fas fa-eye toggle-password" data-toggle="#confirmPassword"></i>
                 </span>
             </fieldset>
-            <input type="checkbox" id="term_agreement" onchange="activated()" required><label for="term_agreement"> Accept our <a
+            <input type="checkbox" id="term_agreement" onchange="isChecked()" required><label for="term_agreement"> Accept our <a
                     href="#" onclick="open_close()">term and
                     agreement</a></label>
             <br>
             <br>
 
             <span class="btn-container"> <!-- For align the buttons -->
-                <input type="submit" class="active-btn" name="register" value="Register">
+                <input type="submit" id="submit-btn" class="active-btn disable" name="register" value="Register" disabled>
                 <a href="login.php">Have you already an account?</a>
             </span>
         </form>
     </main>
 
+    <h1 id="demo"></h1>
+
     <!-- Scripts -->
     <script>
-        let signup = document.getElementById("signup-btn");
-        let toConfirm = document.getElementById("confirm");
-        let term_agreement = document.getElementById("term_agreement");
-
-        function isClickAgree() {
-            term_agreement.setAttribute("checked", "");
-        }
 
         // Term and agreement Clicking btns
         function open_close() {
@@ -209,22 +208,17 @@
             }
         }
 
-        // If agree btns is active, checkbox will be clicked.
-        function isClickAgree() {
-            if (!toConfirm.classList.contains("checked")) {
-                term_agreement.setAttribute("checked", "");
-                toConfirm.classList.add("checked");
-            }
-        }
+        // Is Checked or Not
+        let submit_btn = document.getElementById("submit-btn");
+        let term_agreement = document.getElementById("term_agreement");
 
-        // Function on Checkbox for activating on term and agreement.
-        function activated() {
-            if ($(term_agreement).is(":checked")) {
-                toConfirm.classList.add("checked");
-                term_agreement.setAttribute("checked", "");
+        function isChecked(){
+            if(submit_btn.classList.contains("disable")) {
+                submit_btn.classList.remove("disable");
+            submit_btn.removeAttribute("disabled");
             } else {
-                toConfirm.classList.remove("checked");
-                term_agreement.removeAttribute("checked", "");
+                submit_btn.classList.add("disable");
+            submit_btn.setAttribute("disabled", "");
             }
         }
     </script>

@@ -43,7 +43,20 @@ nav a{
 .info-container{
     width: 100%;
 }
-.name-chg-div, .info-chg-div{
+#profile-pic{
+    width: 200px;
+    margin: auto;
+    border-radius: 100%;
+}
+#pfp-edit-btn{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    cursor: pointer;
+}
+.name-chg-div, .info-chg-div, .chg-password{
     width: 500px;
     border: 1px solid grey;
     border-radius: 10px;
@@ -56,7 +69,7 @@ nav a{
     z-index: 1;
     background-color: #ffffff;
 }
-.name-chg-div label, .info-chg-div label{
+.name-chg-div label, .info-chg-div label, .chg-password label{
     color: var(--iconic-color--);
     font-size: 18px;
     font-weight: bold;
@@ -112,6 +125,9 @@ nav a{
     padding: 5px 20px;
     border-radius: 30px;
     border: 1px solid var(--secondary-font-color--);
+}
+.chg-password{
+
 }
 
 /* Personal Information */

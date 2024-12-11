@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database/db.php';
+include 'db.php';
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -20,17 +20,78 @@ $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt->execute();
 $user_balance = $stmt->fetch(PDO::FETCH_ASSOC);
 $available_usdt = $user_balance['usdt'] ?? 0.00;
+
+
+$query = "SELECT allow FROM users WHERE id = :user_id";
+$stmt = $pdo->prepare($query);
+$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+$stmt->execute();
+$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+$allow = $user_data['allow'] ?? 'off'; // Default to 'off' if not set
+
+// Clear transaction history
+// Hide transaction history (instead of deleting)
+if (isset($_POST['clear_record'])) {
+    $updateQuery = "UPDATE orders SET status = 'hidden' WHERE user_id = :user_id";
+    $updateStmt = $pdo->prepare($updateQuery);
+    $updateStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $updateStmt->execute();
+    header("Location: #"); // Refresh the page after clearing
+    exit();
+}
+
+// Fetch orders with pagination
+if (isset($_GET['fetch_orders'])) {
+    // Set the number of records per page
+    $recordsPerPage = 20;
+
+    // Get the current page number, default to 1 if not provided
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+    // Calculate the starting record based on the current page
+    $startRecord = ($page - 1) * $recordsPerPage;
+
+    // Prepare the query with LIMIT for pagination
+    $query = "SELECT symbol, amount, starting_price, end_price, expected_pl, order_type, created_at 
+              FROM orders WHERE user_id = :user_id ORDER BY created_at DESC LIMIT :start, :limit";
+    
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':start', $startRecord, PDO::PARAM_INT);
+    $stmt->bindParam(':limit', $recordsPerPage, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Calculate total pages
+    $countQuery = "SELECT COUNT(*) FROM orders WHERE user_id = :user_id";
+    $countStmt = $pdo->prepare($countQuery);
+    $countStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $countStmt->execute();
+    $totalRecords = $countStmt->fetchColumn();
+    $totalPages = ceil($totalRecords / $recordsPerPage);
+
+    // Return orders and pagination information
+    echo json_encode([
+        'orders' => $orders,
+        'totalPages' => $totalPages,
+        'currentPage' => $page
+    ]);
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real-Time Crypto Market</title>
+
     <!-- Style Links -->
     <link rel="stylesheet" href="../../style/deposit_withdraw.css">
-    <link rel="stylesheet" href="../../style/chart.css">
+    <link rel="stylesheet" href="chart.css">
     <link rel="stylesheet" href="../../style/pagination.css">
     <!-- <script src="lightweight-charts.standalone.production.js"></script> -->
 
@@ -38,13 +99,14 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Fontawesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 
     <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
+
     <script>
         function loadTradingView() {
             return new Promise((resolve, reject) => {
@@ -59,7 +121,7 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
         function loadWidget() {
             new TradingView.widget({
                 "autosize": true,
-                "symbol": "BINANCE:ADAUSDT",
+                "symbol": "BINANCE:BTCUSDT",
                 "interval": "1",
                 "timezone": "Etc/UTC",
                 "theme": "dark",
@@ -85,6 +147,7 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
         });
     </script>
 </head>
+
 <body>
     <header>
         <h1>BTCUSDT</h1>
@@ -111,19 +174,26 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
             </div>
             <div class="trade-columns">
                 <div class="buy-column">
-                    <p>Available Balance(USDT): <span id="available-usdt"><?php echo number_format($available_usdt, 6); ?></span></p>
-                    <span id="buy-price">Loading...</span><br><br>  
-                    <div id="maxBuyBTC" style="color:grey;">Max Buy BTC: 0.000000</div>
-                    <form id="buy-form">                        
+                    <p>Available Balance(USDT): <span id="available-usdt">
+                            <?php echo number_format($available_usdt, 6); ?>
+                        </span></p>
+                    <span id="buy-price">Loading...</span><br><br>
+                    <!-- <div id="maxBuyBTC" style="color:grey;">Max Buy BTC: 0.000000</div> -->
+                    <form id="buy-form">
                         <label for="buy-amount">Amount (BTC):</label>
-                        <input type="number" id="buy-amount" placeholder="Quantity you want to buy" min="0" step="0.000001" oninput="validateAmount('buy')">
+                        <input type="number" id="buy-amount" placeholder="Quantity you want to buy" min="0"
+                            step="0.000001" oninput="validateAmount('buy')">
                         <div>select period:</div>
                         <table class="option-table">
                             <tr>
-                                <td><button type="button" class="time-option" onclick="selectTimeOption(this)">30s</button></td>
-                                <td><button type="button" class="time-option" onclick="selectTimeOption(this)">60s</button></td>
-                                <td><button type="button" class="time-option" onclick="selectTimeOption(this)">120s</button></td>
-                                <td><button type="button" class="time-option" onclick="selectTimeOption(this)">300s</button></td>
+                                <td><button type="button" class="time-option"
+                                        onclick="selectTimeOption(this)">30s</button></td>
+                                <td><button type="button" class="time-option"
+                                        onclick="selectTimeOption(this)">60s</button></td>
+                                <td><button type="button" class="time-option"
+                                        onclick="selectTimeOption(this)">120s</button></td>
+                                <td><button type="button" class="time-option"
+                                        onclick="selectTimeOption(this)">300s</button></td>
                             </tr>
                             <tr>
                                 <td><span class="percent-option">40%</span></td>
@@ -133,26 +203,33 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
                             </tr>
                         </table>
 
-                        <button type="submit" id="buy-button" >Buy BTC</button>
+                        <button type="submit" id="buy-button">Buy BTC</button>
                     </form>
                 </div>
 
                 <div class="sell-column">
-                <p>Available Balance(USDT): <span class="available-usdt"><?php echo number_format($available_usdt, 6); ?></span></p>
-                <span id="sell-price">Loading...</span><br><br>
+                    <p>Available Balance(USDT): <span class="available-usdt">
+                            <?php echo number_format($available_usdt, 6); ?>
+                        </span></p>
+                    <span id="sell-price">Loading...</span><br><br>
 
-                <div id="maxSellBTC" style="color:grey;">Max Sell BTC: 0.000000</div>
+                    <!-- <div id="maxSellBTC" style="color:grey;">Max Sell BTC: 0.000000</div> -->
                     <form id="sell-form">
-                        
+
                         <label for="sell-amount">Amount (BTC):</label>
-                        <input type="number" id="sell-amount" placeholder="Quantity you want to sell" min="0" step="0.000001" oninput="validateAmount('sell')">
+                        <input type="number" id="sell-amount" placeholder="Quantity you want to sell" min="0"
+                            step="0.000001" oninput="validateAmount('sell')">
                         <div>select period:</div>
                         <table class="option-table">
                             <tr>
-                                <td><button type="button" class="time-option" onclick="selectTimeOption(this)">30s</button></td>
-                                <td><button type="button" class="time-option" onclick="selectTimeOption(this)">60s</button></td>
-                                <td><button type="button" class="time-option" onclick="selectTimeOption(this)">120s</button></td>
-                                <td><button type="button" class="time-option" onclick="selectTimeOption(this)">300s</button></td>
+                                <td><button type="button" class="time-option"
+                                        onclick="selectTimeOption(this)">30s</button></td>
+                                <td><button type="button" class="time-option"
+                                        onclick="selectTimeOption(this)">60s</button></td>
+                                <td><button type="button" class="time-option"
+                                        onclick="selectTimeOption(this)">120s</button></td>
+                                <td><button type="button" class="time-option"
+                                        onclick="selectTimeOption(this)">300s</button></td>
                             </tr>
                             <tr>
                                 <td><span class="percent-option">40%</span></td>
@@ -161,8 +238,8 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
                                 <td><span class="percent-option">100%</span></td>
                             </tr>
                         </table>
-                        
-                        <button type="submit" id="sell-button" >Sell BTC</button>
+
+                        <button type="submit" id="sell-button">Sell BTC</button>
                     </form>
                 </div>
             </div>
@@ -183,6 +260,38 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
         </aside>
     </div>
 
+    <!-- Transaction History Section -->
+    <section class="transaction-history">
+        <h1 class="text-3xl">Order records</h1>
+        <form method="POST" onsubmit="return confirm('Are you sure you want to clear your transaction history?');">
+            <button type="submit" class="bg-red-400 p-2 rounded-md text-white my-3 w-[200px]" name="clear_record">
+                Clear Record
+            </button>
+        </form>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th class="rounded-l-md">Symbol</th>
+                    <th>Amount</th>
+                    <th>Start Price</th>
+                    <th>End Price</th>
+                    <th>Profit/Loss</th>
+                    <th>Type</th>
+                    <th class="rounded-r-md">Date</th>
+                </tr>
+            </thead>
+            <tbody id="order-history">
+                <!-- Dynamic rows will be added here -->
+            </tbody>
+        </table>
+
+        <!-- Pagination Controls -->
+        <div id="pagination" class="pagination-controls">
+            <!-- Pagination buttons will appear here -->
+        </div>
+    </section>
+
     <!-- Overlay for Order Details -->
     <div id="order-details-overlay">
         <div class="overlay-content">
@@ -198,842 +307,82 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
         </div>
     </div>
 
-
-     <!-- Transaction History -->
-     <section class="transaction-history">
-        <h1 class="text-3xl">Order records</h1>
-        <button type="submit" class="bg-red-400 p-2 rounded-md text-white my-3 w-[200px]" name="clear_record"
-            onclick="return confirm('Are you sure you want to clear your transaction history?');">Clear
-            Record</button>
-        <br>
-        <br>
-        <table>
-            <thead>
-                <tr>
-                    <th class="rounded-l-md">Symbol</th>
-                    <th>Amount</th>
-                    <th>Start Price</th>
-                    <th>End Price</th>
-                    <th>Profit/ Loss</th>
-                    <th>Type</th>
-                    <th class="rounded-r-md">Date</th>
-                </tr>
-            </thead>
-            <tbody id="order-1" class="datas">
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-            </tbody>
-            <tbody id="order-2" class="datas">
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-            </tbody>
-            <tbody id="order-3" class="datas">
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-            </tbody>
-            <tbody id="order-4" class="datas">
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-            </tbody>
-            <tbody id="order-5" class="datas">
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-            </tbody>
-            <tbody id="order-6" class="datas">
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-            </tbody>
-            <tbody id="order-7" class="datas">
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-
-                <tr>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                    <td>Order 2</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-            </tbody>
-            <tbody id="order-8" class="datas">
-                <tr>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                </tr>
-
-                <tr>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                </tr>
-
-                <tr>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                </tr>
-                <tr>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                </tr>
-
-                <tr>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                </tr>
-
-                <tr>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                    <td>Order 8</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-                <tr>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                    <td>Hello</td>
-                </tr>
-            </tbody>
-
-        </table>
-        <br>
-        <!-- Pagination -->
-        <div class="pagination">
-            <a href="#" onclick="left_arrow()"><i class="fa-solid fa-caret-left"></i></a>
-            <a href="#order-1" class="pagination-no pag-no-1">1</a>
-            <a href="#order-2" class="pagination-no pag-no-2">2</a>
-            <a href="#order-3" class="pagination-no pag-no-3">3</a>
-            <a href="#order-4" class="pagination-no pag-no-4">4</a>
-            <a href="#order-5" class="pagination-no pag-no-5">5</a>
-            <a href="#order-6" class="pagination-no pag-no-6">6</a>
-            <a href="#order-7" class="pagination-no pag-no-7">7</a>
-            <a href="#order-8" class="pagination-no pag-no-8">8</a>
-            <a href="#"><i class="fa-solid fa-caret-right"></i></a>
-        </div>
-    </section>
-
-    <!-- Pagination Active Script -->
+    
     <script>
-        function active(n) {
-            let pagination_no = document.getElementById(`paination-no-${n}`);
-            pagination_no.style.color = "black";
+    // Global variable to store the current page
+    let currentPage = 1;
+
+    // Fetch and update the table dynamically with pagination
+    function fetchOrderHistory(page = 1) {
+        fetch(`btcusdt.php?fetch_orders=1&page=${page}`)
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('order-history');
+                tableBody.innerHTML = ''; // Clear existing rows
+
+                // Populate the table with order data
+                data.orders.forEach(order => {
+                    const row = `
+                        <tr>
+                            <td>${order.symbol}</td>
+                            <td>${order.amount}</td>
+                            <td>${order.starting_price}</td>
+                            <td>${order.end_price}</td>
+                            <td>${order.expected_pl}</td>
+                            <td>${order.order_type}</td>
+                            <td>${order.created_at}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+
+                // Update the pagination controls
+                updatePagination(data.totalPages, data.currentPage);
+            })
+            .catch(error => console.error('Error fetching order history:', error));
+    }
+
+    // Update pagination controls (Next, Previous, and Page Numbers)
+    function updatePagination(totalPages, currentPage) {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        // Previous Button
+        if (currentPage > 1) {
+            const prevBtn = document.createElement('button');
+            prevBtn.textContent = 'Previous';
+            prevBtn.onclick = () => changePage(currentPage - 1);
+            pagination.appendChild(prevBtn);
         }
 
-        $('.pagination-no').on('click', function () {
-            $('.pagination-no').removeClass('selected');
-            $(this).addClass('selected');
-        });
-    </script>
+        // Page Numbers
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.textContent = i;
+            pageBtn.className = i === currentPage ? 'active' : ''; // Highlight current page
+            pageBtn.onclick = () => changePage(i);
+            pagination.appendChild(pageBtn);
+        }
 
+        // Next Button
+        if (currentPage < totalPages) {
+            const nextBtn = document.createElement('button');
+            nextBtn.textContent = 'Next';
+            nextBtn.onclick = () => changePage(currentPage + 1);
+            pagination.appendChild(nextBtn);
+        }
+    }
+
+    // Change the page when a page number or next/previous is clicked
+    function changePage(page) {
+        currentPage = page;
+        fetchOrderHistory(page);
+    }
+
+    // Call this function to fetch and display orders on page load
+    fetchOrderHistory(currentPage);
+
+    </script>
 
     <!-- This script is for current_price and Max buy/sell BTC in trade columns -->
     <script>
@@ -1042,18 +391,18 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
             const sellPriceElement = document.getElementById('sell-price');
 
             function connectWebSocket() {
-                const ws = new WebSocket('wss://stream.binance.com:9443/ws/adausdt@trade'); // Binance ADA/USDT trade stream
+                const ws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@trade'); // Binance BTC/USDT trade stream
 
                 ws.onmessage = event => {
                     const data = JSON.parse(event.data);
-                    const currentPrice = parseFloat(data.p).toFixed(4);
+                    const currentPrice = parseFloat(data.p).toFixed(2);
 
                     // Update price displays
                     priceElement.innerText = `Price (USDT): ${currentPrice}`;
                     sellPriceElement.innerText = `Price (USDT): ${currentPrice}`;
 
-                    // Calculate max BTC buyable and sellable based on current price
-                    calculateMaxAmounts(currentPrice);
+                    // // Calculate max BTC buyable and sellable based on current price
+                    // calculateMaxAmounts(currentPrice);
                 };
 
                 ws.onerror = error => {
@@ -1067,26 +416,26 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
                 };
             }
 
-            function calculateMaxAmounts(currentPrice) {
-                const availableUsdt = parseFloat(document.querySelector('.available-usdt').innerText.replace(/,/g, '')) || 0;
+            // function calculateMaxAmounts(currentPrice) {
+            //     const availableUsdt = parseFloat(document.querySelector('.available-usdt').innerText.replace(/,/g, '')) || 0;
 
-                // Calculate Max Buy BTC
-                const maxBuyAda = (availableUsdt / currentPrice).toFixed(6);
-                document.getElementById('maxBuyADA').innerText = `Max Buy ADA: ${maxBuyAda}`;
+            //     // Calculate Max Buy BTC
+            //     const maxBuyBtc = (availableUsdt / currentPrice).toFixed(6);
+            //     document.getElementById('maxBuyBTC').innerText = `Max Buy BTC: ${maxBuyBtc}`;
 
-                // Calculate Max Sell BTC (also based on available USDT)
-                const maxSellAda = (availableUsdt / currentPrice).toFixed(6);
-                document.getElementById('maxSellADA').innerText = `Max Sell ADA: ${maxSellAda}`;
-            }
-            function validateAmount(type) {
-                const amountInput = document.getElementById(type + '-amount');
-                const maxAmount = parseFloat(document.getElementById(type === 'buy' ? 'maxBuyADA' : 'maxSellADA').innerText.replace('Max ' + (type === 'buy' ? 'Buy' : 'Sell') + ' ADA: ', ''));
+            //     // Calculate Max Sell BTC (also based on available USDT)
+            //     const maxSellBtc = (availableUsdt / currentPrice).toFixed(6);
+            //     document.getElementById('maxSellBTC').innerText = `Max Sell BTC: ${maxSellBtc}`;
+            // }
+            // function validateAmount(type) {
+            //     const amountInput = document.getElementById(type + '-amount');
+            //     const maxAmount = parseFloat(document.getElementById(type === 'buy' ? 'maxBuyBTC' : 'maxSellBTC').innerText.replace('Max ' + (type === 'buy' ? 'Buy' : 'Sell') + ' BTC: ', ''));
 
-                if (parseFloat(amountInput.value) > maxAmount) {
-                    amountInput.value = maxAmount.toFixed(6); // Set value to max allowed if exceeded
-                    alert(`The amount cannot exceed the maximum ${type === 'buy' ? 'buy' : 'sell'} limit of ${maxAmount} ADA.`);
-                }
-            }
+            //     if (parseFloat(amountInput.value) > maxAmount) {
+            //         amountInput.value = maxAmount.toFixed(6); // Set value to max allowed if exceeded
+            //         alert(`The amount cannot exceed the maximum ${type === 'buy' ? 'buy' : 'sell'} limit of ${maxAmount} BTC.`);
+            //     }
+            // }
 
             connectWebSocket();
 
@@ -1096,6 +445,8 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
     </script>
     <!-- This script is for all trade order functions -->
     <script>
+    const userAllow = <?= json_encode($allow); ?>;
+
     let selectedTimeInterval = null;
 
     function selectTimeOption(button) {
@@ -1118,21 +469,31 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
         const selectedOption = form.querySelector('.time-option.selected');
         const amountInput = form.querySelector('input[type="number"]');
         const amount = parseFloat(amountInput.value) || 0;
+        const priceText = document.getElementById(formId === 'buy-form' ? 'buy-price' : 'sell-price').innerText;
+        const price = parseFloat(priceText.replace('Price (USDT): ', ''));
 
         // Get max amount for buy or sell
-        const maxAmount = parseFloat(document.getElementById(formId === 'buy-form' ? 'maxBuyADA' : 'maxSellADA').innerText.replace('Max ' + (formId === 'buy-form' ? 'Buy' : 'Sell') + ' ADA: ', ''));
+        // const maxAmount = parseFloat(document.getElementById(formId === 'buy-form' ? 'maxBuyBTC' : 'maxSellBTC').innerText.replace('Max ' + (formId === 'buy-form' ? 'Buy' : 'Sell') + ' BTC: ', ''));
+
+        const availableBalance = <?= json_encode($available_usdt); ?>;
+
+        if (isNaN(price) || price <= 0) {
+            event.preventDefault();
+            alert('Please wait for the price to load before submitting the form.');
+            return;
+        }
 
         //Check for insufficient balance
-        if (amount > maxAmount) {
+        if (amount > availableBalance) {
             event.preventDefault();
             alert(`Insufficient Balance.`);
             return;
         }
         
-        // Check if the amount is above the minimum value and below max allowed
-        if (amount < 50 || amount > maxAmount) {
+         // Check if the field is empty
+        if (!amountInput.value.trim()) {
             event.preventDefault();
-            alert(`Please enter an amount between 50 ADA and the maximum allowed: ${maxAmount} ADA.`);
+            alert('Please enter an amount.');
             return;
         }
 
@@ -1151,10 +512,10 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
 
     function showCountdownOverlay(formId, amount) {
         const orderDirection = formId === 'buy-form' ? 'Buy' : 'Sell';
-        const symbol = 'ADAUSDT';
+        const symbol = 'BTCUSDT';
 
         // Fetch and format the current price
-        const currentPrice = parseFloat(document.getElementById('buy-price').innerText.replace('Price (USDT): ', '')).toFixed(4);
+        const currentPrice = parseFloat(document.getElementById('buy-price').innerText.replace('Price (USDT): ', '')).toFixed(2);
 
         // Populate overlay with order information and formatted price
         const overlay = document.getElementById('order-details-overlay');
@@ -1162,7 +523,7 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
         overlay.querySelector('.overlay-content').innerHTML = `
             <h2>${orderDirection} Order</h2>
             <p>Symbol: ${symbol}</p>
-            <p>Amount: ${amount} ADA</p>
+            <p>Amount: ${amount} BTC</p>
             <p>Starting Price: $${currentPrice}</p>
             <p id="realTimePrice">Current Price: $${currentPrice}</p>
             <p id="expectedPL">Expected P/L: $0.00</p>
@@ -1191,12 +552,21 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
         };
         const selectedPercentage = percentages[selectedTimeInterval] || 1;
 
-        const ws = new WebSocket('wss://stream.binance.com:9443/ws/adausdt@trade');
+        const userAllow = <?= json_encode($allow); ?>;
+
+
+        const ws = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@trade');
         ws.onmessage = event => {
             const data = JSON.parse(event.data);
-            const currentPrice = parseFloat(data.p).toFixed(4);
+            const currentPrice = parseFloat(data.p).toFixed(2);
             priceElement.innerText = `Current Price: $${currentPrice}`;
-            const profitLoss = ((currentPrice - startPrice) * amount * selectedPercentage * (orderDirection === 'Buy' ? 1 : -1)).toFixed(6);
+            
+            let profitLoss;
+            if (userAllow === 'on') {
+                profitLoss = (amount + (amount * selectedPercentage)).toFixed(6);
+            } else {
+                profitLoss = (-amount).toFixed(6);
+            }
             plElement.innerText = `Expected P/L: $${profitLoss}`;
             plElement.style.color = profitLoss >= 0 ? 'limegreen' : 'red';
         };
@@ -1221,7 +591,8 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
             ctx.shadowBlur = 20;
             ctx.shadowColor = 'rgba(0, 123, 255, 0.3)';
             ctx.stroke();
-            ctx.shadowBlur = 0;  // Reset shadow
+            ctx.shadowBlur = 0;  // Reset shadow                profitLoss = (orderDirection === 'Buy' ? -amount : -amount).toFixed(6);
+
 
             // Draw progress circle with gradient
             ctx.beginPath();
@@ -1257,7 +628,7 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
 
     function showOrderConfirmation(symbol, amount, startPrice, orderDirection) {
         const confirmationOverlay = document.getElementById('order-confirmation-overlay');
-        const endPrice = parseFloat(document.getElementById('realTimePrice').innerText.replace('Current Price: $', '')).toFixed(4);
+        const endPrice = parseFloat(document.getElementById('realTimePrice').innerText.replace('Current Price: $', '')).toFixed(2);
         
         const selectedPercentage = {
             30000: 0.40,
@@ -1266,13 +637,17 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
             300000: 1.00
         }[selectedTimeInterval] || 1;
         
-        const profitLoss = ((endPrice - startPrice) * amount * selectedPercentage * (orderDirection === 'Buy' ? 1 : -1)).toFixed(6);
-
+        let profitLoss;
+            if (userAllow === 'on') {
+                profitLoss = (amount + (amount * selectedPercentage)).toFixed(6);
+            } else {
+                profitLoss = (-amount).toFixed(6);
+            }
         confirmationOverlay.querySelector('.overlay-content').innerHTML = `
             <h2>Order Confirmation</h2>
             <p>Your order has been successfully completed!</p>
             <p>Symbol: ${symbol}</p>
-            <p>Amount: ${amount} ADA</p>
+            <p>Amount: ${amount} BTC</p>
             <p>Starting Price: $${startPrice}</p>
             <p>End Price: $${endPrice}</p>
             <p>Profit/Loss: $${profitLoss}</p>
@@ -1310,6 +685,7 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
             if (data.status === 'success') {
                 console.log('Order saved successfully:', data.message);
                 updateUserBalance(expectedPL);
+                fetchOrderHistory();
             } else {
                 console.error('Error saving order:', data.message);
             }
@@ -1349,12 +725,11 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
             .then(data => {
                 if (data.status === 'success') {
                     // Update the displayed available USDT in both buy and sell columns
-                    document.getElementById('available-usdt').innerText = parseFloat(data.balance).toFixed(6);
-                    document.querySelector('.available-usdt').innerText = parseFloat(data.balance).toFixed(6);
+                    const updatedBalance = parseFloat(data.balance.replace(/,/g, '')); // Remove commas for proper number formatting
 
-                    // Calculate max BTC based on updated available USDT
-                    const currentPrice = parseFloat(document.getElementById('buy-price').innerText.replace('Price (USDT): ', '').trim());
-                    calculateMaxAmounts(currentPrice);
+                    // Update the available-usdt element
+                    document.getElementById('available-usdt').innerText = updatedBalance.toFixed(6);
+                    document.querySelector('.available-usdt').innerText = updatedBalance.toFixed(6);
                 } else {
                     console.error('Error fetching updated balance:', data.message);
                 }
@@ -1387,8 +762,8 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
     });
 </script>
 
-<!-- This script is for left-side(Market list), right-side(ordr book) -->
-<script>
+    <!-- This script is for left-side(Market list), right-side(ordr book) -->
+    <script>
         const marketList = [
             'BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'XRPUSDT', 'DOGEUSDT', 'SOLUSDT',
             'ADAUSDT', 'TRXUSDT', 'DOTUSDT', 'LTCUSDT', 'BCHUSDT', 'ETCUSDT',
@@ -1396,7 +771,7 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
             'APTUSDT', 'TONUSDT'
         ];
 
-        let symbol = 'ADAUSDT'; // Initially set to BTCUSDT
+        let symbol = 'BTCUSDT'; // Initially set to BTCUSDT
         let interval = '1m';
         let binanceSocket = null;
 
@@ -1413,7 +788,7 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
                     const li = document.createElement('li');
                     li.dataset.symbol = coin.toLowerCase(); // Add a data attribute for the symbol
                     li.innerHTML = `<strong>${coin}</strong> <span class="price">$${price}</span> <span class="change">(${priceChangePercent}%)</span>`; // Separate elements for price and change
-                    
+
                     // Add a click event to navigate to a specific page
                     li.addEventListener('click', () => {
                         window.location.href = `${coin.toLowerCase()}.php`; // Modify this line with your desired link format
@@ -1428,7 +803,7 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
 
 
         // Start real-time WebSocket updates for the selected market symbol
-            function startWebSocket(symbol, interval) {
+        function startWebSocket(symbol, interval) {
             if (binanceSocket) {
                 binanceSocket.close();
             }
@@ -1437,7 +812,7 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
             const socketUrl = `wss://stream.binance.com:9443/ws/${symbol}@kline_${interval}`;
             binanceSocket = new WebSocket(socketUrl);
 
-            
+
 
             // Ticker WebSocket for 24-hour change percentage for all markets
             const tickerSocketUrl = `wss://stream.binance.com:9443/ws/${symbol}@ticker`;
@@ -1448,13 +823,13 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
                 const priceChangePercent = parseFloat(tickerData.P); // Use 'P' for the percentage change
                 const newPrice = parseFloat(tickerData.c).toFixed(2); // Latest price from ticker data
                 const tickerSymbol = tickerData.s.toLowerCase(); // Symbol in lowercase
-                
+
                 // Update the header 24h change for BTCUSDT
-                if (tickerSymbol === 'adausdt') {
+                if (tickerSymbol === 'btcusdt') {
                     const headerChangeElement = document.getElementById('price-change-info');
                     if (headerChangeElement) {
                         headerChangeElement.innerHTML = `24h Change: <strong>${priceChangePercent.toFixed(2)}%</strong>`;
-                        
+
                         const valueElement = headerChangeElement.querySelector('strong');
                         valueElement.style.color = priceChangePercent > 0 ? '#28a745' : priceChangePercent < 0 ? '#dc3545' : '#000';
                     }
@@ -1498,104 +873,105 @@ $available_usdt = $user_balance['usdt'] ?? 0.00;
 
         const orderTableBody = document.querySelector('#orderTable tbody');
 
-    // Create a row for the current price
-    const currentPriceRow = document.createElement('tr');
-    currentPriceRow.className = 'current-price-row'; // Add a class for styling
-    currentPriceRow.innerHTML = `
+        // Create a row for the current price
+        const currentPriceRow = document.createElement('tr');
+        currentPriceRow.className = 'current-price-row'; // Add a class for styling
+        currentPriceRow.innerHTML = `
         <td colspan="3" style="font-weight: bold; text-align: left; font-size: 16px;">
             <span id="currentPrice" style="font-size: 16px;"></span>
         </td>
     `;
 
-    // Connecting to Binance WebSocket for ADAUSDT order book
-    const socket = new WebSocket('wss://stream.binance.com:9443/ws/adausdt@depth');
+        // Connecting to Binance WebSocket for BTCUSDT order book
+        const socket = new WebSocket('wss://stream.binance.com:9443/ws/btcusdt@depth');
 
-    let lastPrice = 0;
+        let lastPrice = 0;
 
-    // Function to fill the order table with the latest data
-    function fillOrderTable(sellOrders, buyOrders) {
-        // Clear the table body except for the current price row
-        orderTableBody.innerHTML = '';
+        // Function to fill the order table with the latest data
+        function fillOrderTable(sellOrders, buyOrders) {
+            // Clear the table body except for the current price row
+            orderTableBody.innerHTML = '';
 
-        // Fill the sell orders (asks) with price only
-        for (let i = 0; i < 10; i++) { // Updated to 10
-            const order = sellOrders[i] || [0, 0]; // Fallback to zero
-            const price = parseFloat(order[0]);
-            const amount = parseFloat(order[1]);
-            const total = price * amount;
+            // Fill the sell orders (asks) with price only
+            for (let i = 0; i < 10; i++) { // Updated to 10
+                const order = sellOrders[i] || [0, 0]; // Fallback to zero
+                const price = parseFloat(order[0]);
+                const amount = parseFloat(order[1]);
+                const total = price * amount;
 
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td style="color: red; font-weight: bold; font-size: 12px;">${price.toFixed(4)}</td>
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td style="color: red; font-weight: bold; font-size: 12px;">${price.toFixed(2)}</td>
                 <td style="color: grey; font-weight: bold; font-size: 12px;">${amount.toFixed(5)}</td>
                 <td style="color: grey; font-weight: bold; font-size: 12px;">${(total / 1000).toFixed(2)}K</td>
             `;
-            orderTableBody.appendChild(row);
-        }
-
-        // Insert the current price row between sell and buy orders
-        orderTableBody.appendChild(currentPriceRow);
-
-        // Fill the buy orders (bids) with price only
-        for (let i = 0; i < 10; i++) { // Updated to 10
-            const order = buyOrders[i] || [0, 0]; // Fallback to zero
-            const price = parseFloat(order[0]);
-            const amount = parseFloat(order[1]);
-            const total = price * amount;
-
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td style="color: green; font-weight: bold; font-size: 12px;">${price.toFixed(4)}</td>
-                <td style="color: grey; font-weight: bold; font-size: 12px;">${amount.toFixed(5)}</td>
-                <td style="color: grey; font-weight: bold; font-size: 12px;">${(total / 1000).toFixed(2)}K</td>
-            `;
-            orderTableBody.appendChild(row);
-        }
-    }
-
-    socket.onopen = function() {
-        console.log("WebSocket connection established");
-    };
-
-    socket.onmessage = function(event) {
-        const data = JSON.parse(event.data);
-        console.log("Parsed data:", data); // Log the parsed data to verify its structure
-
-        // Get the top 10 sell orders (asks)
-        const sellOrders = data.a ? data.a.slice(0, 10) : []; // Updated to 10
-
-        // Get the top 10 buy orders (bids)
-        const buyOrders = data.b ? data.b.slice(0, 10) : []; // Updated to 10
-
-        // Call function to fill the order table
-        fillOrderTable(sellOrders, buyOrders);
-
-        // Update the current price
-        const topSellPrice = sellOrders.length > 0 ? parseFloat(sellOrders[0][0]) : null;
-        const topBuyPrice = buyOrders.length > 0 ? parseFloat(buyOrders[0][0]) : null;
-
-        if (topSellPrice !== null && topBuyPrice !== null) {
-            const currentPrice = (topSellPrice + topBuyPrice) / 2; // Average between top sell and buy
-            document.getElementById('currentPrice').textContent = `${currentPrice.toFixed(4)}`;
-
-            if (currentPrice > lastPrice) {
-                document.getElementById('currentPrice').style.color = 'green'; // Price increased (buy)
-            } else if (currentPrice < lastPrice) {
-                document.getElementById('currentPrice').style.color = 'red'; // Price decreased (sell)
+                orderTableBody.appendChild(row);
             }
-            lastPrice = currentPrice; // Store the last price for comparison
+
+            // Insert the current price row between sell and buy orders
+            orderTableBody.appendChild(currentPriceRow);
+
+            // Fill the buy orders (bids) with price only
+            for (let i = 0; i < 10; i++) { // Updated to 10
+                const order = buyOrders[i] || [0, 0]; // Fallback to zero
+                const price = parseFloat(order[0]);
+                const amount = parseFloat(order[1]);
+                const total = price * amount;
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td style="color: green; font-weight: bold; font-size: 12px;">${price.toFixed(2)}</td>
+                <td style="color: grey; font-weight: bold; font-size: 12px;">${amount.toFixed(5)}</td>
+                <td style="color: grey; font-weight: bold; font-size: 12px;">${(total / 1000).toFixed(2)}K</td>
+            `;
+                orderTableBody.appendChild(row);
+            }
         }
-    };
 
-    socket.onerror = function(error) {
-        console.error("WebSocket error:", error);
-    };
+        socket.onopen = function () {
+            console.log("WebSocket connection established");
+        };
 
-    socket.onclose = function() {
-        console.log("WebSocket connection closed");
-    };
+        socket.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            console.log("Parsed data:", data); // Log the parsed data to verify its structure
+
+            // Get the top 10 sell orders (asks)
+            const sellOrders = data.a ? data.a.slice(0, 10) : []; // Updated to 10
+
+            // Get the top 10 buy orders (bids)
+            const buyOrders = data.b ? data.b.slice(0, 10) : []; // Updated to 10
+
+            // Call function to fill the order table
+            fillOrderTable(sellOrders, buyOrders);
+
+            // Update the current price
+            const topSellPrice = sellOrders.length > 0 ? parseFloat(sellOrders[0][0]) : null;
+            const topBuyPrice = buyOrders.length > 0 ? parseFloat(buyOrders[0][0]) : null;
+
+            if (topSellPrice !== null && topBuyPrice !== null) {
+                const currentPrice = (topSellPrice + topBuyPrice) / 2; // Average between top sell and buy
+                document.getElementById('currentPrice').textContent = `${currentPrice.toFixed(2)}`;
+
+                if (currentPrice > lastPrice) {
+                    document.getElementById('currentPrice').style.color = 'green'; // Price increased (buy)
+                } else if (currentPrice < lastPrice) {
+                    document.getElementById('currentPrice').style.color = 'red'; // Price decreased (sell)
+                }
+                lastPrice = currentPrice; // Store the last price for comparison
+            }
+        };
+
+        socket.onerror = function (error) {
+            console.error("WebSocket error:", error);
+        };
+
+        socket.onclose = function () {
+            console.log("WebSocket connection closed");
+        };
 
 
-</script>
+    </script>
 </body>
+
 </html>

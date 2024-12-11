@@ -48,17 +48,12 @@
   font-size: 16px;
   border: none;
   cursor: pointer;
-  position: relative;
-  left: 120%;
-}
-
-.resp-clickdown {
-  position: absolute;
-  display: inline-block;
+  /* position: relative; */
+  /* left: 120%; */
 }
 
 #resp-myDropdown{
-  width: 400px;
+  width: fit-content;
 }
 
 .show {
