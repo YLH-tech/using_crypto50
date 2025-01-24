@@ -30,7 +30,7 @@ function getRealTimePricesBinance($coinSymbols) {
 
 // Map coins to Binance trading pairs
 $coinMap = [
-    'USDT' => 'USDTUSDT', // USDT to itself for consistency
+    'USDT' => 'USDT', // USDT to itself for consistency
     'BTC' => 'BTCUSDT',
     'ETH' => 'ETHUSDT',
     'USDC' => 'USDCUSDT',
@@ -58,7 +58,7 @@ $coinMap = [
 $prices = getRealTimePricesBinance($coinMap);
 
 // Assign prices directly for USD estimation in the dashboard
-$usdtPrice = $prices['USDT']['usd'] ?? 0;
+$usdtPrice = 1;
 $btcPrice = $prices['BTC']['usd'] ?? 0;
 $ethPrice = $prices['ETH']['usd'] ?? 0;
 $usdcPrice = $prices['USDC']['usd'] ?? 0;

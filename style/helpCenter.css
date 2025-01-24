@@ -1,8 +1,5 @@
 @import url(./commond_command.css);
 
-body {
-  background-color: var(--body-color--);
-}
 
 main {
   width: 95%;
@@ -45,7 +42,7 @@ main {
 /* Contact Div */
 .contact-div {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 20px;
 }
@@ -175,6 +172,11 @@ main {
     transform: scaleY(0); /* Scale down to hide */
   }
 }
+@media screen and (max-width: 1400px){
+  .faqs{
+    width: 100%;
+  }
+}
 
 @media screen and (max-width: 1200px) {
   .faqs .faqs-main-container{
@@ -186,4 +188,38 @@ main {
   .faqs .faqs-main-container .second-faq-div{
     width: 100%;
   }
+  .intro-container{
+    width: 100%;
+  }
+  .intro-container img{
+    width: 300px;
+  }
+  .contact-div{
+    display: block;
+  }
+  .contact-sub-container {
+    width: 100%;
+    height: fit-content;
+  }
+}
+
+@media screen and (max-width: 780px){
+  .intro-container{
+    width: 100%;
+    display: block;
+  }
+  .intro-content{
+    width: 100%;
+  }
+  .intro-container img{
+    display: none;
+  }
+  .intro-container h1{
+    display: block;
+    font-size: 40px;
+  }
+  .tablet-mobile-mode .contact-img{ 
+    width: 200px;
+    margin: auto;
+  } 
 }

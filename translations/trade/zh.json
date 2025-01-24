@@ -1,0 +1,21 @@
+{
+    "amount_ada_label": "金额 (ADA):",
+    "amount_apt_label": "金额 (APT):",
+    "amount_arb_label": "金额 (ARB):",
+    "amount_avax_label": "金额 (AVAX):",
+    "amount_bch_label": "金额 (BCH):",
+    "amount_bnb_label": "金额 (BNB):",
+    "amount_doge_label": "金额 (DOGE):",
+    "amount_dot_label": "金额 (DOT):",
+    "amount_eos_label": "金额 (EOS):",
+    "amount_etc_label": "金额 (ETC):",
+    "amount_eth_label": "金额 (ETH):",
+    "amount_link_label": "金额 (LINK):",
+    "amount_ltc_label": "金额 (LTC):",
+    "amount_neo_label": "金额 (NEO):",
+    "amount_sol_label": "金额 (SOL):",
+    "amount_ton_label": "金额 (TON):",
+    "amount_trx_label": "金额 (TRX):",
+    "amount_uni_label": "金额 (UNI):",
+    "amount_xrp_label": "金额 (XRP):"
+}

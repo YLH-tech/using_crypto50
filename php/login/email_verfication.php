@@ -25,12 +25,12 @@ function send_mail($recipient, $subject, $message)
     $mail->SMTPSecure = "tls";
     $mail->Port       = 587;
     $mail->Host       = "smtp.gmail.com";
-    $mail->Username   = "lighting177036@gmail.com";
-    $mail->Password   = "gjomowgrlsbnkuhw";
+    $mail->Username   = "bithumbnnofficial@gmail.com";
+    $mail->Password   = "dwtegfpxwvnasqtz";
 
     $mail->IsHTML(true);
     $mail->AddAddress($recipient, "Esteemed Customer");
-    $mail->SetFrom("lighting177036@gmail.com", "Bithumbnn.com");
+    $mail->SetFrom("bithumbnnofficial@gmail.com", "Bithumbnn.com");
     $mail->Subject = $subject;
     $content = $message;
 
@@ -63,7 +63,7 @@ if (isset($_POST["verify_email"])) {
     // Clear the error message on successful verification
     unset($_SESSION['error']);
     
-    header("Location: ../../home.html"); // Redirect to the homepage after successful verification
+    header("Location: ../../index.php"); // Redirect to the homepage after successful verification
     exit();
 }
 

@@ -1,0 +1,454 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+    color: #fff;
+    overflow-x: hidden;
+    padding: 0 20px;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #f0f0f0;
+  }
+  
+  /* Header Section */
+  .header {
+    text-align: center;
+    padding: 100px 20px;
+    background: #003366; /* Dark Blue */
+    border-radius: 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease-out;
+  }
+  
+  .header h1 {
+    font-size: 4.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .header p {
+    font-size: 1.6rem;
+    color: #f0f0f0;
+    margin-top: 15px;
+    font-weight: 300;
+  }
+  
+  /* QR Code Section */
+  .qr-section {
+    padding-top: 80px; /* Adjust this value to the height of your nav bar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
+  /* Optional: Ensure scroll behaves correctly */
+html {
+  scroll-padding-top: 80px; /* Adjust this to the same height as the nav */
+}
+.qr-card .download-button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 15px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s;
+}
+
+.qr-card .download-button:hover {
+  background: #0056b3;
+}
+
+  
+  .qr-container {
+    display: flex;
+    justify-content: center;
+    gap: 12em; /* More flexible gap between QR codes */
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }  
+  
+  /* Download Buttons */
+  .download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18em; /* Space between buttons */
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .download-buttons button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+  }
+  
+  .download-buttons button:hover {
+    background: #0056b3;
+  }
+  
+  .download-buttons button i {
+    font-size: 1.5rem;
+  }
+  
+  .download-buttons button img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  /* Rest of the code remains the same */
+  
+  
+  .qr-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .qr-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+  }
+  
+  .qr-card h2 {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  .qr-card img {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .qr-card p {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  /* Animation for sliding in QR Codes */
+  .qr-container .qr-card:nth-child(1) {
+    animation: slideFromLeft 1s ease-out;
+  }
+  
+  .qr-container .qr-card:nth-child(2) {
+    animation: slideFromRight 1s ease-out;
+  }
+  
+  /* Sliding Animation from Left */
+  @keyframes slideFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Sliding Animation from Right */
+  @keyframes slideFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Steps Section */
+  .steps-section {
+    margin-top: 60px;
+    padding: 40px; /* Reduced padding */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Wider section */
+    margin: 60px auto;
+    animation: fadeIn 2s ease-out;
+  }
+  
+  .steps-section h2 {
+    text-align: center;
+    color: #007BFF;
+    margin-bottom: 30px;
+    font-size: 2rem;
+  }
+  
+  .step {
+    margin-bottom: 40px;
+  }
+  
+  .step h3 {
+    color: #007BFF;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+  }
+  
+  .step-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    max-width: 350px; /* Restrict card width */
+  }
+  
+  .step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Image border and hover effects */
+  .step-card img {
+    width: 100%; /* Make images responsive */
+    max-width: 300px; /* Restrict max width for uniformity */
+    border-radius: 15px; /* Rounded corners */
+    border: 4px solid #007bff; /* Blue border for a clean look */
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Add transition effects */
+  }
+
+  .step-card img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: #0056b3;
+    filter: brightness(1.1); /* Slight brightness increase for a glowing effect */
+  }
+  
+  
+  .step-card p {
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Adjust layout for steps cards */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  /* Footer Section */
+  footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 1.2rem;
+    background: rgba(0, 0, 0, 0.7);
+    color: #f0f0f0;
+    margin-top: 60px;
+    border-radius: 10px;
+    font-weight: 300;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  /* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  /* Adjust Navigation Bar */
+  nav {
+    flex-direction: column;
+    align-items: center; /* Center align the content */
+    padding: 10px 20px;
+  }
+
+  nav .nav-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center-align vertically stacked buttons */
+    gap: 10px; /* Reduce gap between buttons */
+  }
+
+  nav a {
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  .theme-toggle {
+    font-size: 0.9rem; /* Adjust button size */
+    padding: 8px 15px;
+  }
+
+  /* Adjust Header Section */
+  .header {
+    padding: 60px 15px;
+    font-size: 1rem;
+    max-width: 100%; /* Make it span full width */
+  }
+
+  .header h1 {
+    font-size: 1.5rem; /* Smaller heading */
+  }
+
+  .header p {
+    font-size: 1.2rem;
+  }
+
+  /* Adjust QR Code Section */
+  .qr-container {
+    gap: 2em; /* Smaller gap between cards */
+    flex-direction: column; /* Stack QR cards vertically */
+    align-items: center;
+  }
+
+  .qr-card {
+    width: 100%; /* Use full width of the screen */
+    max-width: 300px; /* Restrict width */
+  }
+
+  /* Adjust Download Buttons */
+  .download-buttons {
+    gap: 1em;
+    flex-direction: column; /* Stack buttons vertically */
+  }
+
+  /* Adjust Footer */
+  footer {
+    font-size: 1rem;
+    padding: 20px;
+  }
+}
+/* New Enhancements */
+    nav {
+      background: #003366;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin: 0 15px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00d2ff;
+    }
+
+    .theme-toggle {
+      background: #00d2ff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: #007bff;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    footer .links {
+      display: flex;
+      gap: 15px;
+    }
+
+    footer .links a {
+      color: #00d2ff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    footer .links a:hover {
+      color: #007bff;
+    }
+    /* New Enhancements for screens under 375px */
+@media (max-width: 375px) {
+  /* Adjust Steps Section Text */
+  .steps-section h2 {
+    font-size: 1.5rem; /* Smaller font size for heading */
+  }
+
+  .step h3 {
+    font-size: 1.2rem; /* Smaller font size for step titles */
+  }
+
+  .step-card p {
+    font-size: 0.9rem; /* Smaller font size for step descriptions */
+  }
+
+  /* Adjust Footer Text */
+  footer {
+    font-size: 0.9rem; /* Smaller footer text */
+  }
+
+  footer .links a {
+    font-size: 0.5rem; /* Smaller font size for footer links */
+  }
+}

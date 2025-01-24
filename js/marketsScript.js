@@ -26,14 +26,8 @@ let prices = {};
 let changes = {};
 let marketCaps = {};
 
-// Initialize tables
-window.onload = function() {
-    updateMarketCaps();
-    setInterval(updateMarketCaps, 60000); // Update market caps every minute
-};
-
-// Update the market cap data
-async function fetchMarketCap() {
+// Function to update the market cap data
+const fetchMarketCap = async () => {
     const geckoIds = coins.map(coin => coin.geckoId).join(',');
     try {
         const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${geckoIds}&vs_currencies=usd&include_market_cap=true`);
@@ -45,7 +39,11 @@ async function fetchMarketCap() {
     } catch (error) {
         console.error('Error fetching market cap data:', error);
     }
-}
+};
+
+// Initialize tables and start updating
+setInterval(updateMarketCaps, 60000); // Update market caps every minute
+updateMarketCaps(); // Initial call to update
 
 // Function to initialize or update the Top Gainers table
 function initializeTopGainersTable() {
@@ -141,22 +139,38 @@ async function updateMarketCaps() {
 const binanceSocket = new WebSocket('wss://stream.binance.com:9443/stream?streams=' + coins.map(c => `${c.symbol.toLowerCase()}@ticker`).join('/'));
 
 binanceSocket.onmessage = function(event) {
-    const message = JSON.parse(event.data);
-    const streamData = message.data;
-    const coin = coins.find(c => c.symbol.toLowerCase() === streamData.s.toLowerCase());
+    try {
+        const message = JSON.parse(event.data);
+        const streamData = message.data;
+        const coin = coins.find(c => c.symbol.toLowerCase() === streamData.s.toLowerCase());
 
-    if (coin) {
-        prices[coin.id] = parseFloat(streamData.c).toFixed(2); // Current price
-        changes[coin.id] = parseFloat(streamData.P).toFixed(2); // 24h percentage change
+        if (coin) {
+            prices[coin.id] = parseFloat(streamData.c).toFixed(2); // Current price
+            changes[coin.id] = parseFloat(streamData.P).toFixed(2); // 24h percentage change
+        }
+
+        let change = changes[coin.id]; // Use the correct variable
+        let changeValue;
+        if (change > 0) {
+            changeValue = `+${change}`;
+        } else {
+            changeValue = change;
+        }
+
+        // Check if the element exists before trying to update it
+        const changeElement = document.getElementById(`change-${coin.id}`);
+        if (changeElement) {
+            changeElement.innerHTML = changeValue + "%";
+            changeElement.style.color = change < 0 ? 'red' : 'green';
+        } 
+    } catch (error) {
+        // Log the error in case something unexpected happens, but don't stop execution
+        console.error("Error processing WebSocket message:", error);
     }
-    if(change > 0){
-        changeValue = `+${change}`; 
-    } else {
-        changeValue = change;
-    }
-    document.getElementById(`change-${coin.id}`).innerHTML = changeValue + "%";
-    document.getElementById(`change-${coin.id}`).style.color = change < 0 ? 'red' : 'green';
 };
+
+
+
 
 // Process queued updates every 500ms to reduce reflows
 setInterval(() => {
@@ -169,32 +183,40 @@ setInterval(() => {
 // for marketBarGraph
 
 const fetchMarketData = async () => {
-    const historicalDataPromises = coins.map(coin =>
-        fetch(`https://api.binance.com/api/v3/klines?symbol=${coin.symbol}&interval=1M&limit=12`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => ({
-                name: coin.name,
-                prices: data.map(item => parseFloat(item[4])), // Closing prices
-            }))
-            .catch(error => {
-                console.error(`Error fetching market data for ${coin.name}:`, error);
-                return null; // Return null if there's an error
-            })
-    );
+    try {
+        const historicalDataPromises = coins.map(coin =>
+            fetch(`https://api.binance.com/api/v3/klines?symbol=${coin.symbol}&interval=1M&limit=12`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => ({
+                    name: coin.name,
+                    prices: data.map(item => parseFloat(item[4])), // Closing prices
+                }))
+                .catch(error => {
+                    console.error(`Error fetching market data for ${coin.name}:`, error);
+                    return null; // Return null if there's an error
+                })
+        );
 
-    return Promise.all(historicalDataPromises);
+        return Promise.all(historicalDataPromises);
+    } catch (error) {
+        console.error("Error fetching market data:", error);
+        return []; // Return an empty array in case of an error
+    }
 };
+
 
 const drawChart = async () => {
     const marketData = await fetchMarketData();
     const filteredData = marketData.filter(data => data !== null); // Remove null entries
 
     const ctx = document.getElementById('cryptoChart').getContext('2d');
+
+    const translations = await loadTranslation(localStorage.getItem('selectedLanguage') || 'en'); // Get translations for the selected language
 
     const datasets = filteredData.map(data => ({
         label: data.name,
@@ -233,7 +255,7 @@ const drawChart = async () => {
                 },
                 title: {
                     display: true,
-                    text: 'Cryptocurrency Price Chart for Last Year',
+                    text: translations.chartTitle, // Use translated chart title
                     font: {
                         size: 20,
                     },
@@ -241,7 +263,7 @@ const drawChart = async () => {
                 tooltip: {
                     callbacks: {
                         label: (tooltipItem) => {
-                            return `${tooltipItem.dataset.label}: $${tooltipItem.raw.toFixed(2)}`;
+                            return `${translations.tooltipLabel}: $${tooltipItem.raw.toFixed(2)}`;
                         }
                     }
                 }
@@ -250,7 +272,7 @@ const drawChart = async () => {
                 x: {
                     title: {
                         display: true,
-                        text: 'Months',
+                        text: translations.xAxisTitle, // Use translated x-axis title
                         font: {
                             size: 16,
                         },
@@ -268,7 +290,7 @@ const drawChart = async () => {
                 y: {
                     title: {
                         display: true,
-                        text: 'Price (USDT)',
+                        text: translations.yAxisTitle, // Use translated y-axis title
                         font: {
                             size: 16,
                         },
@@ -282,6 +304,7 @@ const drawChart = async () => {
         }
     });
 };
+
 
 const getRandomColor = () => {
     const letters = '0123456789ABCDEF';

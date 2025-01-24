@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate="header_title">Download Our App</title>
+  <link rel="stylesheet" href="./style/download.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Ubuntu:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* New Enhancements */
+    nav {
+      background: #003366;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      flex-wrap: wrap; /* Allow wrapping when space is insufficient */
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin: 0 15px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00d2ff;
+    }
+
+    nav .nav-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap; /* Wrap buttons to new lines if needed */
+    }
+
+    .theme-toggle {
+      background: #00d2ff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: #007bff;
+    }
+
+    footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    footer .links {
+      display: flex;
+      gap: 15px;
+    }
+
+    footer .links a {
+      color: #00d2ff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    footer .links a:hover {
+      color: #007bff;
+    }
+
+    
+  </style>
+    <!-- <script src="./js/translate.js"></script> -->
+    <script>
+      // Function to load the translation file for the selected language
+        function loadTranslation(lang) {
+            const url = `./translations/download/${lang}.json`; // Assuming translations are in the 'translations' folder
+            return fetch(url)
+                .then(response => response.json())
+                .then(translations => {
+                    console.log(translations); // Check if the translations are being loaded correctly
+                    applyTranslations(translations);
+                    return translations;
+                })
+                .catch(error => {
+                    console.error("Error loading translations:", error);
+                });
+        }
+    
+        // Function to apply translations to elements with the 'data-translate' attribute
+        function applyTranslations(translations) {
+            const elements = document.querySelectorAll("[data-translate]");
+            elements.forEach(element => {
+                const key = element.getAttribute("data-translate");
+                if (translations[key]) {
+                    if (element.tagName.toLowerCase() === "input" && element.type === "submit") {
+                        element.value = translations[key]; // Update button text
+                    } else if (element.placeholder) {
+                        element.placeholder = translations[key]; // Update input placeholder
+                    } else {
+                        element.innerHTML = translations[key]; // Update regular text content
+                    }
+                }
+            });
+        }
+    
+        // Run this when the page loads
+        window.onload = function () {
+            // Retrieve the selected language from localStorage or default to 'en'
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+            
+            // Load and apply translations for the saved language
+            loadTranslation(savedLanguage).then(() => {
+                // Set the dropdown to match the selected language
+                const languageSelector = document.getElementById('language-selector');
+                if (languageSelector) {
+                    languageSelector.value = savedLanguage;
+
+                    // Listen for language selection changes
+                    languageSelector.addEventListener('change', function () {
+                        const selectedLanguage = this.value;
+                        localStorage.setItem('selectedLanguage', selectedLanguage); // Save to localStorage
+                        loadTranslation(selectedLanguage);
+                    });
+                }
+            });
+        };
+
+    </script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div><a href="#" data-translate="nav_app_download">App Download</a></div>
+    <div class="nav-buttons">
+      <a href="./index.php" data-translate="home_link">Home</a>
+      <a href="#qr-section" data-translate="nav_qr_codes">QR Codes</a>
+      <a href="#steps-section" data-translate="nav_installation_guide">Installation Guide</a>
+      <button class="theme-toggle" data-translate="nav_toggle_theme">Toggle Theme</button>
+    </div>
+  </nav>
+  
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Header Section -->
+    <header class="header">
+      <h1 data-translate="header_title">Download Our App</h1>
+      <p data-translate="header_description">Experience the next-generation app. Scan and install now!</p>
+    </header>
+
+    <!-- QR Code Section -->
+    <section id="qr-section" class="qr-section">
+      <div class="qr-container">
+        <div class="qr-card">
+          <h2><img src="images/android-icon.png" alt="Android" style="width:24px; height:24px;" data-translate="android_title"> For Android</h2>
+          <img src="images/sampleQR.png" alt="Android QR Code" class="qr-code">
+          <p data-translate="android_description">Scan to install the APK.</p>
+          <button class="download-button" data-translate="download_apk">
+            <i class="fas fa-download"></i> Download APK
+          </button>
+        </div>
+        <div class="qr-card">
+          <h2><img src="images/ios-icon.png" alt="iOS" style="width:24px; height:24px;" data-translate="ios_title"> For iOS</h2>
+          <img src="images/sampleQR.png" alt="iOS QR Code" class="qr-code">
+          <p data-translate="ios_description">Scan to install the PWA.</p>
+          <button class="download-button" data-translate="download_ios">
+            <i class="fas fa-download"></i> Download iOS
+          </button>
+        </div>
+        
+    </section>
+
+    
+
+    <!-- Steps Section -->
+    <section id="steps-section" class="steps-section">
+      <h2 data-translate="installation_guide_title">Installation Guide</h2>
+
+      <!-- Android Steps -->
+      <div class="step">
+        <h3 data-translate="android_installation_title">Android Installation</h3>
+        <div class="steps-grid">
+          <div class="step-card">
+            <img src="images/scanQR.png" alt="Step 1: Scan QR Code">
+            <p data-translate="android_step1"><strong>Step 1:</strong> Scan the QR code to begin the APK download.</p>
+          </div>
+          <div class="step-card">
+            <img src="images/step2.png" alt="Step 2: Allow Installation from Unknown Sources">
+            <p data-translate="android_step2"><strong>Step 2(Optional):</strong> For security, your phone is set to block the installation of apps from unknown sources. To proceed, tap <strong>Settings</strong>, and enable "Allow from this source."</p>
+          </div>
+          <div class="step-card">
+            <img src="images/step3.webp" alt="Step 3: Allow Installation from Unknown Sources">
+            <p data-translate="android_step3">
+              <strong>Step 3 (Optional):</strong> Allow installation from unknown sources by toggling the setting in Security.
+            </p>          </div>
+        <!-- Step 4: Open APK and Install -->
+        <div class="step-card">
+          <p data-translate="android_step4">
+            <strong>Step 4:</strong> Open the APK file you downloaded. Tap <strong>Install</strong> and follow the on-screen instructions to complete the installation process.
+          </p>        </div>
+        
+        <!-- Step 5: Tap Finish to Complete Installation -->
+        <div class="step-card">
+          <p data-translate="android_step5">
+            <strong>Step 5:</strong> Once installation is complete, tap <strong>Finish</strong> to complete the setup. You can now start using the app!
+          </p>        </div>
+      </div>
+
+      <!-- iOS Steps -->
+        <div class="step">
+          <h3 data-translate="ios_installation_title">iOS Installation</h3>
+          <div class="steps-grid">
+            <!-- Step 1 -->
+            <div class="step-card">
+                <img src="images/ios-step1.png" alt="Step 1: Scan QR Code">
+                <p data-translate="ios_step1"><strong>Step 1:</strong> Scan the QR code and open it in Safari browser.</p>
+              </div>
+        
+            <!-- Step 2 -->
+            <div class="step-card">
+                <img src="images/ios-step2.png" alt="Step 2: Tap the Share button">
+                <p data-translate="ios_step2"><strong>Step 2:</strong> Tap the <strong>Share</strong> button in Safari to open the share options.</p>
+              </div>
+        
+            <!-- Step 3 -->
+            <div class="step-card">
+                <img src="images/ios-step3.png" alt="Step 3: Tap Add to Home Screen">
+                <p data-translate="ios_step3"><strong>Step 3:</strong> From the share options, tap <strong>Add to Home Screen</strong>.</p>
+              </div>
+        
+            <!-- Step 4 -->
+            <div class="step-card">
+                <img src="images/ios-step4.png" alt="Step 4: Confirm Add to Home Screen">
+                <p data-translate="ios_step4">
+                  <strong>Step 4:</strong> Safari will show a new page asking for confirmation. Tap the <strong>Add</strong> button to confirm.
+                </p>
+            </div>
+        
+            <!-- Step 5 -->
+            <div class="step-card">
+                <img src="images/ios-step5.png" alt="Step 5: Tap the App Icon">
+                <p data-translate="ios_step5">
+                  <strong>Step 5:</strong> The app icon will now appear on your home screen. Tap the icon to open the app.
+                </p>
+            </div>
+            </div>
+        </div>
+  
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p data-translate="footer_copyright">&copy; 2024 Your Company | Powered by AI-driven Design.</p>
+    <div class="links">
+      <a href="#" data-translate="footer_contact">Contact Us</a>
+      <a href="#" data-translate="footer_privacy">Privacy Policy</a>
+      <a href="#" data-translate="footer_terms">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    // Function to check and apply dark mode from localStorage
+    function applyDarkModeFromStorage() {
+      const theme = localStorage.getItem('theme'); // Get the stored theme
+      if (theme === 'dark') {
+        document.body.classList.add('dark-mode'); // Apply dark mode if the stored theme is 'dark'
+      } else {
+        document.body.classList.remove('dark-mode'); // Ensure light mode is applied if 'light'
+      }
+    }
+
+    // Apply dark mode on page load
+    applyDarkModeFromStorage();
+
+    // Theme Toggle Script
+    const toggleButton = document.querySelector('.theme-toggle');
+    toggleButton.addEventListener('click', () => {
+      const isDarkMode = document.body.classList.toggle('dark-mode'); // Toggle dark mode
+      const newTheme = isDarkMode ? 'dark' : 'light'; // Determine the new theme
+      localStorage.setItem('theme', newTheme); // Save the new theme to localStorage
+    });
+  
+    // Add dark mode CSS dynamically
+    const style = document.createElement('style');
+    style.textContent = `
+      .dark-mode {
+        background: #121212;
+        color: #e0e0e0; /* Default text color for dark mode */
+      }
+  
+      .dark-mode .header {
+        background: #333;
+        color: #e0e0e0; /* Ensure header text is light */
+      }
+  
+      .dark-mode footer {
+        background: #222;
+        color: #ccc; /* Ensure footer text is light */
+      }
+  
+      .dark-mode .qr-card,
+      .dark-mode .step-card {
+        background: #444;
+        color: #e0e0e0; /* Ensure QR and step cards text is light */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Update shadow for better contrast */
+      }
+  
+      .dark-mode h1, 
+      .dark-mode h2, 
+      .dark-mode h3, 
+      .dark-mode p, 
+      .dark-mode a {
+        color: #e0e0e0; /* Ensure all headers, paragraphs, and links are light */
+      }
+  
+      .dark-mode .steps-section {
+        background: #222; /* Darker background for the steps section */
+        border-radius: 20px; /* Retain the rounded corners */
+        padding: 40px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Add subtle shadow for depth */
+      }
+  
+      .dark-mode .steps-section h2 {
+        color: #00d2ff; /* Highlight section title */
+      }
+  
+      .dark-mode .step-card img {
+        border-color: #555; /* Dark border for images */
+      }
+  
+      .dark-mode .step-card p {
+        color: #e0e0e0; /* Ensure step descriptions are readable */
+      }
+  
+      .dark-mode .download-button {
+        background: #0056b3;
+        color: #fff; /* Ensure button text is light */
+      }
+  
+      .dark-mode .download-button:hover {
+        background: #007bff;
+      }
+  
+      .dark-mode a {
+        color: #00d2ff; /* Light blue for links in dark mode */
+      }
+  
+      .dark-mode a:hover {
+        color: #007bff;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+  
+  
+</body>
+</html>

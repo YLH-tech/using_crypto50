@@ -43,11 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_fund_password'
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Fund Password</title>
+    <title data-translate="title_new">Update Fund Password</title>
 
     <!-- Style link -->
     <link rel="stylesheet" href="../../style/login-signup.css">
     <script src="../../js/eye.js" defer></script>
+    <script src="../../js/translate.js"></script>
 
     <!-- Fontawesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -69,17 +70,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_fund_password'
     <main>
         <!-- <img src="./assets/images/Sign up-amico.svg" alt="Background"> -->
         <form action="" method="post">
-            <h1>Update Your Fund Password</h1>
+            <h1 data-translate="title_new">Update Your Fund Password</h1>
             <h4> <?php if (isset($_GET['error'])) { ?>
                     <p class="error"> <?php echo $_GET['error']; ?></p>
                 <?php } ?>
             </h4>
             <!-- Email input -->
             <fieldset>
-                <legend>Password</legend>
+                <legend data-translate="password">Password</legend>
                 <span>
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" name="fund_password" id="password" placeholder="New Fund Password (6 digits)" required pattern="\d{6}" maxlength="6">
+                    <input type="password" name="fund_password" id="password" data-translate="fund_password_placeholder_new" placeholder="New Fund Password (6 digits)" required pattern="\d{6}" maxlength="6">
                     <i class="fas fa-eye toggle-password" data-toggle="#password"></i>
 
                 </span>
@@ -87,17 +88,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_fund_password'
 
             <!-- Password input -->
             <fieldset>
-                <legend>Comfirm Password</legend>
+                <legend data-translate="confirm_password">Comfirm Password</legend>
                 <span>
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" name="fund_password_confirm" id="confirmPassword" placeholder="New Confirm Fund Password" required pattern="\d{6}" maxlength="6">
+                    <input type="password" name="fund_password_confirm" id="confirmPassword" data-translate="confirm_fund_password_placeholder_new" placeholder="New Confirm Fund Password" required pattern="\d{6}" maxlength="6">
                     <i class="fas fa-eye toggle-password" data-toggle="#confirmPassword"></i>
                 </span>
             </fieldset>
 
             <span class="btn-container"> <!-- For align the buttons -->
                 <span class="btn-gp">    
-                 <input type="submit" name="update_fund_password" class="active-btn" value="Update Password">
+                 <input type="submit" name="update_fund_password" data-translate="update_password" class="active-btn" value="Update Password">
 
                 </span>
             </span>

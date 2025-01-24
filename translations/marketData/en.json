@@ -1,0 +1,13 @@
+{
+    "recommendedRanks": "Recommended Ranks",
+    "priceChangeDistribution": "24H Price Change Distribution",
+    "priceDown": "Price Down: ",
+    "priceUp": "Price Up: ",
+    "clickCoin": "Click on a coin's name in the chart to show or hide its prices.",
+    "chartTitle": "Cryptocurrency Price Chart for Last Year",
+    "xAxisTitle": "Months",
+    "yAxisTitle": "Price (USDT)",
+    "tooltipLabel": "Price"
+
+  }
+  

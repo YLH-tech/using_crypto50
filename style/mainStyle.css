@@ -8,10 +8,6 @@
   padding: 0;
 }
 
-.mobile {
-  display: none;
-}
-
 /* ========================= */
 /* Main Section Style */
 /* ========================= */
@@ -45,7 +41,7 @@
   margin: auto;
 }
 
-/* For max 1200px width laptops/ tablets */
+/* For max 1300px width laptops/ tablets */
 @media screen and (max-width: 1300px) {
   .content-container h1 {
     font-size: 40px;
@@ -177,10 +173,15 @@ td {
   font-weight: 500;
 }
 tr td {
-  border: none;
+  border: 1px solid black;
+}
+tr th{
+  background-color: var(--dark-entry-color--);
+  color: var(--dark-font-color--);
 }
 tr:hover td {
-  background-color: #f1f1f1;
+  background-color: #4f4f4f;
+  color: var(--dark-font-color--);
 }
 .coin-logo {
   width: 24px;
@@ -191,7 +192,7 @@ tr:hover td {
 }
 td:first-child {
   font-weight: 600;
-  color: #333;
+  /* color: #333; */
 }
 #crypto-table thead th {
   border-bottom: none;
@@ -201,7 +202,7 @@ td:first-child {
 }
 
 /* Media Queries for Responsive Design */
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .container {
     width: 70%; /* Set container to 70% for mid-sized screens */
   }
@@ -221,10 +222,7 @@ td:first-child {
   }
 }
 
-@media (max-width: 500px) {
-  .mobile {
-    display: block;
-  }
+@media (max-width: 780px) {
   .container {
     width: 100%; /* Full width for mobile screens */
     padding: 10px; /* Reduced padding for smaller screens */
@@ -320,7 +318,7 @@ h2 {
   }
 }
 
-/* For max 1200px width laptops/ tablets */
+/* For max 1300px width laptops/ tablets */
 @media screen and (max-width: 1300px) {
   h2 {
     font-size: 14px;
@@ -334,7 +332,7 @@ h2 {
 }
 
 /* For max 1000px laptops/ tablets */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
   .more-button {
     padding: 5px 10px;
   }
@@ -353,6 +351,11 @@ h2 {
   #news-scroll-area {
     max-height: 425px;
   }
+}
+
+/* For max 780px for mobile landscape */
+@media screen and (max-width: 780px) {
+
 }
 
 @media screen and (max-width: 500px) {
@@ -421,7 +424,7 @@ h2 {
 }
 
 /* For Max width Phone responsive devices */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 780px) {
   .download-container {
     /* width: 90%; */
     margin: 20px auto; /* align center */

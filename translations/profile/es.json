@@ -1,0 +1,12 @@
+{
+    "account_settings": "Configuraciones de la cuenta",
+    "my_profile": "Mi perfil",
+    "name": "Nombre",
+    "personal_information": "Información personal",
+    "email_address": "Dirección de correo electrónico",
+    "no_of_deposits": "Número de depósitos",
+    "no_of_withdrawals": "Número de retiros",
+    "check_balances": "Ver balances",
+    "create_fund_password": "Crear contraseña de fondos",
+    "suspended_alert": "Tu cuenta está suspendida. No puedes acceder a esta función."
+}

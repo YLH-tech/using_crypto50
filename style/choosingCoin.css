@@ -16,7 +16,7 @@ main p{
     text-align: center;
     color: var(--secondary-font-color--);
 }
-.main-container{
+.main-container-choose{
     width: 90%;
     position: absolute;
     top: 50%;
@@ -64,4 +64,44 @@ main p{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 1200px) {
+    #mid-pic{
+        display: none;
+    }
+}
+@media screen and (max-width: 900px) {
+    .main-container-choose{
+        margin: auto;
+        position: unset;
+        transform: none;
+    }
+
+    .coin-container{
+        width: 100%;
+        margin: auto;
+        display: block;
+    }
+    .coin-div{
+        width: 100%;
+        margin: 20px 0;
+        justify-content: flex-start;
+    }
+}
+@media screen and (max-width: 500px){
+    .coin-div img{
+        width: 30px;
+    }
+    .coin-div h1{
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 400px){
+    .heading{
+        font-size: 40px;
+    }
+    .coin-div h1{
+        font-size: 18px;
+    }
 }

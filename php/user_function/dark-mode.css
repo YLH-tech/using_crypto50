@@ -1,0 +1,134 @@
+
+
+@import url(../../style/exchange.css);
+@import url(../../style/navigation.css);
+@import url(../../style/footer.css);
+@import url(../../style/userDashboard.css);
+@import url(../../style/deposit_withdraw.css);
+
+
+/* Dark Mode */
+body{
+    /* background-color: var(--dark-body-color--); */
+    background-color: rgb(45, 48, 55);
+    color: #ffffff;
+    transition: var(--transistion-time--);
+}
+
+/* Navigation bar */
+nav{
+    background-color: var(--dark-body-color--);
+    transition: var(--transistion-time--);
+}
+nav a{
+    color: var(--dark-font-color--);
+}
+
+/* Main Section Style */
+.main-container{
+    background-color: var(--font-color--);
+}
+.main-container1{
+    background-color: var(--dark-entry-color--);
+}
+.coin-price{
+    background-color: var(--font-color--);
+}
+.horizontal-container{
+    background-color: var(--font-color--);
+}
+.from-coin-div{
+    border: 1px solid var(--dark-font-color--);
+}
+.from-coin-div select{
+    background-color: var(--secondary-font-color--);
+}
+.amount-input input{
+    background-color: rgba(128, 128, 128, 0.099);
+}
+.to-coin-div{
+    border: 1px solid var(--dark-font-color--);
+}
+.to-coin-div select{
+    background-color: var(--secondary-font-color--);
+}
+.entry-section{
+    background-color: var(--dark-entry-color--);
+    transition: var(--transistion-time--);
+}
+
+.content-container h1{
+    color: var(--dark-font-color--);
+}
+
+/* Download Section */
+.download-container{
+    background-color: var(--dark-entry-color--);
+    transition: var(--transistion-time--);
+}
+.download-header h1{
+    color: var(--dark-font-color--);
+}
+.app-shops{
+    color: var(--dark-icons-color--);
+}
+
+/* Ranking & Breaking */
+.more-button {
+    color: var(--dark-font-color--);
+}
+.container{
+    background-color: var(--dark-entry-color--);
+    transition: var(--transistion-time--);
+}
+.container #crypto-body{
+    background-color: var(--dark-entry-color--);
+}
+.header h1{
+    color: var(--dark-font-color--);
+}
+
+/* FAQs */
+h2{
+    color: var(--dark-font-color--);
+}
+h1{
+    color: var(--dark-font-color--);
+}
+#crypto-body td:first-child{
+    color: var(--dark-font-color--);
+}
+
+/* Footer */
+footer{
+    background-color: var(--dark-entry-color--);
+}
+.footer-sec ul h2{
+    color: var(--dark-font-color--);
+}
+
+.clickdown-content{
+    background-color: var(--dark-body-color--);
+}
+
+.clickdown-content ul{
+    color: var(--dark-font-color--);
+}
+
+.card{
+    background-color: var(--font-color--);
+}
+
+.deposit-btn{
+    border-radius: 50px;
+    background-color: var(--dark-font-color--);
+    color: var(--dark-entry-color--);
+}
+.withdraw-btn{
+    border: 1px solid var(--dark-font-color--);
+    border-radius: 50px;
+}
+
+tr{
+    background-color: var(--dark-entry-color--);
+}

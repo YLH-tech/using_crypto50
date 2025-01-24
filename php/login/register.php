@@ -42,12 +42,12 @@ if (isset($_POST["register"])) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'lighting177036@gmail.com';
-        $mail->Password = 'gjomowgrlsbnkuhw';
+        $mail->Username = 'bithumbnnofficial@gmail.com';
+        $mail->Password = 'dwtegfpxwvnasqtz';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom('lighting177036@gmail.com', 'Bithumbnn.com');
+        $mail->setFrom('bithumbnnofficial@gmail.com', 'Bithumbnn.com');
         $mail->addAddress($email, $name);
 
         $mail->isHTML(true);

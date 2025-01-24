@@ -1,7 +1,21 @@
 @import url(./mainStyle.css); /* linking to the main Style */
 @import url(./commond_command.css); /* Command Commands */
+@import url(./navigation.css);
+@import url(./footer.css);
+@import url(./helpCenter.css);
+@import url(./respDropdown.css);
+@import url(./termAgreement.css);
+
+
 
 
 body, nav, .entry-section, .download-container, .container{
     transition: var(--transistion-time--);
+}
+
+.dropdown-content{
+    background-color: var(--dark-font-color--);
+}
+.dropdown-content span{
+    color: var(--font-color--);
 }

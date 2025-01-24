@@ -1,17 +1,18 @@
 @import url(./commond_command.css); /* Command Commands */
 
-*{
+* {
     margin: 0;
     padding: 0;
-}
-body{
-    background-color: rgba(222, 222, 222, 0.522);
-    padding: 50px;
+    box-sizing: border-box; /* Ensure padding and margin don't affect layout */
 }
 
-/* Main Container */
-.main-container{
+body {
+    background-color: rgba(222, 222, 222, 0.522);
+}
+
+.main-container-pfp {
     width: 80%;
+    max-width: 1200px; /* Ensure max width on larger screens */
     border-radius: 20px;
     padding: 40px;
     margin: auto;
@@ -22,80 +23,21 @@ body{
     gap: 50px;
 }
 
-/* Side bar Navigation */
-nav{
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 20px;
-    border-right: 1px solid var(--secondary-font-color--);
-}
-nav a{
-    color: var(--secondary-font-color--);
-    text-decoration: none;
-}
-#delete-acc{
-    color: rgb(176, 0, 0);
-}
-
-/* Info Container */
-.info-container{
+.info-container {
     width: 100%;
 }
-#profile-pic{
+
+.heading {
+    width: 80%;
+}
+
+#profile-pic {
     width: 200px;
     margin: auto;
     border-radius: 100%;
 }
-#pfp-edit-btn{
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 30px;
-    cursor: pointer;
-}
-.name-chg-div, .info-chg-div, .chg-password{
-    width: 500px;
-    border: 1px solid grey;
-    border-radius: 10px;
-    padding: 20px 40px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-    z-index: 1;
-    background-color: #ffffff;
-}
-.name-chg-div label, .info-chg-div label, .chg-password label{
-    color: var(--iconic-color--);
-    font-size: 18px;
-    font-weight: bold;
-}
-.name-chg-div p, .info-chg-div p{
-    font-size: 12px;
-    color: var(--secondary-font-color--);
-}
-.change-input{
-    width: 100%;
-    border-radius: 5px;
-    background-color: var(--body-color--);
-    padding: 10px;
-}
-.name-chg-div span{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-.name-chg-div button{
-    background-color: var(--iconic-color--);
-    padding: 10px;
-    border-radius: 5px;
-}
-.name-container{
+
+.name-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,7 +45,8 @@ nav a{
     border-radius: 10px;
     padding: 5px 20px;
 }
-.name-sub-container{
+
+.name-sub-container {
     width: 30%;
     display: flex;
     justify-content: flex-start;
@@ -111,43 +54,146 @@ nav a{
     gap: 20px;
     line-height: 20px;
 }
-.name-sub-container h5{
+
+.name-sub-container h5 {
     color: var(--secondary-font-color--);
 }
-.name-container img{
+
+.name-container img {
     width: 80px;
 }
-.name-container span{
+
+.name-container span {
     display: block;
 }
-.edit-btns{
-    font-size: 15px;
-    padding: 5px 20px;
-    border-radius: 30px;
-    border: 1px solid var(--secondary-font-color--);
-}
-.chg-password{
 
-}
-
-/* Personal Information */
-.personal-info-container{
+.personal-info-container {
     border: 1px solid var(--secondary-font-color--);
     border-radius: 10px;
     padding: 10px 20px;
 }
-.personal-info-heading-container{
+
+.personal-info-heading-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.personal-info-detail-container{
+
+.personal-info-detail-container {
     display: grid;
     grid-template-columns: auto auto;
+    gap: 20px;
 }
-.personal-info-detail-container div{
+
+.personal-info-detail-container div {
     margin-bottom: 20px;
 }
-.personal-info-detail-container p{
+
+.personal-info-detail-container p {
     color: var(--secondary-font-color--);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Default gap between buttons */
+    margin-top: 20px;
+}
+
+.button-container a {
+    width: 100%;
+    max-width: 300px; /* Prevent buttons from stretching too much */
+    padding: 10px 20px;
+    background-color: #78B7D0;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.button-container a:hover {
+    background-color: #5A8C9E;
+}
+
+@media screen and (max-width: 1200px) {
+    h1{
+        text-align: center;
+    }
+    .main-container-pfp {
+        width: 90%;
+    }
+
+    .heading {
+        width: 100%;
+    }
+
+    .personal-info-detail-container {
+        display: block;
+    }
+
+    .button-container {
+        /* flex-direction: column; Stack buttons vertically */
+        align-items: center;
+        gap: 20px; /* Ensure space between buttons */
+    }
+
+    .button-container a {
+        width: auto; /* Allow buttons to take natural width */
+        max-width: 300px; /* Prevent buttons from stretching too much */
+        margin: 0 auto; /* Ensure buttons are centered */
+    }
+
+    /* Adjust font size for texts */
+    .name-container h5,
+    .personal-info-container p {
+        font-size: 0.9rem; /* Smaller text for medium screens */
+    }
+
+
+}
+
+@media screen and (max-width: 780px) {
+
+    .main-container-pfp {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .name-container,
+    .name-sub-container {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .name-sub-container img {
+        margin: auto;
+    }
+
+    .personal-info-detail-container {
+        display: block;
+    }
+
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        gap: 15px; /* Adjusted gap for smaller devices */
+    }
+
+    .button-container a {
+        width: 100%;
+        margin: 10px;
+    }
+
+    /* Adjust font size for smaller screens */
+    .name-container h5,
+    .personal-info-container p {
+        font-size: 0.8rem; /* Further reduce text size for mobile devices */
+    }
+
+    .button-container a {
+        font-size: 0.9rem; /* Smaller font size for buttons on mobile */
+    }
 }

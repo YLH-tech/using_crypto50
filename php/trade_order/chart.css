@@ -16,7 +16,7 @@ header {
 .container {
     display: flex;
     flex-direction: row;
-    max-width: 1400px; /* Maintain overall max width */
+    max-width: 100%; /* Maintain overall max width */
     margin: 0 auto;
     padding: 10px;
 }
@@ -25,7 +25,7 @@ header {
     width: 20%;
     height: 700px; /* Reduced height */
     overflow-y: auto;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 10px;
     border-right: 1px solid #ccc;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@ header {
     padding: 10px;
     margin-bottom: 5px;
     cursor: pointer;
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
     border-radius: 5px;
     transition: background-color 0.2s, transform 0.1s;
 }
@@ -56,7 +56,7 @@ header {
 
 .market-list li strong {
     font-weight: bold;
-    color: #000;
+    /* color: #000; */
 }
 
 .market-list li .price {
@@ -92,7 +92,7 @@ header {
 .order-book {
     flex: 1;
     height: 700px; /* Reduced height */
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     border-left: 1px solid #ddd;
     padding: 10px;
     overflow-y: auto;
@@ -195,6 +195,7 @@ header {
     .chart-area {
         width: 100%; /* Full width on smaller screens */
         height: auto; /* Allow flexible height */
+        padding: 0;
     }
 
     #chart {
@@ -204,6 +205,35 @@ header {
    
 }
 
+@media screen and (max-width: 600px){
+    .scrollable-area{
+        width: 100%;
+        height: fit-content;
+    }
+    .chart-area{
+        padding: 0;
+        background-color: black;
+    }
+    .scrollable-area1{
+        overflow-x: scroll;
+        width: 100%;
+        height: fit-content;
+    }
+    .scrollable-area1 table{
+        width: 2000px;
+    }
+    .trade-columns{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .scrollable-area{
+        overflow-x: scroll;
+        width: 100%;
+        height: fit-content;
+    }
+}
 #tradingview-widget-container {
     position: relative;
     width: 100%;
@@ -235,10 +265,9 @@ form input {
 }
 
 button {
-    width: 100%; /* Full width for buttons */
     padding: 10px;
     border: none;
-    color: white;
+    /* color: white; */
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;

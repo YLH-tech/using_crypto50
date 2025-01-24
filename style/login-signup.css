@@ -99,9 +99,7 @@ fieldset input{
     color: var(--dark-font-color--);
 }
 .btn-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
 }
 .btn-container a{
     text-decoration: none;
@@ -171,4 +169,39 @@ fieldset input{
 /* Common Properties */
 .btn-gp{
     display: inline-block;
+}
+
+@media screen and (max-width: 1200px) {
+    form{
+        width: 70%;
+    }
+    main{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    form{
+        width: 60%;
+    }
+    main{
+        width: 85%;
+    }
+}
+@media screen and (max-width: 800px) {
+    form{
+        width: 80%;
+        padding: 20px;
+    }
+    main{
+        width: 98%;
+    }   
+    .active-btn{
+        width: 100px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .btn-container{
+        display: flex;
+        flex-direction: column;
+    }
 }

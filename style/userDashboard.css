@@ -4,10 +4,14 @@
     margin: 0;
     padding: 0;
 }
-.main-container{
+.main-container1{
     width: 98%;
     margin: auto;
     padding: 20px;
+    border-radius: 20px;
+}
+tbody img{
+    width: 40px;
 }
 .balance-info-container{
     width: 100%;
@@ -18,9 +22,65 @@
 .balance-table{
     width: 100%;
 }
+.balance-table th{
+    font-size: 20px;
+}
 .table-row{
     border-bottom: 1px solid var(--secondary-font-color--);
 }
 .table-row td{
     padding: 20px 0;
+}
+.heading{
+    font-size: 40px;
+}
+.amount{
+    font-size: 30px;
+}
+.mt-th, .special-td{
+    width: 200px;
+}
+.deposit-btn, .withdraw-btn{
+    width: 90%;
+    height: 30px;
+    margin: 5px 0;
+}
+.deposit-btn{
+    border-radius: 50px;
+    background-color: var(--dark-entry-color--);
+    color: var(--dark-font-color--);
+}
+.withdraw-btn{
+    border: 1px solid var(--dark-entry-color--);
+    border-radius: 50px;
+}
+@media screen and (max-width: 1100px) {
+    .deposit-btn, .withdraw-btn{
+        margin: 2px;
+    }
+}
+@media screen and (max-width: 700px){
+    .balance-table{
+        width: 100%;
+    }
+    .balance-table th{
+        font-size: 16px;
+    }
+    tbody img{
+        width: 30px;
+    }
+    .table-row td{
+        font-size: 12px;
+    }
+    .mt-th, .special-td{
+        width: 100px;
+    }
+    .deposit-btn, .withdraw-btn{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 500px){
+    .deposit-btn, .withdraw-btn{
+        width: 80px;
+    }
 }

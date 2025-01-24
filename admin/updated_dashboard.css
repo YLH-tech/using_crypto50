@@ -1,0 +1,112 @@
+
+/* Updated CSS with enhanced responsiveness */
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    max-width: 250px;
+    background-color: #35424a;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 10;
+    transform: translateX(-250px); /* Hide by default on mobile */
+    transition: transform 0.3s ease;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+/* Toggle Button */
+.hamburger {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 15;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    .hamburger {
+        display: block;
+    }
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* Chart Container */
+.chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.chart-container > div {
+    flex: 1;
+    min-width: 300px;
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        flex-direction: column;
+    }
+}
+
+/* Table Responsiveness */
+.tables-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.table-container-left,
+.table-container-right {
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+/* Media Queries for Small Screens */
+@media (max-width: 480px) {
+    .sidebar-menu a {
+        font-size: 0.8rem;
+    }
+
+    .table th, .table td {
+        font-size: 0.7rem;
+        padding: 5px;
+    }
+}

@@ -23,7 +23,7 @@
 }
 
 .web-logo{
-    width: 50px;
+    width: 40px;
 }
 
 .align-margin{
@@ -31,8 +31,18 @@
     margin: auto;
 }
 
+.mobile {
+    display: none;
+  }
+
 @media screen and (max-width: 1200px){
     .align-margin{
         width: 95%;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .mobile{
+        display: block;
     }
 }

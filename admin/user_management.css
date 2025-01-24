@@ -1,0 +1,529 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif; /* Harmonized font family */
+}
+
+/* Layout */
+body {
+    display: flex; /* Flex layout for the body */
+    flex-direction: column; /* Stack elements vertically */
+    background-color: #f8f9fa; /* Unified background color */
+    height: 100vh; /* Full viewport height */
+}
+
+/* Container */
+.container {
+    display: flex; /* Sidebar and main content as flex items */
+    flex: 1; /* Allow the container to grow and fill the body */
+    width: 100%; /* Full width */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px; /* Fixed width for desktop */
+    background-color: #35424a;
+    color: #ffffff;
+    padding: 20px;
+    flex-shrink: 0; /* Prevents the sidebar from shrinking */
+    position: relative;
+    overflow-y: auto; /* Adds scrollbar if content overflows */
+    z-index: 10;
+    transform: translateX(0); /* Always show the sidebar on larger screens */
+    transition: transform 0.3s ease;
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Slide the sidebar in when active */
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-header h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    margin: 20px 0;
+}
+
+.sidebar-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-menu a i {
+    margin-right: 15px;
+}
+
+.sidebar-menu a:hover {
+    background-color: #66c2ff;
+    color: #35424a;
+}
+
+/* Sidebar for small screens */
+@media (max-width: 1024px) {
+    .sidebar {
+        position: fixed; /* Fix the sidebar to the left */
+        top: 0;
+        left: -300px; /* Start hidden off-screen */
+        width: 250px; /* Reduced width */
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0; /* Slide in the sidebar when active */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger on smaller screens */
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    .main-content h2{
+        padding-left:7%;
+    }
+
+    /* Adjust sidebar menu for mobile */
+    .sidebar-menu a {
+        font-size: 1rem; /* Reduce font size for smaller screens */
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    /* Adjust sidebar header for mobile */
+    .sidebar-header h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Collapsed sidebar for small screens */
+    .sidebar.collapsed .sidebar-menu a {
+        padding-left: 0;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* When the sidebar is collapsed, use icons only */
+    .sidebar.collapsed .sidebar-menu a i {
+        margin-right: 0;
+        font-size: 1.5rem;
+    }
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+.main-content h2 {
+    padding-bottom: 20px;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position to cover the entire screen */
+    z-index: 9999; /* Ensure it sits above other elements like sidebar */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scrolling if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Transparent black background */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px; /* Modal width */
+    text-align: center;
+}
+
+/* Modal Buttons */
+.modal-buttons {
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.modal-buttons button#cancelLogout {
+    background-color: #f44336; /* Red */
+}
+
+.filter-form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.left-filters,
+.right-filters {
+    display: flex;
+    align-items: center;
+}
+
+.left-filters label,
+.right-filters label {
+    margin-right: 10px;
+}
+
+.left-filters input,
+.right-filters select {
+    margin-right: 20px;
+    font-size: 1em;
+}
+
+.right-filters {
+    justify-content: flex-end;
+}
+
+/* User List Container */
+.user-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px; /* Adds space between list items */
+
+}
+
+/* Header Row */
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center; /* Vertically centers the content */ 
+    border-bottom: 2px solid #007bff;
+}
+
+.user-header span {
+    flex: 1; /* Makes each column take equal space */
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+/* List Items */
+.user-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+    align-items: center; /* Vertically centers the content */
+    border-radius: 5px; /* Adds rounded corners */
+}
+
+.user-item span {
+    flex: 1; /* Ensures the list items take equal space for each column */
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.user-item a {
+    display: inline-flex; /* Aligns icon and text horizontally */
+    align-items: center; /* Vertically centers the icon and text */
+    margin-left: 10px;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+.user-item a i {
+    margin-right: 5px; /* Adds space between the icon and the text */
+}
+
+.user-item a:hover {
+    background-color: #0056b3;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    padding: 5px 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    background-color: #f1f1f1;
+    color: #333;
+    border-radius: 5px;
+}
+
+.pagination a.active {
+    background-color: #66c2ff;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #ccc;
+}
+
+.pagination .back-next {
+    background-color: #66c2ff;
+    color: white;
+}
+
+/* Button Styling */
+.button {
+    display: inline-flex; /* Allows icons and text to align properly */
+    align-items: center; /* Vertically centers the icon and text */
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px; /* Ensures button text is readable */
+    margin-right: 5px; /* Space between buttons */
+}
+
+.button i {
+    margin-right: 5px; /* Adds space between the icon and the text */
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Overlay styles */
+/* Overlay styles */
+/* Overlay styles */
+#userOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: none; /* Ensure it's hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Overlay content styles */
+#overlayContent {
+    background: #fff;
+    border-radius: 8px;
+    width: 70%;
+    max-width: 600px;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    position: relative; /* Ensure content is contained */
+    display: block; /* Ensure content is visible */
+}
+
+/* Header of the overlay */
+#overlayContent .overlay-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+#overlayContent span {
+    display: block;
+    margin: 10px 0;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Close button inside overlay content */
+#overlayContent button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+    z-index: 1010; /* Ensure it's above overlay content */
+}
+
+/* Close button hover effect */
+#overlayContent button:hover {
+    background-color: #ff0000;
+}
+
+/* Animation for fade-in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    #overlayContent {
+        width: 90%;
+    }
+}
+.badge {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Hamburger Button for Sidebar (Mobile) */
+.hamburger {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 15;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #000000;
+}
+/* Active state for the hamburger */
+.hamburger.active {
+    color: #ffffff; /* Change to white when active */
+    position:fixed;
+
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    .hamburger {
+        display: flex; /* Show hamburger on smaller screens */
+    }
+    .sidebar {
+        transform: translateX(-300px);
+        position: fixed;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    .main-content h2{
+        padding-left:7%;
+    }
+}
+
+/* Base button styles */
+.trade-toggle {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Style when "on" */
+.trade-toggle.on {
+    background-color: green;
+    color: white;
+}
+
+/* Style when "off" */
+.trade-toggle.off {
+    background-color: red;
+    color: white;
+}
+
+/* Animation for smooth transition */
+.trade-toggle.on .toggle-text {
+    animation: fadeInOn 0.3s ease-in-out;
+}
+
+.trade-toggle.off .toggle-text {
+    animation: fadeInOff 0.3s ease-in-out;
+}
+
+/* Animation for 'On' state */
+@keyframes fadeInOn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animation for 'Off' state */
+@keyframes fadeInOff {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Optional: Adjust the toggle button's text for better clarity */
+.toggle-text {
+    font-size: 14px;
+}

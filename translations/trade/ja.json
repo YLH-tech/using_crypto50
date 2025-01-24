@@ -1,0 +1,21 @@
+{
+    "amount_ada_label": "金額 (ADA):",
+    "amount_apt_label": "金額 (APT):",
+    "amount_arb_label": "金額 (ARB):",
+    "amount_avax_label": "金額 (AVAX):",
+    "amount_bch_label": "金額 (BCH):",
+    "amount_bnb_label": "金額 (BNB):",
+    "amount_doge_label": "金額 (DOGE):",
+    "amount_dot_label": "金額 (DOT):",
+    "amount_eos_label": "金額 (EOS):",
+    "amount_etc_label": "金額 (ETC):",
+    "amount_eth_label": "金額 (ETH):",
+    "amount_link_label": "金額 (LINK):",
+    "amount_ltc_label": "金額 (LTC):",
+    "amount_neo_label": "金額 (NEO):",
+    "amount_sol_label": "金額 (SOL):",
+    "amount_ton_label": "金額 (TON):",
+    "amount_trx_label": "金額 (TRX):",
+    "amount_uni_label": "金額 (UNI):",
+    "amount_xrp_label": "金額 (XRP):"
+}

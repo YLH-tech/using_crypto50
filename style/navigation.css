@@ -30,6 +30,12 @@ nav {
   justify-content: space-around;
   gap: 20px;
 }
+.mobile li a{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
 #non-mobile {
   display: block;
 }
@@ -81,6 +87,18 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-evenly ;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  #non-mobile {
+    display: none;
+  }
+  #mobile {
+    display: block;
+  }
+  .mobile {
+    display: block;
   }
 }
 

@@ -1,0 +1,174 @@
+@import url(./commond_command.css); /* Command Commands */
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.show{
+    display: block;
+}
+main{
+    width: 80%;
+    height: 800px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 1px solid black; */
+    border-radius: 30px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--iconic-color--);
+    z-index: -1;
+}
+img{
+    width: 400px;
+}
+form{
+    width: 45%;
+    height: fit-content;
+    /* border: 1px solid black; */
+    padding: 50px;
+    border-radius: 30px;
+    background-color: var(--entry-color--);
+}
+form p{
+    margin-bottom: 20px;
+    color: var(--secondary-font-color--);
+}
+fieldset{
+    border-radius: 50px;
+    /* height: 100px; */
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 5px 20px;
+    box-sizing: border-box;
+}
+fieldset legend{
+    margin-left: 30px;
+}
+fieldset span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    top: -4px;
+}
+fieldset input{
+    width: 90%;
+    height: 40px;
+    font-size: 16px;
+    display: block;
+    border: 0;
+    position: relative;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+.active-btn{
+    width: 150px;
+    height: 40px;
+    display: inline-block;
+    background-color: var(--iconic-color--);
+    color: var(--dark-font-color--);
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 40px; /* To vertical align in middle */
+    text-decoration: none;
+    border: 0;
+}
+.guest-btn{
+    background-color: var(--dark-font-color--);
+    color: var(--font-color--);
+    border: 1px solid var(--iconic-color--);
+}
+#forgot-btn{
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--font-color--);
+    text-decoration: none;
+
+}
+.checked .active-btn{
+    background-color: var(--iconic-color--);
+    color: var(--dark-font-color--);
+}
+.btn-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn-container a{
+    text-decoration: none;
+}   
+.forgot-create{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Term and agreement */
+.term-agreement-container{
+    width: 60%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+#welcome-heading{
+    color: var(--font-color--);
+    font-size: 24px;
+}
+.term-agreement-sub-container{
+    height: 600px; /* for scrollable area a*/
+    overflow: auto;
+}
+.term-agreement-container  h2{
+    font-size: 18px;
+    margin-top: 20px;
+}
+.term-agreement-sub-container p{
+    color: var(--secondary-font-color--);
+    font-size: 12px;
+}
+.term-agreement-container h1{
+    font-size: 30px;
+    color: var(--iconic-color--);
+}
+.term-agreement-container p{
+    font-size: 20px;
+    text-align: justify;
+}
+.btns{
+    padding: 10px 30px;
+    border: 0;
+    border-radius: 10px;
+}
+#agree{
+    background-color: var(--iconic-color--);
+    color: var(--dark-font-color--);
+}
+#agree:hover{
+    background-color: green;
+}
+#cancel{
+    background-color: var(--body-color--);
+}
+#cancel:hover{
+    background-color: red;
+    color: var(--dark-font-color--);
+}
+
+/* Common Properties */
+.btn-gp{
+    display: inline-block;
+}

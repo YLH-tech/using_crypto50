@@ -1,0 +1,100 @@
+/* @import url(./mainStyle.css); */
+@import url(./loopStyle.css); /* Left to Right Looping Animation */
+@import url(./commond_command.css); /* Command Commands */
+@import url(./footer.css);
+@import url(./navigation.css);
+@import url(./cryptoNews.css);
+@import url(./helpCenter.css);
+
+/* Dark Mode */
+body{
+    /* background-color: var(--dark-body-color--); */
+    background-color: rgb(45, 48, 55);
+    color: #ffffff;
+    transition: var(--transistion-time--);
+}
+
+/* Navigation bar */
+nav{
+    background-color: var(--dark-body-color--);
+    transition: var(--transistion-time--);
+}
+nav a{
+    color: var(--dark-font-color--);
+}
+
+/* Main Section Style */
+.entry-section{
+    background-color: var(--dark-entry-color--);
+    transition: var(--transistion-time--);
+}
+
+.content-container h1{
+    color: var(--dark-font-color--);
+}
+
+/* Download Section */
+.download-container{
+    background-color: var(--dark-entry-color--);
+    transition: var(--transistion-time--);
+}
+.download-header h1{
+    color: var(--dark-font-color--);
+}
+.app-shops{
+    color: var(--dark-icons-color--);
+}
+
+/* Ranking & Breaking */
+.more-button {
+    color: var(--dark-font-color--);
+}
+.container{
+    transition: var(--transistion-time--);
+}
+.container #crypto-body{
+    background-color: var(--dark-entry-color--);
+}
+.header h1{
+    color: var(--dark-font-color--);
+}
+
+/* FAQs */
+h2{
+    color: var(--dark-font-color--);
+}
+h1{
+    color: var(--dark-font-color--);
+}
+#crypto-body td:first-child{
+    color: var(--dark-font-color--);
+}
+
+/* Footer */
+footer{
+    background-color: var(--dark-entry-color--);
+}
+.footer-sec ul h2{
+    color: var(--dark-font-color--);
+}
+
+.table-container{
+    background-color: var(--font-color--);
+}
+
+.clickdown-content{
+    background-color: var(--dark-body-color--);
+}
+
+.clickdown-content ul{
+    color: var(--dark-font-color--);
+}
+@media screen and (max-width: 1200px){
+    .crypto-news{
+        background-color: var(--font-color--);
+    }
+}
+
+.contact-sub-container{
+    background-color: var(--font-color--);
+}

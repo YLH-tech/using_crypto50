@@ -1,0 +1,12 @@
+{
+    "account_settings": "アカウント設定",
+    "my_profile": "私のプロフィール",
+    "name": "名前",
+    "personal_information": "個人情報",
+    "email_address": "メールアドレス",
+    "no_of_deposits": "預金数",
+    "no_of_withdrawals": "引き出し回数",
+    "check_balances": "残高確認",
+    "create_fund_password": "資金パスワードを作成",
+    "suspended_alert": "あなたのアカウントは停止されています。この機能にアクセスできません。"
+}

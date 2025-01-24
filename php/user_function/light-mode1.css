@@ -1,0 +1,18 @@
+@import url(../../style/choosingCoin.css);
+
+
+
+
+body, nav, .entry-section, .download-container, .container{
+    transition: var(--transistion-time--);
+}
+
+.dropdown-content{
+    background-color: var(--dark-font-color--);
+}
+.dropdown-content span{
+    color: var(--font-color--);
+}
+.main-container1{
+    background-color: var(--dark-font-color--);
+}

@@ -51,11 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['set_fund_password']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Set Fund Password</title>
+    <title data-translate="title_fund">Set Fund Password</title>
 
     <!-- Style link -->
     <link rel="stylesheet" href="../../style/login-signup.css">
     <script src="../../js/eye.js" defer></script>
+    <script src="../../js/translate.js"></script>
 
     <!-- Fontawesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -77,17 +78,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['set_fund_password']))
     <main>
         <!-- <img src="./assets/images/Sign up-amico.svg" alt="Background"> -->
         <form action="" method="post">
-            <h1>Set Fund Password</h1>
+            <h1 data-translate="title_fund">Set Fund Password</h1>
             <h4> <?php if (isset($_GET['error'])) { ?>
                     <p class="error"> <?php echo $_GET['error']; ?></p>
                 <?php } ?>
             </h4>
             <!-- Email input -->
             <fieldset>
-                <legend>Password</legend>
+                <legend data-translate="password">Password</legend>
                 <span>
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" name="fund_password" id="password" placeholder="Fund Password (6 digits)" required pattern="\d{6}" maxlength="6">
+                    <input type="password" name="fund_password" id="password" data-translate="fund_password_placeholder" placeholder="Fund Password (6 digits)" required pattern="\d{6}" maxlength="6">
                     <i class="fas fa-eye toggle-password" data-toggle="#password"></i>
 
                 </span>
@@ -95,20 +96,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['set_fund_password']))
 
             <!-- Password input -->
             <fieldset>
-                <legend>Comfirm Password</legend>
+                <legend data-translate="confirm_password">Comfirm Password</legend>
                 <span>
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" name="fund_password_confirm" id="confirmPassword" placeholder="Confirm Fund Password" required pattern="\d{6}" maxlength="6">
+                    <input type="password" name="fund_password_confirm" id="confirmPassword" data-translate="confirm_fund_password_placeholder" placeholder="Confirm Fund Password" required pattern="\d{6}" maxlength="6">
                     <i class="fas fa-eye toggle-password" data-toggle="#confirmPassword"></i>
                 </span>
             </fieldset>
 
             <span class="btn-container"> <!-- For align the buttons -->
                 <span class="btn-gp">
-                    <input type="submit" name="set_fund_password" class="active-btn" value="Set Password">
+                    <input type="submit" name="set_fund_password" data-translate="set_password" class="active-btn" value="Set Password">
 
                 </span>
-                <a href="update_password.php">Fogot fund password</a>
+                <a href="update_password.php" data-translate="forgot_password_fund">Fogot fund password</a>
             </span>
         </form>
     </main>

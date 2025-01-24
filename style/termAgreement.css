@@ -9,13 +9,14 @@
     background-color: black;
 }
 
-.main-container{
+.main-container-term{
     width: 95%;
     margin: auto;
     padding: 20px 20px 50px 20px;
 }
 #logo-pic{
     width: 80px;
+    margin: auto;
 }
 #heading{
     font-size: 40px;

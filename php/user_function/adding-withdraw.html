@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coins Withdraw Easily | Bithumbnn</title>
+    <title data-translate="title">Coins Withdraw Easily | Bithumbnn</title>
     <!-- Style links -->
-    <link rel="stylesheet" href="../../style/choosingCoin.css">
+    <link id="themeStylesheet" rel="stylesheet" href="./light-mode1.css">
 
     <!-- Fontawesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -15,17 +15,18 @@
 
     <!-- Tailwind CSS link -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../js/translate.js"></script>
 </head>
 
 <body>
     <!-- night mode script -->
-    <script src="../../js/darkMode.js"></script>
+    <script src="./darkMode1.js"></script>
 
     
 
     <main>
-        <h1>Coins Withdraw</h1>
-        <p>Choose coin that you want to withdraw.</p>
+        <h1 data-translate="header">Coins Withdraw</h1>
+        <p data-translate="description">Choose coin that you want to withdraw.</p>
         <!-- main container -->
         <div class="main-container">
             <!-- Upper Div -->
@@ -33,25 +34,24 @@
                 <!-- Coins -->
                 <a href="./withdraw_btc.php" class="coin-div flex-start">
                     <img src="../../images/BTC.png" alt="BTC icon">
-                    <h1>Bitcoin (BTC)</h1>
+                    <h1 data-translate="BTC">Bitcoin (BTC)</h1>
                 </a>
                 <a href="./withdraw_eth.php" class="coin-div flex-end">
-                    <h1>Ethereum (ETH)</h1>
+                    <h1 data-translate="ETH">Ethereum (ETH)</h1>
                     <img src="../../images/ETH.png" alt="ETH icon">
                 </a>
             </div>
             <br>
-            <img src="../../assets/images/Coins-rafiki.svg" alt="Coin pic" id="mid-pic">
             <br>
             <!-- Lower Div -->
             <div class="coin-container">
                 <!-- Coins -->
                 <a href="./withdraw_usdt.php" class="coin-div flex-start">
                     <img src="../../images/USDT.png" alt="USDT icon">
-                    <h1>Tether (USDT)</h1>
+                    <h1 data-translate="USDT">Tether (USDT)</h1>
                 </a>
                 <a href="./withdraw_usdc.php" class="coin-div flex-end">
-                    <h1>USD Coin (USDC)</h1>
+                    <h1 data-translate="USDC">USD Coin (USDC)</h1>
                     <img src="../../images/USDC.png" alt="USDC icon">
                 </a>
             </div>

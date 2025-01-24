@@ -1,0 +1,13 @@
+{
+    "recommendedRanks": "推奨されるランク",
+    "priceChangeDistribution": "24時間の価格変動分布",
+    "priceDown": "価格ダウン: ",
+    "priceUp": "価格アップ: ",
+    "clickCoin": "チャートでコイン名をクリックして、その価格を表示または非表示にします。",
+    "chartTitle": "過去1年間の暗号通貨価格チャート",
+    "xAxisTitle": "月",
+    "yAxisTitle": "価格 (USDT)",
+    "tooltipLabel": "価格"
+
+  }
+  

@@ -1,0 +1,13 @@
+{
+    "recommendedRanks": "推荐排名",
+    "priceChangeDistribution": "24小时价格变化分布",
+    "priceDown": "价格下跌: ",
+    "priceUp": "价格上涨: ",
+    "clickCoin": "点击图表中的币种名称以显示或隐藏其价格。",
+    "chartTitle": "过去一年加密货币价格图表",
+    "xAxisTitle": "月份",
+    "yAxisTitle": "价格 (USDT)",
+    "tooltipLabel": "价格"
+
+  }
+  

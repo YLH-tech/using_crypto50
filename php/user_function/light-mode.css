@@ -1,0 +1,24 @@
+
+@import url(../../style/exchange.css);
+@import url(../../style/navigation.css);
+@import url(../../style/footer.css);
+@import url(../../style/userDashboard.css);
+@import url(../../style/deposit_withdraw.css);
+
+
+
+
+
+body, nav, .entry-section, .download-container, .container{
+    transition: var(--transistion-time--);
+}
+
+.dropdown-content{
+    background-color: var(--dark-font-color--);
+}
+.dropdown-content span{
+    color: var(--font-color--);
+}
+.main-container1{
+    background-color: var(--dark-font-color--);
+}

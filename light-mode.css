@@ -1,0 +1,21 @@
+@import url(./style/termAgreement.css);
+@import url(./style/navigation.css);
+@import url(./style/dropDownBtn.css);
+@import url(./style/footer.css);
+@import url(./style/profile.css);
+
+
+
+
+
+
+body, nav, .entry-section, .download-container, .container{
+    transition: var(--transistion-time--);
+}
+
+.dropdown-content{
+    background-color: var(--dark-font-color--);
+}
+.dropdown-content span{
+    color: var(--font-color--);
+}

@@ -1,0 +1,12 @@
+{
+    "account_settings": "Account Settings",
+    "my_profile": "My Profile",
+    "name": "Name",
+    "personal_information": "Personal Information",
+    "email_address": "Email address",
+    "no_of_deposits": "No. of Deposits",
+    "no_of_withdrawals": "No. of Withdrawals",
+    "check_balances": "Check Balances",
+    "create_fund_password": "Create Fund Password",
+    "suspended_alert": "Your account is suspended. You cannot access this feature."
+}

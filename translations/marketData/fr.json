@@ -1,0 +1,13 @@
+{
+    "recommendedRanks": "Rangs Recommandés",
+    "priceChangeDistribution": "Distribution du Changement de Prix sur 24H",
+    "priceDown": "Prix en Baisse : ",
+    "priceUp": "Prix en Hausse : ",
+    "clickCoin": "Cliquez sur le nom d'une pièce dans le graphique pour afficher ou masquer ses prix.",
+    "chartTitle": "Graphique des prix des cryptomonnaies de l'année dernière",
+    "xAxisTitle": "Mois",
+    "yAxisTitle": "Prix (USDT)",
+    "tooltipLabel": "Prix"
+
+  }
+  

@@ -17,12 +17,12 @@ function send_mail($recipient,$subject,$message)
   $mail->Port       = 587;
   $mail->Host       = "smtp.gmail.com";
   //$mail->Host       = "smtp.mail.yahoo.com";
-  $mail->Username   = "lighting177036@gmail.com";
-  $mail->Password   = "gjomowgrlsbnkuhw";
+  $mail->Username   = "bithumbnnofficial@gmail.com";
+  $mail->Password   = "dwtegfpxwvnasqtz";
 
   $mail->IsHTML(true);
   $mail->AddAddress($recipient, "esteemed customer");
-  $mail->SetFrom("lighting177036@gmail.com", "Bithumbnn.com");
+  $mail->SetFrom("bithumbnnofficial@gmail.com", "Bithumbnn.com");
   //$mail->AddReplyTo("reply-to-email", "reply-to-name");
   //$mail->AddCC("cc-recipient-email", "cc-recipient-name");
   $mail->Subject = $subject;

@@ -1,0 +1,21 @@
+{
+    "amount_ada_label": "Montant (ADA):",
+    "amount_apt_label": "Montant (APT):",
+    "amount_arb_label": "Montant (ARB):",
+    "amount_avax_label": "Montant (AVAX):",
+    "amount_bch_label": "Montant (BCH):",
+    "amount_bnb_label": "Montant (BNB):",
+    "amount_doge_label": "Montant (DOGE):",
+    "amount_dot_label": "Montant (DOT):",
+    "amount_eos_label": "Montant (EOS):",
+    "amount_etc_label": "Montant (ETC):",
+    "amount_eth_label": "Montant (ETH):",
+    "amount_link_label": "Montant (LINK):",
+    "amount_ltc_label": "Montant (LTC):",
+    "amount_neo_label": "Montant (NEO):",
+    "amount_sol_label": "Montant (SOL):",
+    "amount_ton_label": "Montant (TON):",
+    "amount_trx_label": "Montant (TRX):",
+    "amount_uni_label": "Montant (UNI):",
+    "amount_xrp_label": "Montant (XRP):"
+}

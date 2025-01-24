@@ -1,0 +1,12 @@
+{
+    "account_settings": "账户设置",
+    "my_profile": "我的个人资料",
+    "name": "姓名",
+    "personal_information": "个人信息",
+    "email_address": "电子邮件地址",
+    "no_of_deposits": "存款数量",
+    "no_of_withdrawals": "取款数量",
+    "check_balances": "查看余额",
+    "create_fund_password": "创建资金密码",
+    "suspended_alert": "您的账户已被暂停。您无法访问此功能。"
+}

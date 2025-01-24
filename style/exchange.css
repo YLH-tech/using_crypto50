@@ -21,7 +21,7 @@ body{
 .main-container{
     background-color: var(--inner-section-color--);
     width: 60%;
-    margin: 50px auto;
+    /* margin: 50px auto; */
     padding: 50px;
     border-radius: 20px;
 }
@@ -118,4 +118,60 @@ body{
     border: 1px solid var(--secondary-font-color--);
     height: 30px;
     padding: 10px;
+}
+
+
+.error {
+    background: #F2DEDE;
+    color: #008000;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
+.horizontal-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.horizontal-container div {
+    margin: 0 10px;
+}
+
+@media screen and (max-width: 1300px){
+    .main-section{
+        display: block;
+    }
+    .main-container{
+        width: 100%;
+    }
+    .coin-price{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 800px){
+    .main-container{
+        padding: 10px;
+    }
+    .horizontal-scroll {
+        overflow-x: auto;
+      }
+      .horizontal-scroll table {
+        width: 1500px;
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+}
+@media screen and (max-width: 700px){
+    .horizontal-container{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
 }

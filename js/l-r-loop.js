@@ -1,111 +1,87 @@
-    const prices = {
-        BTC: { price: "Loading...", percentage: "Loading..." },
-        ETH: { price: "Loading...", percentage: "Loading..." },
-        LTC: { price: "Loading...", percentage: "Loading..." },
-        XRP: { price: "Loading...", percentage: "Loading..." },
-        ADA: { price: "Loading...", percentage: "Loading..." },
-        DOT: { price: "Loading...", percentage: "Loading..." },
-        BNB: { price: "Loading...", percentage: "Loading..." },
-        SOL: { price: "Loading...", percentage: "Loading..." },
-        DOGE: { price: "Loading...", percentage: "Loading..." },
-        UNI: { price: "Loading...", percentage: "Loading..." },
-        // BSV: { price: "Loading...", percentage: "Loading..." },
-        AVAX: { price: "Loading...", percentage: "Loading..." }
+const prices = {
+    BTC: { price: "Loading...", percentage: "Loading..." },
+    ETH: { price: "Loading...", percentage: "Loading..." },
+    LTC: { price: "Loading...", percentage: "Loading..." },
+    XRP: { price: "Loading...", percentage: "Loading..." },
+    ADA: { price: "Loading...", percentage: "Loading..." },
+    DOT: { price: "Loading...", percentage: "Loading..." },
+    BNB: { price: "Loading...", percentage: "Loading..." },
+    SOL: { price: "Loading...", percentage: "Loading..." },
+    DOGE: { price: "Loading...", percentage: "Loading..." },
+    UNI: { price: "Loading...", percentage: "Loading..." },
+    AVAX: { price: "Loading...", percentage: "Loading..." }
+  };
+  
+  const pairs = ['BTC', 'ETH', 'LTC', 'XRP', 'ADA', 'DOT', 'BNB', 'SOL', 'DOGE', 'UNI', 'AVAX'];
+  
+  // Update the DOM with prices and percentage
+  function updatePrice(pair, price, percentage) {
+    const unavailableText = window.generalTranslations?.unavailable || "Unavailable";
+  
+    const priceElement = document.querySelector(`.price[data-pair="${pair}"]`);
+    const percentageElement = document.querySelector(`.percentage[data-pair="${pair}"]`);
+  
+    if (priceElement) priceElement.textContent = price || unavailableText;
+    if (percentageElement) {
+      if (percentage === null) {
+        percentageElement.textContent = `(${unavailableText})`;
+        percentageElement.className = "percentage negative";
+      } else {
+        const formattedPercentage = `${parseFloat(percentage).toFixed(2)}%`;
+        percentageElement.textContent = `(${formattedPercentage})`;
+        percentageElement.className = `percentage ${percentage > 0 ? 'positive' : 'negative'}`;
+      }
+    }
+  }
+  
+  // Fetch initial 24-hour price changes in batch
+  async function fetchInitialData() {
+    try {
+      // Pass `symbols` as a properly formatted JSON array
+      const symbols = JSON.stringify(pairs.map(pair => `${pair}USDT`));
+      const response = await fetch(`https://api.binance.com/api/v3/ticker/24hr?symbols=${encodeURIComponent(symbols)}`);
+      const data = await response.json();
+  
+      data.forEach(item => {
+        const pair = item.symbol.replace('USDT', '');
+        const price = parseFloat(item.lastPrice).toFixed(2);
+        const percentage = parseFloat(item.priceChangePercent);
+        updatePrice(pair, `$${price}`, percentage);
+      });
+    } catch (error) {
+      // Handle fetch errors
+      pairs.forEach(pair => updatePrice(pair, "Unavailable", null));
+    }
+  }
+  
+  
+  // WebSocket connection for real-time updates
+  function setupWebSocket() {
+    const streams = pairs.map(pair => `${pair.toLowerCase()}usdt@trade`).join('/');
+    const socket = new WebSocket(`wss://stream.binance.com:9443/stream?streams=${streams}`);
+  
+    socket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      const { s: symbol, p: price } = message.data;
+      const pair = symbol.replace('USDT', '');
+      updatePrice(pair, `$${parseFloat(price).toFixed(2)}`, null); // Update price in real-time
     };
-
-    // Function to update price and percentage in the DOM
-    function updatePrice(pair, price, percentage) {
-        const priceElements = document.querySelectorAll(`.price`);
-        const percentageElements = document.querySelectorAll(`.percentage`);
-
-        priceElements.forEach(element => {
-            if (element.previousElementSibling.textContent.includes(pair)) {
-                element.textContent = price; // Update the price
-                console.log(`Updated price for ${pair}: ${price}`); // Debugging output
-            }
-        });
-
-        percentageElements.forEach(element => {
-            if (element.parentElement.textContent.includes(pair)) {
-                // Check if percentage is a valid number
-                let formattedPercentage;
-
-                if (isNaN(percentage)) {
-                    formattedPercentage = "(-0.00%)"; // Fallback value if NaN
-                    element.classList.add('negative'); // Apply negative class for NaN
-                } else {
-                    formattedPercentage = `(${parseFloat(percentage).toFixed(2)}%)`; // Format percentage with percent sign
-
-                    // Apply color based on the percentage value
-                    const percentageValue = parseFloat(percentage);
-                    if (percentageValue > 0) {
-                        element.classList.remove('negative');
-                        element.classList.add('positive');
-                    } else {
-                        element.classList.remove('positive');
-                        element.classList.add('negative');
-                    }
-                }
-
-                element.textContent = formattedPercentage; // Update the percentage
-                console.log(`Updated percentage for ${pair}: ${formattedPercentage}`); // Debugging output
-            }
-        });
-    }
-
-
-    // Function to create a WebSocket for a given trading pair
-    function createWebSocket(pair, retries = 5) {
-        const socket = new WebSocket(`wss://stream.binance.com:9443/ws/${pair.toLowerCase()}usdt@trade`);
-
-        socket.onopen = () => {
-            console.log(`WebSocket connection established for ${pair}.`);
-        };
-
-        socket.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            const price = parseFloat(data.p).toFixed(2); // Extract the price and format it
-
-            // Example: Fetching 24h price change
-            fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${pair.toUpperCase()}USDT`)
-                .then(response => response.json())
-                .then(data => {
-                    const percentage = parseFloat(data.priceChangePercent); // Get percentage change
-                    updatePrice(pair.toUpperCase(), price, percentage); // Pass percentage as a number
-                })
-                .catch(error => {
-                    console.error(`Failed to fetch 24h change for ${pair}:`, error);
-                    updatePrice(pair.toUpperCase(), price, NaN); // Pass NaN if the fetch fails
-                });
-        };
-
-        socket.onerror = (error) => {
-            console.error(`WebSocket error for ${pair}:`, error);
-            // Retry connection if failed
-            if (retries > 0) {
-                setTimeout(() => {
-                    console.log(`Retrying WebSocket for ${pair}, ${retries} attempts left...`);
-                    createWebSocket(pair, retries - 1);
-                }, 3000); // Retry after 3 seconds
-            } else {
-                updatePrice(pair.toUpperCase(), "Unavailable", NaN); // Fallback if all retries fail
-            }
-        };
-
-        socket.onclose = () => {
-            console.log(`WebSocket connection closed for ${pair}.`);
-        };
-    }
-
-    // Create WebSocket connections for each trading pair
-    const pairs = ['btc', 'eth', 'ltc', 'xrp', 'ada', 'dot', 'bnb', 'sol', 'doge', 'uni', 'avax'];
-    pairs.forEach(pair => {
-        createWebSocket(pair);
-
-        // If no price is received within 20 seconds, show "Unavailable"
-        setTimeout(() => {
-            if (prices[pair.toUpperCase()].price === "Loading...") {
-                updatePrice(pair.toUpperCase(), "Unavailable", "Unavailable");
-            }
-        }, 20000); // 20 seconds timeout
-    });
+  
+    socket.onerror = () => {
+      console.error("WebSocket error. Reconnecting in 5 seconds...");
+      setTimeout(setupWebSocket, 5000); // Reconnect after 5 seconds
+    };
+  
+    socket.onclose = () => {
+      console.warn("WebSocket closed. Reconnecting...");
+      setupWebSocket();
+    };
+  
+    // Cleanup on page unload
+    window.addEventListener("beforeunload", () => socket.close());
+  }
+  
+  // Initialize
+  fetchInitialData();
+  setupWebSocket();
+  
